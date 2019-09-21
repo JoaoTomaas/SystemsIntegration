@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ownerlist>
+    <owner id="1234">
+        <name>Johnny</name>
+        <telephone>918907623</telephone>
+        <address>Moro aqui</address>
+    </owner>
+    <owner id="5678">
+        <name>Cacholinha</name>
+        <telephone>918765234</telephone>
+        <address>Marrocos</address>
+    </owner>
+</ownerlist>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<car id="123">
+    <brand>Ferrari</brand>
+    <model>Pista</model>
+    <engine_size>4000</engine_size>
+    <power>670</power>
+    <consumption>24</consumption>
+    <plate>27-49-UC</plate>
+</car>
