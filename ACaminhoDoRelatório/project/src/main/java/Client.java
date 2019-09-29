@@ -79,6 +79,7 @@ public class Client {
     //owners.build().writeTo(output);
     //output.close();
 
+    long startTime = System.nanoTime(); //Inicia o cronómetro
 
     screenmsg.info("Conectando ao servidor...");
     ConnectionRequest req = ConnectionRequest.newBuilder().setMsgPb(owners.build().toByteString()).build();
@@ -92,6 +93,8 @@ public class Client {
     }
 
     CarList lista = CarList.parseFrom(resp.getRpPb());
+    long estimatedTime = System.nanoTime() - startTime;
+    System.out.println("Tempo total (cliente): " + estimatedTime/1000);
 
     screenmsg.info ("Resposta: " + Arrays.deepToString(lista.getCarsList().toArray()));
   }
@@ -119,7 +122,7 @@ public class Client {
     int flag = -1; //XML_CONST //PROTO_CONST
 
     try {
-      String user = "neste";
+      String user = "tu";
       /*if (args.length > 0){
         user = args[0];
       }*/
