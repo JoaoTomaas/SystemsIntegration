@@ -1,0 +1,31 @@
+syntax = "proto2";
+
+option java_package = "com.project.protob";
+option java_outer_classname = "CarOwnerProtoB";
+
+message Car {
+    required int32 id = 1;
+    required string brand = 2;
+    required string model = 3;
+    required int32 engine_size = 4;
+    required int32 power = 5;
+    required int32 consumption = 6;
+    required string plate = 7;
+    required int32 owner_id = 8;
+}
+
+message Owner {
+    required int32 id = 1;
+    required string name = 2;
+    required int32 telephone = 3;
+    required string address = 4;
+}
+
+
+message OwnerList {
+    repeated Owner owners = 1;
+}
+
+message CarList {
+    repeated Car cars = 1;
+}

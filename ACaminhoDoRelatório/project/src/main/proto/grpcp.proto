@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+option java_package = "com.project.grpc";
+option java_outer_classname = "GrpcProto";
+option java_multiple_files = true;
+
+//Definir o serviço de greeting
+service Greeter {
+    //Estabeler contacto
+    rpc GreetAndConnect (ConnectionRequest) returns (ConnectionReply) {}
+}
+
+message ConnectionRequest{
+    optional string msg_xml = 1; //Talvez posssa mudar para optional
+    optional bytes msg_pb = 2; //Para mandar as cenas dos protobuffers atraves de um array de bytes
+}
+
+message ConnectionReply{
+    optional string rp_xml = 1;
+    optional bytes rp_pb = 2;
+}
