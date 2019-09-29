@@ -43,6 +43,7 @@ public class TheServer {
       //PROTO
       else {
         //JOAO TRABALHA AQUI
+          long startTime = System.nanoTime(); //Inicia o cronómetro
 
           //Deserialization (Protob -> Object)
           OwnerList lista_donos = OwnerList.parseFrom(request.getMsgPb());
@@ -56,7 +57,12 @@ public class TheServer {
           }
 
           //Searilize the returned value of the method and send it as a reply to the client
-          ByteString serial_reply = retorna_carros.toByteString();
+          ByteString serial_reply = null;
+          if (retorna_carros != null) {
+              serial_reply = retorna_carros.toByteString();
+          }
+          long estimatedTime = System.nanoTime() - startTime;
+          System.out.println("Tempo total(servidor): " + estimatedTime/1000);
 
           //Resposta que vai ser enviada para o cliente
         //ConnectionReply reply = ConnectionReply.newBuilder().setRpPb(request.getMsgPb()).build();
