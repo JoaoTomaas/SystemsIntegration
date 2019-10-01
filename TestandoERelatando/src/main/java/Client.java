@@ -1,0 +1,168 @@
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.project.grpc.GrpcProto.*;
+import com.project.grpc.*;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import io.grpc.StatusRuntimeException;
+
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+//Imports paa testar as cenas dos Protocol Buffers
+//import com.project.protob.CarOwnerProtoB.CarList;
+//import com.project.protob.CarOwnerProtoB.Car;
+import com.project.protob.CarOwnerProtoB.OwnerList;
+import com.project.protob.CarOwnerProtoB.Owner;
+import java.io.*;
+
+public class Client {
+
+  //Constantes para o if da main
+  private static GetOwners x=new GetOwners("Owners.txt");
+  private static final int XML_CONST = 1;
+  private static final int PROTO_CONST = 2;
+
+  static Owner AddOwner () { //Ids dos owners adicionados até ao momento: 244 e 200
+    Owner.Builder owner = Owner.newBuilder();
+
+    owner.setId(244);
+    owner.setName("João Tomás");
+    owner.setTelephone(912543678);
+    owner.setAddress("Eu nasci aqui");
+
+    return owner.build();
+  }
+
+
+  private static final Logger screenmsg = Logger.getLogger(Client.class.getName()); //Find or create a name for a logged subsystem
+
+  private final ManagedChannel channel;
+
+  private final GreeterGrpc.GreeterBlockingStub blockingStub;
+
+  public Client (String host, int port){
+    this(ManagedChannelBuilder.forAddress(host, port).usePlaintext().build()); //Creates a channel with the target's address and port number
+  }
+
+  //Ver se é preciso criar dois tipos de stub ou se basta um
+  public Client(ManagedChannel channel){
+    this.channel = channel;
+    blockingStub = GreeterGrpc.newBlockingStub(channel);
+
+    //As stub classes são a API que o client usa para fazer rpc calls no service endpoint
+    //Vou usar uma blockingStub porque é síncrona e vai esperar que a chamada rpc invocada não retorna enquanto não retornar uma resposta ou uma excepção
+    //A classe ClientGrpc foi gerada a partir do .proto
+  }
+
+  public void shutdown() throws InterruptedException{
+    channel.shutdown().awaitTermination(10, TimeUnit.SECONDS);
+  }
+
+
+  public void connectProto() throws IOException {
+    OwnerList.Builder owners = OwnerList.newBuilder();
+
+    //Ler de um ficheiro de texto
+    try{
+      owners.mergeFrom(new FileInputStream("input_owner_pb.txt"));
+    } catch (FileNotFoundException e) {
+      System.out.println("input_owner_pb.txt " + "não encontrado, a criar um novo...");
+    }
+
+    //Adicionar um dono à lista de donos (NÃO APAGAR)
+    owners.addOwners(AddOwner());
+
+    //Guardar num ficheiro de texto (NÃO APAGAR)
+    FileOutputStream output = new FileOutputStream("input_owner_pb.txt");
+    owners.build().writeTo(output);
+    output.close();
+
+    long startTime = System.nanoTime(); //Inicia o cronómetro
+
+    screenmsg.info("Conectando ao servidor...");
+    ConnectionRequest req = ConnectionRequest.newBuilder().setMsgPb(owners.build().toByteString()).build();
+    ConnectionReply resp;
+
+    try{
+      resp = blockingStub.greetAndConnect(req);
+    } catch (StatusRuntimeException e) {
+      screenmsg.log(Level.WARNING, "RPC nao funfou: {0}", e.getStatus());
+      return;
+    }
+
+    //CarList lista = CarList.parseFrom(resp.getRpPb());
+    com.project.protob.CarOwnerProtoB.CarList lista = com.project.protob.CarOwnerProtoB.CarList.parseFrom(resp.getRpPb());
+    long estimatedTime = System.nanoTime() - startTime;
+    System.out.println("Tempo total (cliente): " + estimatedTime/1000);
+
+    screenmsg.info ("Resposta: " + Arrays.deepToString(lista.getCarsList().toArray()));
+  }
+
+  //retornar a lista de carros por agora imprimo a campeao xD
+  public void connectXML (String name) {
+    long startTime = System.nanoTime(); //Inicia o cronómetro
+
+    screenmsg.info ("Trying to connect to " + name + "...");
+    ConnectionRequest request = ConnectionRequest.newBuilder().setMsgXml(name).build();
+    ConnectionReply response;
+    try{
+      response = blockingStub.greetAndConnect(request);
+    } catch (StatusRuntimeException e) {
+      screenmsg.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+      return;
+    }
+
+    screenmsg.info("Greeting: " + response.getRpXml());
+    XmlToObject converte=new XmlToObject("teste1.xml");
+    CarList resultado=converte.work2( response.getRpXml());
+
+    long estimatedTime = System.nanoTime() - startTime;
+    System.out.println("Tempo total (cliente): " + estimatedTime/1000);
+
+    System.out.println("-----Resultado-----");
+    for(Car e:resultado.getCar_list()){
+      System.out.println(e.getBrand());
+    }
+  }
+
+
+  //Write Message (ProtoBuffers)
+  public void connect (String name) {
+    screenmsg.info ("Trying to connect to " + name + "...");
+    ConnectionRequest request = ConnectionRequest.newBuilder().setMsgXml(name).build();
+    ConnectionReply response;
+    try{
+      response = blockingStub.greetAndConnect(request);
+    } catch (StatusRuntimeException e) {
+      screenmsg.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+      return;
+    }
+
+    screenmsg.info("Greeting: " + response.getRpXml());
+  }
+
+  public static void main(String[] args) throws Exception {
+    Client client = new Client("localhost", 9000);
+
+    int flag = 2; //XML_CONST = 1 //PROTO_CONST = 2
+
+    try {
+      if (flag == XML_CONST){ //XML
+        String auxiliar;
+        auxiliar=new ObjectToXml("teste1.xml",x.work()).teste();
+        client.connectXML(auxiliar);
+      }
+      else { //PROTO
+        client.connectProto();
+      }
+
+    } finally {
+      client.shutdown();
+    }
+
+  }
+
+}
