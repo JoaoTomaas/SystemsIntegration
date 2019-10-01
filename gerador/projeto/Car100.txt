@@ -1,0 +1,100 @@
+0	Renault	MX-5	1966	707	7	lUf5Xf-n1BU3P	13
+1	Porsche	Evo VI	3351	1138	15	Om-3D	18
+2	Audi	Enzo	4532	152	10	U9ipY-ZODfB	58
+3	GMC	Type 2	4544	1052	14	cZ-C0	84
+4	Acura	Fiesta ST	3308	873	5	7X-0u	88
+5	Maruti Suzuki	CLK	3889	978	8	fx-6J	45
+6	Suzuki	308 GTS	3170	1170	4	bN3-77c	5
+7	Bajaj Auto	Hilux	1962	1278	4	M4-QC	52
+8	Mazda	H2	4522	993	5	pU-ox	73
+9	Changan	TL	4351	717	9	759Ys-WPff0	42
+10	Audi	V12 Vantage	3240	556	6	JHd8-pZD8	67
+11	Land Rover	Z8	3171	1183	5	1x6KZ-DiaB5	49
+12	Mercedes-Benz	8C Spider	1044	712	6	rt5Al1-W65cjl	35
+13	Geely	5-Series E39	2721	887	5	uQ-9C	40
+14	Changan	12C Spider	2546	784	9	Tm-wd	98
+15	Ford	El Dorado	4041	457	2	FcV-tPM	30
+16	Fiat	Hilux	1437	639	6	OzqP0X-ShiEZi	19
+17	Lexus	911	4579	674	6	oN1WWF-0tZo54	24
+18	Subaru	S2000	3860	60	2	Of-yd	67
+19	BYD	Evo III	3309	848	11	wn-XL	86
+20	Changan	Multipla	1120	164	10	aN-WQ	33
+21	Hino	Evo III	3925	497	13	M0aH1y-E9GVr2	39
+22	Ford	Evo VI	1103	279	13	Gw-mY	62
+23	Subaru	CLK	3003	973	11	wHsU-rAtY	66
+24	Audi	Volt	4637	616	11	XYqw-oBHD	30
+25	Hino	12C Spider	1890	589	15	hB-wV	35
+26	Mahindra	Fiesta ST	3049	708	10	2z-ED	61
+27	Volvo	308 GTS	1474	384	7	ljrd-QXYu	66
+28	Nissan	8C Spider	3479	464	15	7bU1ct-nWyO3u	61
+29	Audi	GT	1219	175	13	JaR-mek	39
+30	Hero	Nova	2547	1096	13	et59n-ozvjK	13
+31	Suzuki	Fiesta ST	2067	1225	7	dKUk-fODg	21
+32	Hyundai	H2	4210	666	16	SI8-cPM	0
+33	ISUZU	Type 2	823	254	10	imZMMo-dpw3Ox	45
+34	Bajaj Auto	S-Class	1370	933	9	LWfxV-GGxBa	28
+35	Harley-Davidson	Volt	3024	662	10	pW6pH-SXQUB	14
+36	Ford	Phantom	947	1113	10	mS3gb-ITJq3	98
+37	BMW	XJ220	2969	605	13	UP-zl	14
+38	Hero	Multipla	4248	697	8	88nFd3-R8HC1P	62
+39	Kia	Carrera GT	2188	1181	3	I7B-6ma	12
+40	Land Rover	8C Spider	3800	345	8	pafl-RtLp	51
+41	Acura	S-Class	2102	1108	9	aJJ-5s3	45
+42	Scania	XJ220	893	187	11	FlN-0wG	64
+43	MAN	Gallardo	4209	780	15	VbvCQ-p84qp	78
+44	JAC Motors	S-Class	1438	431	8	F9-tR	64
+45	Kia	Continental GT	2177	832	5	4iMmp-TxyT2	68
+46	Mercedes-Benz	Discovery	3998	1056	11	PQpu-SK6e	82
+47	Jeep	Countach	2507	579	13	7uQkJF-lhSdPs	45
+48	Kia	TL	3002	238	10	P4dYc-vMIsb	82
+49	Changan	Coupe DeVille	3308	699	2	PXGf-r01J	24
+50	ISUZU	S-Class	4519	283	14	1F-ea	6
+51	Nissan	Z8	2759	643	6	uR-a7	88
+52	Tesla	Integra	2072	823	8	Is1-6ds	71
+53	Polaris	812	1726	1264	2	9hXVme-IGVbpM	71
+54	Lincoln	Volt	1092	682	11	7N-PW	61
+55	ISUZU	Discovery	3680	1147	7	Dh8i-vdca	95
+56	Suzuki	Discovery	4471	114	14	vBem-8uXN	95
+57	Hyundai	911	1220	655	7	yKlk-Xk6O	65
+58	Jeep	El Dorado	3698	1070	16	8Cq-gcr	66
+59	Acura	308 GTS	1695	217	12	lcFB5-21eAh	39
+60	Mahindra	8C Spider	1870	1058	4	6KMbcu-HESzez	97
+61	CADILLAC	Gallardo	2669	173	16	pAhW3Q-U2xD0Y	20
+62	GMC	V12 Vantage	1260	1216	5	cG0-1pF	30
+63	Ford	Phantom	1222	1066	9	wu1Kp-Km7FW	38
+64	Haval	Gallardo	1792	77	3	JCR4S-fMyht	89
+65	Hero	MX-5	3677	217	13	Y0-Gi	45
+66	Tesla	Z8	1241	206	11	l8mqf-xXk7v	35
+67	BYD	RX-7	1456	678	7	ICCT5-sx0JJ	58
+68	BUICK	S2000	4482	1024	2	tL-WL	38
+69	Tesla	12C Spider	1637	604	4	Ba7-Pc2	0
+70	Mercedes-Benz	V12 Vantage	1402	717	2	YnK-JCK	54
+71	Bentley	XJ220	2271	851	15	KF-RN	45
+72	Daihatsu	Tatra V8	3062	1066	14	qW1bn-H19BI	37
+73	Geely	Nova	3126	719	13	EFncT-QxThR	24
+74	MINI	MX-5	4025	218	9	zi-c0	20
+75	Acura	Tatra V8	2298	274	16	Ui4b6-ZiwhJ	48
+76	Honda	V12 Vantage	4489	848	16	xp4-Rjt	38
+77	Tesla	S-Class	1336	1026	9	VOOs-5HTf	65
+78	Polaris	RX-7	788	142	10	Z0b-WSr	61
+79	MINI	Gallardo	1785	512	5	YF-OZ	32
+80	Mazda	X5	1551	660	8	kMge-ZIdV	4
+81	Daihatsu	Gallardo	3555	374	3	GArn-daZy	7
+82	Lincoln	Enzo	1968	426	6	zy84qF-WIe8Ji	43
+83	Maruti Suzuki	Z8	1640	1251	7	FV2sy-J03W5	14
+84	Kia	GT86	1830	521	13	yg-7i	60
+85	BUICK	S-Class	784	920	15	2Frg-EAvS	43
+86	Kia	GT	1634	291	5	zm-rs	14
+87	MAN	911	4365	1067	3	KR-9w	30
+88	Bajaj Auto	Eagle	4528	815	3	B1oV5N-M42Mgm	98
+89	Tesla	Hilux	1589	465	11	0gR-mad	48
+90	BYD	X5	1760	577	16	wjoTf-qep7Y	37
+91	Tata Motors	Type 2	3118	78	12	pmy7-r0ft	45
+92	Audi	442	4434	773	5	EsnDd-ZF6NA	83
+93	Hino	Carrera GT	3220	983	11	PT-FZ	68
+94	Changan	Nova	2702	669	4	4Z74o3-LC3g1T	97
+95	Kia	MX-5	4603	839	11	I5vQc-lJnrb	41
+96	GMC	5-Series E39	3379	950	14	7c6Vp-2qH2U	27
+97	Mahindra	812	4726	105	14	thz-oN0	58
+98	Honda	Discovery	3116	752	3	Q2P-bWn	86
+99	Bajaj Auto	El Dorado	2572	1076	12	I8duY-ZleYY	58
