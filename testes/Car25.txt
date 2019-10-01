@@ -1,0 +1,25 @@
+0	MINI	Z8	1090	75	5	2KlmJp-WWl6RW	22
+1	Honda	GT	1380	1231	14	ek9-69Y	4
+2	Volkswagen	Javelin	3423	474	13	bXbucf-rMl0b8	20
+3	Land Rover	Prius	1030	198	14	2F-bv	24
+4	Ferrari	A2	1578	71	15	xb7j-rFWF	8
+5	BUICK	Carrera GT	4549	382	9	kS-6d	23
+6	Volkswagen	Enzo	3228	746	2	VZl0c-OFXA9	10
+7	Peugeot	Discovery	2440	719	11	7Qp-LqQ	21
+8	Jaguar	Carrera GT	3736	822	4	esTMX-MOaF5	23
+9	BMW	5-Series E39	4088	276	10	V4AO-jF9X	9
+10	MINI	A2	1569	364	9	mlj-VJg	6
+11	Hero	Murcielago	1662	1069	3	kaT9-jpO4	20
+12	Bentley	Tatra V8	4377	477	9	dt-AJ	2
+13	Ford	Integra	1351	540	11	RD-rK	21
+14	Mahindra	442	2401	707	8	4WbeGA-oRW8kn	18
+15	CHEVROLET	812	4054	242	9	VkEsM-KxzRy	23
+16	Audi	CLK	3860	1015	6	B6avL-vyVvy	23
+17	Kia	Impreza P1	1899	862	5	gxsg2-rd2u1	15
+18	Harley-Davidson	GT	4676	767	3	h0sVy-eziJx	7
+19	Jeep	S-Class	2605	1073	16	BhZ-Jm8	11
+20	Renault	F-Type V6S	2376	1225	14	09el1E-0qATt8	6
+21	Bentley	RX-7	2315	1124	15	5ZUYm-yw0e8	17
+22	Honda	Hilux	3262	300	9	Yw6o-mmin	23
+23	Lincoln	Javelin	1718	997	8	3tOwe-NCRXY	21
+24	Geely	MR2	2171	230	12	e8pkZi-I13Pea	4
