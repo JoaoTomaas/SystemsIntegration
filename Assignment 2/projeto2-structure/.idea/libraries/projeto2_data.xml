@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="projeto2-data">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/projeto2-parent/projeto2-data/target/projeto2-data.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
