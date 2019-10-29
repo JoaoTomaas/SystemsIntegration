@@ -1,19 +1,19 @@
 package ejb;
 
-import javax.ejb.Stateful;
-import javax.persistence.Entity;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import data.Item;
-import data.User;
 
 import java.util.Date;
 import java.util.List;
 
-@Stateful(name = "UserEJB")
-public class UserBean implements UserBeanRemote{
+@LocalBean
+@Stateless(name = "UserEJB")
+public class UserBean {
 @PersistenceContext(name="Item")
 EntityManager em;
 
@@ -21,6 +21,7 @@ EntityManager em;
     }
 
     //Acho que nao ha necessidade de levar Override
+    //PROCURAR ITEMS
     public void Procurar_Items() {
         Query q = em.createQuery("from Item i");
         @SuppressWarnings("unchecked")
@@ -49,7 +50,6 @@ EntityManager em;
         System.out.println("Lista de items por país de origem " + resultado);
     }
 
-    @Override
     public void Procurar_Items_PriceRange(int lower_bound, int upper_bound) {
         Query q = em.createQuery("from Item i where i.price between :lb and  :ub");
         q.setParameter("lb", lower_bound);
@@ -60,7 +60,6 @@ EntityManager em;
         System.out.println("Lista de items dentro do price range " + resultado);
     }
 
-    @Override
     public void Procurar_Items_Data(Date data) {
         Query q = em.createQuery("from Item i where i.published_date > :d");
         q.setParameter("d", data);
@@ -69,6 +68,21 @@ EntityManager em;
 
         System.out.println("Lista de items publicados apos a data " + resultado);
     }
+
+
+    //NOTA: Só o dono do item é que vai poder editar a info do mesmo, logo temos que verificar
+    //se o id do user da sessao e igual ao do dono do item
+
+
+    //ITEM OPERATIONS
+    /*public void Listar_Items_aVenda(); //Listar todos os items que tenho para venda, ordenados por data de insercao
+    public void Inserir_Novo_Item(String name, String category, String country_of_origin); //Falta a fotografia
+    public void Editar_Item_Info(String name, String category, String country_of_origin); //Falta a fotografia
+
+    //USER OPERATIONS
+    public void Editar_User_Info(String name, int age, String email, String country);
+    public void Delete_UserAccount(); //Apagar primeiro os items do user e depois apagar o user
+    */
 
 
 }

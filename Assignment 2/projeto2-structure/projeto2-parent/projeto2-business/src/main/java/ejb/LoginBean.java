@@ -1,9 +1,15 @@
 package ejb;
 
-import javax.ejb.Stateful;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
-@Stateful(name = "LoginEJB")
+@LocalBean
+@Stateless(name = "LoginEJB")
 public class LoginBean {
+
     public LoginBean() {
     }
+
+
+
 }

@@ -1,8 +1,10 @@
 package ejb;
 
-import javax.ejb.Stateful;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
-@Stateful(name = "RegisterEJB")
+@LocalBean
+@Stateless(name = "RegisterEJB")
 public class RegisterBean {
     public RegisterBean() {
     }

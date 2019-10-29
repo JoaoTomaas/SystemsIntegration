@@ -17,7 +17,7 @@ public class Item implements Serializable {
     private Date published_date;
     //Como é que faço quanto à fotografia?
     @ManyToOne
-    private User user;
+    private Utilizador utilizador;
 
     public Item (){
         super();
@@ -55,12 +55,12 @@ public class Item implements Serializable {
         this.country_of_origin = country_of_origin;
     }
 
-    public User getUser() {
-        return user;
+    public Utilizador getUtilizador() {
+        return utilizador;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUtilizador(Utilizador utilizador) {
+        this.utilizador = utilizador;
     }
 
     public int getPrice() {
@@ -69,5 +69,13 @@ public class Item implements Serializable {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public Date getPublished_date() {
+        return published_date;
+    }
+
+    public void setPublished_date(Date published_date) {
+        this.published_date = published_date;
     }
 }
