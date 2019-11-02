@@ -2,6 +2,7 @@
 
 #Repositório destinado a integrar sistemas NESTE
 
+
 #Distribuição do trabalho para a segunda meta:
 
 #Duarte
@@ -12,3 +13,4 @@
 #João
 1. Editar info do Item
 2. Apagar Item
+3. Listar items que o utilizador tem para venda, ordenados por data de inserção)
