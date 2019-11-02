@@ -21,12 +21,13 @@ EntityManager em;
     }
 
 
-
-    /*
     //USER OPERATIONS
-    public void Editar_User_Info(String name, int age, String email, String country);
-    public void Delete_UserAccount(); //Apagar primeiro os items do user e depois apagar o user
-    */
+    //Penso que editar o email e a password nao faca sentido
+    public void Editar_User_Info(String name, int age, String country){}
+
+    //Apagar primeiro os items do user e depois apagar o user
+    public void Delete_UserAccount(){}
+
 
 
 }

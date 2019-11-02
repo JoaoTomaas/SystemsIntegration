@@ -27,9 +27,14 @@ public class ServletTestWeb extends HttpServlet {
         response.setContentType("text/html");
 
         if (request.getParameter("fill") != null) {
-            itemb.insert_item_test();
+            //itemb.Inserir_Novo_Item();
             out.println("<h1>Populate: OK!</h1>");
         }
+        else{
+
+        }
+
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

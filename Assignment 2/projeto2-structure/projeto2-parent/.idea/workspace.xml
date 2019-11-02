@@ -57,7 +57,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -248,7 +248,8 @@
       <workItem from="1572625576093" duration="427000" />
       <workItem from="1572626311892" duration="569000" />
       <workItem from="1572698354167" duration="2534000" />
-      <workItem from="1572703686281" duration="3502000" />
+      <workItem from="1572703686281" duration="6093000" />
+      <workItem from="1572714871523" duration="4068000" />
     </task>
     <servers />
   </component>

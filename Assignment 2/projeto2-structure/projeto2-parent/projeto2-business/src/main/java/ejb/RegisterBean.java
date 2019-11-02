@@ -8,4 +8,11 @@ import javax.ejb.Stateless;
 public class RegisterBean {
     public RegisterBean() {
     }
+
+    public void UserRegister(){
+
+
+    }
+
+
 }

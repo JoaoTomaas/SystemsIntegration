@@ -24,11 +24,12 @@ public class Item implements Serializable {
     }
 
 
-    public Item(String name, String category, String country_of_origin, int price) {
+    public Item(String name, String category, String country_of_origin, int price, Date published_date) {
         this.name = name;
         this.category = category;
         this.country_of_origin = country_of_origin;
         this.price = price;
+        this.published_date = published_date;
     }
 
     public String getName() {

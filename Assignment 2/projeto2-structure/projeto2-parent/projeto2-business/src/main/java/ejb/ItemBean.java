@@ -18,8 +18,7 @@ public class ItemBean {
 
     public ItemBean() {}
 
-    //Acho que nao ha necessidade de levar Override
-    //PROCURAR ITEMS
+    //PROCURAR ITEMS (Acho que nao ha necessidade de levar Override)
     public void Procurar_Items() {
         Query q = em.createQuery("from Item i");
         @SuppressWarnings("unchecked")
@@ -68,24 +67,35 @@ public class ItemBean {
     }
 
 
-    //NOTA: Só o dono do item é que vai poder editar a info do mesmo, logo temos que verificar
-    //se o id do user da sessao e igual ao do dono do item
+    //LISTAR ITEMS
+    //Listar todos os items que tenho para venda, ordenados por data de insercao
+    public void Listar_Items_aVenda(){}
 
 
     //ITEM OPERATIONS
-    //public void Listar_Items_aVenda(); //Listar todos os items que tenho para venda, ordenados por data de insercao
-
-    //public void Inserir_Novo_Item(String name, String category, String country_of_origin){//Falta a fotografia
-    //}
-
-    //public void Editar_Item_Info(String name, String category, String country_of_origin); //Falta a fotografia
-
-    public void insert_item_test(){
-        Item first_item = new Item("bola de futebol", "desporto", "China", 10);
-
-        em.persist(first_item);
+    //Utilizador coloca um item para venda
+    public void Inserir_Novo_Item(String name, String category, String country_of_origin, int price, Date published_date){//Falta a fotografia
+        Item new_item = new Item(name, category, country_of_origin, price, published_date);
+        em.persist(new_item);
     }
 
+    //NOTA: Só o dono do item é que vai poder editar a info do mesmo, logo temos que verificar
+    //se o id do user da sessao e igual ao do dono do item
+    public void Editar_Item_Info(String name, String category, String country_of_origin, int price){
 
+    }
+    //Falta a fotografia
+    //Penso que nao faz sentido alterar a data de publicacao
+
+    public void Apagar_Item(){
+        //Decidir como é que vamos procurar o item, talvez apresentar uma lista e escolher um deles
+    }
 
 }
+
+
+    //USADO APENAS PARA TESTAR
+    /*public void insert_item_test(){
+        Item first_item = new Item("bola de futebol", "desporto", "China", 10);
+        em.persist(first_item);
+    }*/

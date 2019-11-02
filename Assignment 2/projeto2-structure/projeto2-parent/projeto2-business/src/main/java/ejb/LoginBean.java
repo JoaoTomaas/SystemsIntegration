@@ -10,6 +10,8 @@ public class LoginBean {
     public LoginBean() {
     }
 
+    public void UserLogin(String username, String password){
 
+    }
 
 }
