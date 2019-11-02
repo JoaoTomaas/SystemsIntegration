@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC
+	"-//Sun Microsystems, Inc.//DTD J2EE Application 1.3//EN"
+	"http://java.sun.com/dtd/application_1_3.dtd">
+<application>
+  <display-name>projeto2-ear</display-name>
+  <module id="WAR_IS.projeto2-web">
+    <web>
+      <web-uri>projeto2-web-0.0.1-SNAPSHOT.war</web-uri>
+      <context-root>/projeto2-web</context-root>
+    </web>
+  </module>
+  <module id="EJB_IS.projeto2-business">
+    <ejb>projeto2-business-0.0.1-SNAPSHOT.jar</ejb>
+  </module>
+  <module id="EJB_IS.projeto2-data">
+    <ejb>projeto2-data-0.0.1-SNAPSHOT.jar</ejb>
+  </module>
+</application>
