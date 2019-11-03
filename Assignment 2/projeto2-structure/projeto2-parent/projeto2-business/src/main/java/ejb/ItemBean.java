@@ -143,7 +143,7 @@ public class ItemBean {
 
 
     public void insert_item_test(){
-        Item first_item = new Item("bola de futebol", "desporto", "China", 10, getData(4,10,2019));
+        Item first_item = new Item("bola de tenis", "desporto", "Tailândia", 2, getData(3,5,2018));
         em.persist(first_item);
     }
 }

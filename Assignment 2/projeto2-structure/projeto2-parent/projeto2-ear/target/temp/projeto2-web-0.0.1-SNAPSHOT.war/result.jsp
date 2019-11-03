@@ -22,7 +22,7 @@
     Iterator it = resultado.iterator();
     out.println("<br>Escolha o que quer comprar <br><br>");
     while(it.hasNext()){
-        out.println(it.next()+"<br>");
+        out.println(it.next() +"<br>");
     }
 %>
 

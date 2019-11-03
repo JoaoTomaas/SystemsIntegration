@@ -5,15 +5,18 @@
   Time: 11:34
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Login</title>
 </head>
+<h1>Login</h1>
+<br>
 <body>
-    <h2>Login</h2>
-    <textarea></textarea>
-
+<form method="post" action="Login" >
+    Email:<input type="text" name="email"/><br/><br/>
+    Password:<input type="password" name="password"/><br/><br/>
+    <input type="submit" value="login"/>"
+</form>
 </body>
 </html>

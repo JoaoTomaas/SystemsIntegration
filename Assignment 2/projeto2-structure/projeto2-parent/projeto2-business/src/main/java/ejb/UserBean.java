@@ -37,14 +37,18 @@ EntityManager em;
     }
 
 
-    /*
+
     //da um erro do mal JPA/Hibernate: detached entity passed to persist
-    public void Insere_User(int id, int age, String email, String country,String name){
-        Utilizador new_Utilizador = new Utilizador( id,  age,  email,  country,name);
+    /*public void Insere_User(int age, String email, String pass, String country,String name){
+        Utilizador new_Utilizador = new Utilizador(name, age, email, pass, country);
         em.persist(new_Utilizador);
+    }*/
+
+    public void test_user(){
+        Utilizador novo = new Utilizador (1, "João Tomás", 22, "joao.miguel.tomas@hotmail.com", "olapessoal", "João Tomás");
+        em.persist(novo);
     }
 
-     */
 
     //Apagar primeiro os items do user e depois apagar o user
     //em.find e depois o em.delete

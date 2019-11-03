@@ -13,27 +13,20 @@ public class Utilizador implements Serializable {
     private int age;
     private String email;
     private String password;
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     private String country;
     @OneToMany(mappedBy = "utilizador")
     private List<Item> items;
 
-    public Utilizador(){
+    public Utilizador() {
         super();
     }
 
-    public Utilizador(int id, int age, String email, String country) {
+    public Utilizador(int id, String name, int age, String email, String password, String country) {
         this.id = id;
+        this.name = name;
         this.age = age;
         this.email = email;
+        this.password = password;
         this.country = country;
     }
 
@@ -43,6 +36,14 @@ public class Utilizador implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getAge() {
