@@ -33,17 +33,17 @@ public class ServletTestWeb extends HttpServlet {
         response.setContentType("text/html");
 
         if (request.getParameter("fill") != null) {
-            //itemb.insert_item_test();
+            itemb.insert_item_test();
             //ub.Insere_User(22, "joao.miguel.tomas@hotmail.com","teste1", "Portugal", "João Tomás");
-            ub.test_user();
+            //ub.test_user();
             out.println("<h1>Populate: OK!</h1>");
         }else{
         }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-        /*List<Item> lista = itemb.Procurar_Items();
+        /*doGet(request, response);
+        List<Item> lista = itemb.Procurar_Items();
 
         request.setAttribute("lista_items", lista);
         RequestDispatcher view = request.getRequestDispatcher("result.jsp");

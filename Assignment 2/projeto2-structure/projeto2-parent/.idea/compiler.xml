@@ -6,10 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="projeto2-ear" />
-        <module name="projeto2-data" />
-        <module name="projeto2-business" />
         <module name="projeto2-web" />
+        <module name="projeto2-ear" />
+        <module name="projeto2-business" />
+        <module name="projeto2-data" />
       </profile>
     </annotationProcessing>
   </component>

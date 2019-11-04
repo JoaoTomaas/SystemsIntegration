@@ -15,6 +15,15 @@ public class Item implements Serializable {
     private int price;
     @Temporal(TemporalType.DATE)
     private Date published_date;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     //Como é que faço quanto à fotografia?
     @ManyToOne
     private Utilizador utilizador;

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet (urlPatterns = "/Login")
 public class LoginServlet extends HttpServlet {
@@ -37,7 +38,14 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("menu.jsp");
                 break;
             case 2:
-                    response.sendRedirect("fail.jsp");
+                PrintWriter out = response.getWriter();
+                response.setContentType("text/html");
+
+                //response.sendRedirect("fail.jsp");
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('User or password incorrect');");
+                out.println("location='login.jsp';");
+                out.println("</script>");
                 break;
             case 3:
                     response.sendRedirect("index.html");

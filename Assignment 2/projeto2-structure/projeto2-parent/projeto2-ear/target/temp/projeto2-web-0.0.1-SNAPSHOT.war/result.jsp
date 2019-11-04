@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import ="java.util.*" %>
+<%@ page import ="data.Item" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +19,21 @@
     Items Disponiveis no MyBay
 </h1>
 <%
-    List resultado= (List) request.getAttribute("lista_items");
+    List resultado= (List) request.getAttribute("lista_todos");
+
     Iterator it = resultado.iterator();
     out.println("<br>Escolha o que quer comprar <br><br>");
     while(it.hasNext()){
-        out.println(it.next() +"<br>");
+        Item i = (Item) it.next();
+        out.println(i.getId() + ". " + i.getName() +"<br>");
     }
 %>
+
+<input type="text" name="example" list="resultado">
+<datalist id="resultado">
+    <option value="A">
+    <option value="B">
+</datalist>
 
 </body>
 </html>

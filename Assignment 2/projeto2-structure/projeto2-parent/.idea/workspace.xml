@@ -31,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -304,7 +304,8 @@
       <workItem from="1572746514599" duration="6885000" />
       <workItem from="1572783473482" duration="1666000" />
       <workItem from="1572791543625" duration="1286000" />
-      <workItem from="1572793775245" duration="8055000" />
+      <workItem from="1572793775245" duration="10560000" />
+      <workItem from="1572860539825" duration="15700000" />
     </task>
     <servers />
   </component>
