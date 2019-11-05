@@ -1,3 +1,5 @@
 servlet\ItemServlet.class
+servlet\RegisterServlet.class
 servlet\ServletTestWeb.class
+servlet\CountryServlet.class
 servlet\LoginServlet.class

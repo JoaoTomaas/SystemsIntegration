@@ -1,7 +1,13 @@
 package data;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.util.List;
 
 @Entity
@@ -12,22 +18,42 @@ public class Utilizador implements Serializable {
     private String name;
     private int age;
     private String email;
-    private String password;
+    private byte[] password;
+    private byte[] salt;
+
+    public byte[] getPassword() {
+        return password;
+    }
+
+    public void setPassword(byte[] password) {
+        this.password = password;
+    }
+
     private String country;
     @OneToMany(mappedBy = "utilizador")
     private List<Item> items;
 
-    public Utilizador() {
+    public Utilizador(){
         super();
     }
 
-    public Utilizador(int id, String name, int age, String email, String password, String country) {
-        this.id = id;
-        this.name = name;
+    public Utilizador( int age, String email, String country,String name,String password) throws NoSuchAlgorithmException {
         this.age = age;
         this.email = email;
-        this.password = password;
         this.country = country;
+        this.name=name;
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[16];
+        random.nextBytes(salt);
+        this.salt=salt;
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        try {
+            byte[] hash = factory.generateSecret(spec).getEncoded();
+            this.password=hash;
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getName() {
@@ -36,14 +62,6 @@ public class Utilizador implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public int getAge() {
@@ -76,5 +94,13 @@ public class Utilizador implements Serializable {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public byte[] getSalt() {
+        return salt;
+    }
+
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
     }
 }

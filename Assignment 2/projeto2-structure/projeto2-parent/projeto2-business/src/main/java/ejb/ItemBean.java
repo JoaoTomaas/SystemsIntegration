@@ -41,9 +41,10 @@ public class ItemBean {
         return resultado;
     }
 
-    public List<Item> Procurar_Items_Country(String pais) {
-        Query q = em.createQuery("from Item i where i.country_of_origin = :p");
-        q.setParameter("p", pais);
+    //Procurar pelo pais do utilizador
+    public List<Item> Procurar_Items_Country(String email) {
+        Query q = em.createQuery("from Item i where i.country_of_origin = (select country from Utilizador u where u.email = :e)");
+        q.setParameter("e", email);
 
         @SuppressWarnings("unchecked")
         List<Item> resultado = q.getResultList();

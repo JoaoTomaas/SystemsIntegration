@@ -44,10 +44,10 @@ EntityManager em;
         em.persist(new_Utilizador);
     }*/
 
-    public void test_user(){
+    /*public void test_user(){
         Utilizador novo = new Utilizador (1, "João Tomás", 22, "joao.miguel.tomas@hotmail.com", "olapessoal", "João Tomás");
         em.persist(novo);
-    }
+    }*/
 
 
     //Apagar primeiro os items do user e depois apagar o user

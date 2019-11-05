@@ -10,13 +10,20 @@
 <head>
     <title>Login</title>
 </head>
-<h1>Login</h1>
-<br>
+
 <body>
+
+<div style="text-align: center">
+    <h1>Login</h1>
+    <br>
+</div>
+
+<div style="text-align: right; margin-right: 45%">
 <form method="post" action="Login" >
-    Email:<input type="text" name="email"/><br/><br/>
-    Password:<input type="password" name="password"/><br/><br/>
-    <input type="submit" value="login"/>"
+    Email <input type="text" name="email"/><br/><br/>
+    Password <input type="password" name="password"/><br/><br/>
+    <input type="submit" value="Login"/>
 </form>
+</div>
 </body>
 </html>

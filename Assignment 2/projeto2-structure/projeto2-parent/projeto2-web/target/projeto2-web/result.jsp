@@ -19,13 +19,24 @@
     Items Disponiveis no MyBay
 </h1>
 <%
-    List resultado= (List) request.getAttribute("lista_todos");
+    if (request.getAttribute("lista_todos") != null) {
+        List resultado = (List) request.getAttribute("lista_todos");
 
-    Iterator it = resultado.iterator();
-    out.println("<br>Escolha o que quer comprar <br><br>");
-    while(it.hasNext()){
-        Item i = (Item) it.next();
-        out.println(i.getId() + ". " + i.getName() +"<br>");
+        Iterator it = resultado.iterator();
+        //out.println("<br>Escolha o que quer comprar <br><br>");
+        while (it.hasNext()) {
+            Item i = (Item) it.next();
+            out.println(i.getId() + ". " + i.getName() + "<br>");
+        }
+    }else if (request.getAttribute("lista_country") != null) {
+        List lista = (List) request.getAttribute("lista_country");
+
+        Iterator it = lista.iterator();
+        out.println("<br>Estes sao os items do seu país<br><br>");
+        while (it.hasNext()) {
+            Item i = (Item) it.next();
+            out.println(i.getId() + ". " + i.getName() + "<br>");
+        }
     }
 %>
 
