@@ -38,13 +38,59 @@
             out.println(i.getId() + ". " + i.getName() + "<br>");
         }
     }
+    else if (request.getAttribute("lista_categoria") != null){
+        List lista = (List) request.getAttribute("lista_categoria");
+
+        Iterator it = lista.iterator();
+        out.println("<br>Estes sao os items da categoria pretendida<br><br>");
+        while (it.hasNext()) {
+            Item i = (Item) it.next();
+            out.println(i.getId() + ". " + i.getName() + "<br>");
+        }
+    }
+    else if (request.getAttribute("lista_range") != null){
+        List lista = (List) request.getAttribute("lista_range");
+
+        Iterator it = lista.iterator();
+        out.println("<br>Estes sao os items dentro do price range<br><br>");
+        while (it.hasNext()) {
+            Item i = (Item) it.next();
+            out.println(i.getId() + ". " + i.getName() + "<br>");
+        }
+    }
+    else if (request.getAttribute("lista_data") != null){
+        List lista = (List) request.getAttribute("lista_data");
+
+        Iterator it = lista.iterator();
+        out.println("<br>Estes sao os items publicados após a data indicada<br><br>");
+        while (it.hasNext()) {
+            Item i = (Item) it.next();
+            out.println(i.getId() + ". " + i.getName() + "<br>");
+        }
+    }
+    else if (request.getAttribute("lista_myitems") != null){
+        List lista = (List) request.getAttribute("lista_myitems");
+
+        Iterator it = lista.iterator();
+        out.println("<br>Estes sao os items que tem à venda<br><br>");
+        if (it.hasNext()) {
+            while (it.hasNext()) {
+                Item i = (Item) it.next();
+                out.println(i.getId() + ". " + i.getName() + "<br>");
+            }
+        }
+        else{
+            out.println("Não possui items à venda" + "<br>");
+        }
+    }
+
 %>
 
-<input type="text" name="example" list="resultado">
+<!--input type="text" name="example" list="resultado">
 <datalist id="resultado">
     <option value="A">
     <option value="B">
-</datalist>
+</datalist> -->
 
 </body>
 </html>

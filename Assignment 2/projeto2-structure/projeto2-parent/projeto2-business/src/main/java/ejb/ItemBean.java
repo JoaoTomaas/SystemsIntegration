@@ -49,7 +49,6 @@ public class ItemBean {
         @SuppressWarnings("unchecked")
         List<Item> resultado = q.getResultList();
 
-        //System.out.println("Lista de items por país de origem " + resultado);
         return resultado;
     }
 
@@ -58,9 +57,9 @@ public class ItemBean {
         q.setParameter("lb", lower_bound);
         q.setParameter("ub", upper_bound);
 
+        @SuppressWarnings("unchecked")
         List<Item> resultado = q.getResultList();
 
-        //System.out.println("Lista de items dentro do price range " + resultado);
         return resultado;
     }
 
@@ -68,6 +67,7 @@ public class ItemBean {
         Query q = em.createQuery("from Item i where i.published_date > :d");
         q.setParameter("d", data);
 
+        @SuppressWarnings("unchecked")
         List<Item> resultado = q.getResultList();
 
         //System.out.println("Lista de items publicados apos a data " + resultado);
@@ -81,9 +81,9 @@ public class ItemBean {
         Query q = em.createQuery("from Item i where i.utilizador.email = :e order by published_date");
         q.setParameter("e", email);
 
+        @SuppressWarnings("unchecked")
         List<Item> resultado = q.getResultList();
 
-        //System.out.println("Lista de items que o user " + email + " tem para venda:" + resultado);
         return resultado;
     } //TESTAR
 

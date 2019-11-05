@@ -24,21 +24,19 @@
 
 <!-- ITEM -->
 <h2>Item Operations</h2>
-<h3>List all items that I have for sale</h3>
-<h3>Put a new item for sale</h3>
+    <a href="${pageContext.request.contextPath}/MyItemsServ">List all items that I have for sale</a><br />
+    <a href="${pageContext.request.contextPath}/NewItemServ">Put a new item for sale</a><br />
 <h3>Edit item information</h3>
 <h3>Delete an item</h3>
 <br>
 
 <!-- SEARCH -->
 <h2>Search Operations</h2>
-<a href="${pageContext.request.contextPath}/ItemServ">Search for all items</a><br />
-
-<h3>Search within a price range</h3>
-
+    <a href="${pageContext.request.contextPath}/ItemServ">Search for all items</a><br />
+    <a href="${pageContext.request.contextPath}/category.jsp">Search inside a certain category</a><br />
+    <a href="${pageContext.request.contextPath}/pricerange.jsp">Search within a price range</a><br/>
     <a href="${pageContext.request.contextPath}/CountryServ">Search in my country</a><br />
-
-<h3>Search items published after a given date</h3>
+    <a href="${pageContext.request.contextPath}/date.jsp">Search items published after a given date</a>
 </div>
 
 </body>

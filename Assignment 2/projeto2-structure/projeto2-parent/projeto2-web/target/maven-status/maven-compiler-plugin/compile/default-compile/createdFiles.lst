@@ -1,5 +1,9 @@
 servlet\ItemServlet.class
-servlet\RegisterServlet.class
 servlet\ServletTestWeb.class
+servlet\PriceRangeServlet.class
+servlet\DateServlet.class
+servlet\RegisterServlet.class
+servlet\MyItemsServlet.class
 servlet\CountryServlet.class
+servlet\CategoryServlet.class
 servlet\LoginServlet.class
