@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet (name = "NewItemServlet",
@@ -23,11 +24,21 @@ public class NewItemServlet extends HttpServlet{
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LoginBean bean = (LoginBean) request.getSession(true).getAttribute("currentSessionUser");
-        String email = bean.getEmail();
-        List<Item> country_items = ib.Procurar_Items_Country(email);
-        request.setAttribute("lista_country", country_items);
-        RequestDispatcher view = request.getRequestDispatcher("result.jsp");
-        view.forward(request, response);
+        String user_mail = bean.getEmail();
+        String nome = request.getParameter("nome");
+        String category = request.getParameter("categoria");
+        String country = request.getParameter("country");
+        String price = request.getParameter("price");
+
+        ib.Inserir_Novo_Item(nome, category, country, Integer.parseInt(price), user_mail);
+
+        PrintWriter out = response.getWriter();
+        response.setContentType("text/html");
+        out.println("<script type=\"text/javascript\">");
+        out.println("alert('Novo item inserido com sucesso');");
+        out.println("location='menu.jsp';");
+        out.println("</script>");
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

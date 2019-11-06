@@ -28,6 +28,7 @@ public class MyItemsServlet extends HttpServlet {
         List<Item> all_items = ib.Listar_Items_aVenda(user_mail);
 
         request.setAttribute("lista_myitems", all_items);
+
         RequestDispatcher view = request.getRequestDispatcher("result.jsp");
         view.forward(request, response);
     }

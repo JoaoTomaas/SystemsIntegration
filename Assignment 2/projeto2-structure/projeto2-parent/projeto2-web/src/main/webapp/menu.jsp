@@ -18,16 +18,20 @@
 <h1>Menu Inicial</h1>
 <!-- USER-->
 <h2>Account Operations</h2>
-<h3>Edit personal information</h3>
-<h3>Delete account</h3>
-<br>
+
+
+    <a href="${pageContext.request.contextPath}/DisplayUserServ">Edit personal information</a><br />
+    <a href="${pageContext.request.contextPath}/userdelete.jsp">Delete account</a><br />
+
+
+    <br>
 
 <!-- ITEM -->
 <h2>Item Operations</h2>
     <a href="${pageContext.request.contextPath}/MyItemsServ">List all items that I have for sale</a><br />
-    <a href="${pageContext.request.contextPath}/NewItemServ">Put a new item for sale</a><br />
-<h3>Edit item information</h3>
-<h3>Delete an item</h3>
+    <a href="${pageContext.request.contextPath}/newitem.jsp">Put a new item for sale</a><br />
+    <a href="${pageContext.request.contextPath}/EditItemServ">Edit item information</a><br />
+    <a href="${pageContext.request.contextPath}/DeleteItemServ">Delete an item</a>
 <br>
 
 <!-- SEARCH -->

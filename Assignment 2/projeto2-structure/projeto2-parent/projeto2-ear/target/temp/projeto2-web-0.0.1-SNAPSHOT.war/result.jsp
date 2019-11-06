@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import ="java.util.*" %>
 <%@ page import ="data.Item" %>
+<%@ page import="ejb.LoginBean" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +16,11 @@
 </head>
 <body>
 
+<div style="position: absolute; top:2%; right: 2%;" > <% HttpSession sessao = request.getSession(true);
+    sessao.getAttribute("currentSessionUser"); sessao.invalidate(); %> <a href="index.html">Logout</a></div>
+
 <h1>
-    Items Disponiveis no MyBay
+    Items Disponíveis no MyBay
 </h1>
 <%
     if (request.getAttribute("lista_todos") != null) {
@@ -26,8 +30,10 @@
         //out.println("<br>Escolha o que quer comprar <br><br>");
         while (it.hasNext()) {
             Item i = (Item) it.next();
-            out.println(i.getId() + ". " + i.getName() + "<br>");
-        }
+            %>
+                    <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+            <%
+    }
     }else if (request.getAttribute("lista_country") != null) {
         List lista = (List) request.getAttribute("lista_country");
 
@@ -35,7 +41,10 @@
         out.println("<br>Estes sao os items do seu país<br><br>");
         while (it.hasNext()) {
             Item i = (Item) it.next();
-            out.println(i.getId() + ". " + i.getName() + "<br>");
+            //out.println(i.getId() + ". " + i.getName() + "<br>");
+            %>
+                <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+            <%
         }
     }
     else if (request.getAttribute("lista_categoria") != null){
@@ -45,7 +54,10 @@
         out.println("<br>Estes sao os items da categoria pretendida<br><br>");
         while (it.hasNext()) {
             Item i = (Item) it.next();
-            out.println(i.getId() + ". " + i.getName() + "<br>");
+            //out.println(i.getId() + ". " + i.getName() + "<br>");
+            %>
+                <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+            <%
         }
     }
     else if (request.getAttribute("lista_range") != null){
@@ -55,7 +67,10 @@
         out.println("<br>Estes sao os items dentro do price range<br><br>");
         while (it.hasNext()) {
             Item i = (Item) it.next();
-            out.println(i.getId() + ". " + i.getName() + "<br>");
+            //out.println(i.getId() + ". " + i.getName() + "<br>");
+            %>
+                <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+            <%
         }
     }
     else if (request.getAttribute("lista_data") != null){
@@ -65,22 +80,45 @@
         out.println("<br>Estes sao os items publicados após a data indicada<br><br>");
         while (it.hasNext()) {
             Item i = (Item) it.next();
-            out.println(i.getId() + ". " + i.getName() + "<br>");
+            //out.println(i.getId() + ". " + i.getName() + "<br>");
+            %>
+                <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+            <%
         }
     }
     else if (request.getAttribute("lista_myitems") != null){
         List lista = (List) request.getAttribute("lista_myitems");
 
         Iterator it = lista.iterator();
-        out.println("<br>Estes sao os items que tem à venda<br><br>");
         if (it.hasNext()) {
+            out.println("<br>Estes são os items que tem à venda: <br><br>");
             while (it.hasNext()) {
                 Item i = (Item) it.next();
-                out.println(i.getId() + ". " + i.getName() + "<br>");
+                //out.println(i.getId() + ". " + i.getName() + "<br>");
+            %>
+                <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+            <%
             }
         }
         else{
             out.println("Não possui items à venda" + "<br>");
+        }
+    }
+    else if (request.getAttribute("item_details") != null){
+        List lista = (List) request.getAttribute("item_details");
+        Iterator it = lista.iterator();
+        if (it.hasNext()) {
+
+            out.println("<br><h3>Detalhes do item</h3><br>");
+
+            Item i = (Item) it.next();
+            //Item it = (Item) request.getAttribute("items_details");
+            out.print("<b>Id:</b> " + i.getId() + "<br>");
+            out.print("<b>Name:</b> " + i.getName() + "<br>");
+            out.print("<b>Category:</b> " + i.getCategory() + "<br>");
+            out.print("<b>Country of Origin:</b> " + i.getCountry_of_origin() + "<br>");
+            out.print("<b>Price:</b> " + i.getPrice() + "<br>");
+            out.print("<b>Utilizador:</b> " + i.getUtilizador().getName() + "<br>");
         }
     }
 

@@ -8,6 +8,8 @@ import javax.persistence.Query;
 
 import data.Item;
 import data.Utilizador;
+import dto.ItemMapper;
+import dto.UtilizadorDTO;
 
 import java.util.Date;
 import java.util.List;
@@ -15,8 +17,8 @@ import java.util.List;
 @LocalBean
 @Stateless(name = "UserEJB")
 public class UserBean {
-@PersistenceContext(name="Users")
-EntityManager em;
+    @PersistenceContext(name="Users")
+    EntityManager em;
 
     public UserBean() { //Construtor pré-definido
     }
@@ -25,15 +27,19 @@ EntityManager em;
     //USER OPERATIONS
     //Penso que editar o email e a password nao faca sentido
     //secalhar usar o id?,qual vai ser a nossa primary key para distinguir users
-    public void Editar_User_Info(String name, int age, String country){
-        System.out.println("-- fazendo update do user --");
-        Query query = em.createQuery("update Utilizador u set u.age = :age,u.country= :country "
-                + "WHERE u.name = :name");
-        query.setParameter("age", age);
-        query.setParameter("name", name);
-        query.setParameter("country", country);
-        int rowsUpdated = query.executeUpdate();
-        System.out.println("entities Updated: " + rowsUpdated);
+    public void Editar_User_Info(String original,String name, int age, String country,String password,String email){
+        //System.out.println("-- fazendo update do user --");
+        Query q = em.createQuery("select id from Utilizador u where u.email = :n");
+        q.setParameter("n", original);
+        int id=(int)q.getSingleResult();
+        Utilizador user=em.find(Utilizador.class,id);
+        user.setAge(age);
+        user.setName(name);
+        user.setCountry(country);
+        user.setPassword(password);
+        user.setEmail(email);
+        em.persist(user);
+
     }
 
 
@@ -43,18 +49,25 @@ EntityManager em;
         Utilizador new_Utilizador = new Utilizador(name, age, email, pass, country);
         em.persist(new_Utilizador);
     }*/
+    //tive de tirar
+    public UtilizadorDTO get_user_teste(String email){
+        Query q = em.createQuery("from Utilizador u where u.email = :n");
+        q.setParameter("n", email);
+        Utilizador resultado = (Utilizador) q.getSingleResult();
+        UtilizadorDTO udto = ItemMapper.INSTANCE.utilizadorToUtilizadorDTO(resultado);
+        return udto;
 
-    /*public void test_user(){
-        Utilizador novo = new Utilizador (1, "João Tomás", 22, "joao.miguel.tomas@hotmail.com", "olapessoal", "João Tomás");
-        em.persist(novo);
-    }*/
+
+
+
+    }
 
 
     //Apagar primeiro os items do user e depois apagar o user
     //em.find e depois o em.delete
     //usar cascate?
     public void Delete_UserAccount(String name){
-        Query q = em.createQuery("from Utilizador u where u.name = :n");
+        Query q = em.createQuery("from Utilizador u where u.email = :n");
         q.setParameter("n", name);
         Utilizador resultado = (Utilizador) q.getSingleResult();
         for(Item i :resultado.getItems() ){

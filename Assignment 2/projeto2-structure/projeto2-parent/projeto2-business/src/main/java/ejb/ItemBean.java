@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
 @LocalBean
 @Stateless(name = "ItemEJB")
@@ -90,17 +91,15 @@ public class ItemBean {
 
     //ITEM OPERATIONS
     //Utilizador coloca um item para venda
-    public void Inserir_Novo_Item(String name, String category, String country_of_origin, int price, Date published_date){//Falta a fotografia
-        Item new_item = new Item(name, category, country_of_origin, price, published_date);
-        em.persist(new_item);
-    }
+    public void Inserir_Novo_Item(String name, String category, String country_of_origin, int price, String email_user){//Falta a fotografia
 
-    public void Inserir_Novo_Item2(String name, String category, String country_of_origin, int price, Date published_date,String name_utilizador){//Falta a fotografia
+        //Data do sistema
+        Date published_date = new Date();
 
         Item new_item = new Item(name, category, country_of_origin, price, published_date);
-        Query q = em.createQuery("select id from Utilizador u where u.name = :n");
-        q.setParameter("n", name_utilizador);
-        new_item.setUtilizador(em.find(Utilizador.class, (int)q.getSingleResult()));
+        Query q = em.createQuery("select id from Utilizador u where u.email = :e");
+        q.setParameter("e", email_user);
+        new_item.setUtilizador(em.find(Utilizador.class, q.getSingleResult()));
         em.persist(new_item);
     }
 
@@ -115,23 +114,42 @@ public class ItemBean {
 
         q.setParameter("i", id);
 
-        //Ver como é que hei de procurara, i.e., estipular bem as primary keys
+        q.executeUpdate();
+
     } //TESTAR
     //Falta a fotografia
     //Penso que nao faz sentido alterar a data de publicacao
 
-    public void Apagar_Item(String name, String category, String country){
+    public void Apagar_Item(int id){
         //Decidir como é que vamos procurar o item, talvez apresentar uma lista e escolher um deles
-        Query q = em.createQuery("delete from Item i where i.name = :n and i.category = :c and i.country_of_origin = :o");
-        q.setParameter("n", name);
-        q.setParameter("c", category);
-        q.setParameter("o", country);
-    } //TESTAR
+        Query q = em.createQuery("from Item i where i.id = :i");
+        q.setParameter("i", id);
 
+        Item result = (Item) q.getSingleResult();
+        em.remove(result);
 
+    }
 
+    public List<Item> Listar_Detalhes_Item (int id){
+        Query q = em.createQuery("from Item i where i.id = :i");
+        q.setParameter("i", id);
+
+        return q.getResultList();
+    }
 
     //USADO APENAS PARA TESTAR
+    public Date getDataAprofundado(int day, int month, int year, int hour, int minute, int second) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month - 1);
+        cal.set(Calendar.DAY_OF_MONTH, day);
+        cal.set(Calendar.HOUR_OF_DAY, hour);
+        cal.set(Calendar.MINUTE, minute);
+        cal.set(Calendar.SECOND, second);
+
+        Date d = cal.getTime();
+        return d;
+    }
     public Date getData(int day, int month, int year) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, year);
@@ -140,11 +158,5 @@ public class ItemBean {
 
         Date d = cal.getTime();
         return d;
-    }
-
-
-    public void insert_item_test(){
-        Item first_item = new Item("bola de tenis", "desporto", "Tailândia", 2, getData(3,5,2018));
-        em.persist(first_item);
     }
 }

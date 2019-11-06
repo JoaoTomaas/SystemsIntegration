@@ -25,8 +25,24 @@ public class Utilizador implements Serializable {
         return password;
     }
 
-    public void setPassword(byte[] password) {
-        this.password = password;
+    public void setPassword(String password) {
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[16];
+        random.nextBytes(salt);
+        this.salt=salt;
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+        try{
+            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            try {
+                byte[] hash = factory.generateSecret(spec).getEncoded();
+                this.password=hash;
+            } catch (InvalidKeySpecException e) {
+                e.printStackTrace();
+            }
+        }
+        catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 
     private String country;

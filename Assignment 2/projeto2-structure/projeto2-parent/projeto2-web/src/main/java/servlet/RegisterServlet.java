@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 
 @WebServlet (urlPatterns = "/Register")
@@ -21,23 +22,29 @@ public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
-        String pass = request.getParameter("password");
+        String pass1 = request.getParameter("password1");
+        String pass2 = request.getParameter("password2");
         String nome = request.getParameter("nome");
         String pais = request.getParameter("pais");
-        /*if(regb.testeeee(email,pass)==1){
-            response.getWriter().println("Nice");
-        }
-        else{
-            response.getWriter().println("Hacker");
-        }*/
         int age = Integer.parseInt(request.getParameter("idade"));
         try {
-            if(regb.UserRegister(email,pass,pais,nome,age)==0){
-                response.sendRedirect("login.jsp");
+            if(pass1.equals(pass2)) {
+                if (regb.UserRegister(email, pass1, pais, nome, age) == 0) {
+                    response.sendRedirect("login.jsp");
 
+                } else {
+                    response.sendRedirect("index.html");
+                }
             }
-            else{
-                response.sendRedirect("index.html");
+            else {
+                PrintWriter out = response.getWriter();
+                response.setContentType("text/html");
+
+                //response.sendRedirect("fail.jsp");
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Passwords nao sao iguais');");
+                out.println("location='register.jsp';");
+                out.println("</script>");
             }
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
