@@ -1,6 +1,7 @@
 package servlet;
 
 import data.Item;
+import dto.ItemDTO;
 import ejb.ItemBean;
 import ejb.LoginBean;
 
@@ -23,7 +24,7 @@ public class CategoryServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String categ = request.getParameter("categoria");
-        List <Item> lista = ib.Procurar_Items_Categoria(categ);
+        List <ItemDTO> lista = ib.Procurar_Items_Categoria(categ);
 
         request.setAttribute("lista_categoria", lista);
         RequestDispatcher view = request.getRequestDispatcher("result.jsp");

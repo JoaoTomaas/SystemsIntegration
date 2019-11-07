@@ -28,7 +28,7 @@ public class EditFinalServlet extends HttpServlet{
         String nome = request.getParameter("nome");
         String category = request.getParameter("categoria");
         String country = request.getParameter("country");
-        int price = Integer.parseInt(request.getParameter("price"));
+        float price = Float.parseFloat(request.getParameter("price"));
 
         ib.Editar_Item_Info(id, nome, category, country, price);
 

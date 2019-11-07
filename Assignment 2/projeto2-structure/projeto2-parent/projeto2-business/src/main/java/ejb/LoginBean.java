@@ -1,5 +1,8 @@
 package ejb;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.ejb.LocalBean;
@@ -23,11 +26,16 @@ public class LoginBean implements Serializable {
     private String email;
     private String password;
 
+    final Logger logger = LoggerFactory.getLogger(LoginBean.class);
+
+
 
     public LoginBean() {}
 
     public int loginUser(String email, String password){
-        System.out.println("enteriiiiii ");
+
+        logger.debug("Entrada no método de Login");
+
         int status = -1;
         //Ver se o email existe na base de dados
         Query q = em.createQuery("from Utilizador u where u.email = :e");
@@ -47,19 +55,20 @@ public class LoginBean implements Serializable {
             try {
                 factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
             } catch (NoSuchAlgorithmException e) {
+                logger.error("Erro na encriptacao da password");
                 e.printStackTrace();
             }
             try {
                 byte[] hash2 = factory.generateSecret(spec).getEncoded();
                 if (Arrays.equals(hash1, hash2)) {
-                    System.out.println("deu bemmmmmmm");
+                    logger.info("Login bem sucedido");
                     status= 1;
                 } else {
-                    System.out.println("deu malllllll");
+                    logger.debug("Deu erro porque a password esta errada");
                     status =2;
                 }
             } catch (InvalidKeySpecException e) {
-
+                logger.error("Excecao ao encriptar a password");
                 e.printStackTrace();
             }
            /* if (!(x.getResultList().isEmpty())){ //Sucesso, faz login
@@ -70,7 +79,7 @@ public class LoginBean implements Serializable {
             }*/
         }
         else{ //Utilizador nao registado
-            System.out.println("user nao registado =(");
+            logger.info("Utilizador nao se encontra registado");
             status = 3;
         }
 

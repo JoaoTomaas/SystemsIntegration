@@ -11,6 +11,8 @@
     <title>Procura por categoria</title>
 </head>
 <body>
+<div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
+
     <form method="post" action="CategoryServ" >
         Categoria <input type="text" name="categoria"/><br/><br/>
         <input type="submit" value="Search"/>

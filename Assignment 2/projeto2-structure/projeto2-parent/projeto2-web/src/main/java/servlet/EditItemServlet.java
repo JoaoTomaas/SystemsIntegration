@@ -1,6 +1,7 @@
 package servlet;
 
 import data.Item;
+import dto.ItemDTO;
 import ejb.ItemBean;
 import ejb.LoginBean;
 
@@ -25,14 +26,11 @@ public class EditItemServlet extends HttpServlet {
         LoginBean bean = (LoginBean) request.getSession(true).getAttribute("currentSessionUser");
         String utilizador = bean.getEmail();
 
-        List<Item> meus_items = ib.Listar_Items_aVenda(utilizador);
+        List<ItemDTO> meus_items = ib.Listar_Items_aVenda(utilizador);
         request.setAttribute("lista_myitems", meus_items);
 
         RequestDispatcher view = request.getRequestDispatcher("edititem.jsp");
         view.forward(request, response);
-
-
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

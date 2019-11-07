@@ -12,6 +12,8 @@
 
 </head>
 <body>
+<div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
+
 <form method="post" action="UserDeleteServ" >
     Tem a certeza que quer apagar a conta? <br>
     <input type="radio" name="opcao" value="sim" checked> Sim<br>

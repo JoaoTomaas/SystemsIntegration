@@ -11,6 +11,8 @@
     <title>Procura por data</title>
 </head>
 <body>
+<div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
+
 <div style="margin-left: 2%; margin-top: 2%; text-align: right; float: left">
 <form method="post" action="DateServ" >
     Dia <input type="text" name="dia"/> <br/><br/>

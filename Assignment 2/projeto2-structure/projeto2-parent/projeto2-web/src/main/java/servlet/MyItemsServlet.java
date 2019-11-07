@@ -2,6 +2,7 @@ package servlet;
 
 
 import data.Item;
+import dto.ItemDTO;
 import ejb.ItemBean;
 import ejb.LoginBean;
 
@@ -25,7 +26,7 @@ public class MyItemsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LoginBean bean = (LoginBean) request.getSession(true).getAttribute("currentSessionUser");
         String user_mail = bean.getEmail();
-        List<Item> all_items = ib.Listar_Items_aVenda(user_mail);
+        List<ItemDTO> all_items = ib.Listar_Items_aVenda(user_mail);
 
         request.setAttribute("lista_myitems", all_items);
 

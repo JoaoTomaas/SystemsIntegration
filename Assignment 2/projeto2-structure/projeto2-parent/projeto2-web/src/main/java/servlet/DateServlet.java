@@ -1,6 +1,7 @@
 package servlet;
 
 import data.Item;
+import dto.ItemDTO;
 import ejb.ItemBean;
 import ejb.LoginBean;
 
@@ -28,7 +29,7 @@ public class DateServlet extends HttpServlet {
         String mes = request.getParameter("mes");
         String ano = request.getParameter("ano");
 
-        List <Item> lista = ib.Procurar_Items_Data(getData(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(ano)));
+        List <ItemDTO> lista = ib.Procurar_Items_Data(convertToDate(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(ano)));
         request.setAttribute("lista_data", lista);
 
         RequestDispatcher view = request.getRequestDispatcher("result.jsp");
@@ -39,14 +40,14 @@ public class DateServlet extends HttpServlet {
         doGet(request, response);
     }
 
-    public Date getData(int day, int month, int year) {
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month - 1);
-        cal.set(Calendar.DAY_OF_MONTH, day);
+    public Date convertToDate(int dia, int mes, int ano) {
+        Calendar calendario = Calendar.getInstance();
+        calendario.set(Calendar.YEAR, ano);
+        calendario.set(Calendar.MONTH, mes - 1);
+        calendario.set(Calendar.DAY_OF_MONTH, dia);
 
-        Date d = cal.getTime();
-        return d;
+        Date data = calendario.getTime();
+        return data;
     }
 
 }

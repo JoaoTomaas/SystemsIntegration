@@ -1,5 +1,6 @@
 package servlet;
 
+import ejb.ItemBean;
 import ejb.RegisterBean;
 
 import javax.ejb.EJB;
@@ -12,11 +13,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @WebServlet (urlPatterns = "/Register")
 public class RegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @EJB
     RegisterBean regb;
+
+    final Logger logger = LoggerFactory.getLogger(RegisterServlet.class);
 
     public RegisterServlet() {super();}
 
@@ -33,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
                     response.sendRedirect("login.jsp");
 
                 } else {
-                    response.sendRedirect("index.html");
+                    response.sendRedirect("index.jsp");
                 }
             }
             else {
@@ -47,6 +53,7 @@ public class RegisterServlet extends HttpServlet {
                 out.println("</script>");
             }
         } catch (NoSuchAlgorithmException e) {
+            logger.error("EXCECAO A ENCRIPTAR A PASSWORD");
             e.printStackTrace();
         }
 

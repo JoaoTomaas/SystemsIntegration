@@ -1,6 +1,7 @@
 package servlet;
 
 import data.Item;
+import dto.ItemDTO;
 import ejb.ItemBean;
 
 import javax.ejb.EJB;
@@ -21,7 +22,7 @@ public class ItemServlet extends HttpServlet {
     ItemBean ib;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Item> all_items = ib.Procurar_Items();
+        List<ItemDTO> all_items = ib.Procurar_Items(request.getParameter("nome"));
         request.setAttribute("lista_todos", all_items);
         RequestDispatcher view = request.getRequestDispatcher("result.jsp");
         view.forward(request, response);

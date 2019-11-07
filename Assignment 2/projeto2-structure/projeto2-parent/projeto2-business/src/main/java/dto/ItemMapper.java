@@ -6,6 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface ItemMapper {
     //secalhar mudamos os nomes so para ser fixeee
@@ -16,4 +18,5 @@ public interface ItemMapper {
 
     ItemDTO itemToItemDto(Item item);
     UtilizadorDTO utilizadorToUtilizadorDTO(Utilizador utilizador);
+    List<ItemDTO> listItemToListItemDto(List<Item> item);
 }

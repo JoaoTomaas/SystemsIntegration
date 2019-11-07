@@ -1,4 +1,5 @@
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\EditItemServlet.java
+C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\LogoutServlet.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\UpdateUserServlet.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\EditFinalServlet.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\CategoryServlet.java
@@ -6,13 +7,14 @@ C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projet
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\PriceRangeServlet.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\ServletTestWeb.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\ItemServlet.java
-C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\ApagaItemF.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\NewItemServlet.java
-C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\DeleteItemServ.java
+C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\ApagaItemFServlet.java
+C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\DeleteItemServlet.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\LoginServlet.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\MyItemsServlet.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\DateServlet.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\DetalhesServlet.java
+C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\EditItemFillServlet.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\RegisterServlet.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\UserDeleteServlet.java
 C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\java\servlet\CountryServlet.java

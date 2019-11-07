@@ -8,10 +8,18 @@ public class ItemDTO {
     private String name;
     private String category;
     private String country_of_origin;
-    private int price;
-    private byte[] img;
+    private float price;
+    private String img_path;
     private Date published_date;
     private UtilizadorDTO utilizador;
+
+    public String getImg_path() {
+        return img_path;
+    }
+
+    public void setImg_path(String img_path) {
+        this.img_path = img_path;
+    }
 
     public int getId() {
         return id;
@@ -45,20 +53,12 @@ public class ItemDTO {
         this.country_of_origin = country_of_origin;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
-    }
-
-    public byte[] getImg() {
-        return img;
-    }
-
-    public void setImg(byte[] img) {
-        this.img = img;
     }
 
     public Date getPublished_date() {

@@ -1,6 +1,7 @@
 package servlet;
 
 import data.Item;
+import dto.ItemDTO;
 import ejb.ItemBean;
 import ejb.LoginBean;
 
@@ -25,7 +26,7 @@ public class PriceRangeServlet extends HttpServlet {
         String min_bound = request.getParameter("minimum");
         String max_bound = request.getParameter("maximum");
 
-        List <Item> lista = ib.Procurar_Items_PriceRange(Integer.parseInt(min_bound), Integer.parseInt(max_bound));
+        List <ItemDTO> lista = ib.Procurar_Items_PriceRange(Float.parseFloat(min_bound), Float.parseFloat(max_bound));
 
         request.setAttribute("lista_range", lista);
         RequestDispatcher view = request.getRequestDispatcher("result.jsp");

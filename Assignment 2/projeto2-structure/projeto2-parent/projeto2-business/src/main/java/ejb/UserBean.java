@@ -5,11 +5,14 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.xml.registry.infomodel.User;
 
 import data.Item;
 import data.Utilizador;
 import dto.ItemMapper;
 import dto.UtilizadorDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 import java.util.List;
@@ -19,6 +22,9 @@ import java.util.List;
 public class UserBean {
     @PersistenceContext(name="Users")
     EntityManager em;
+
+    final Logger logger = LoggerFactory.getLogger("ejb.UserBean");
+
 
     public UserBean() { //Construtor pré-definido
     }
@@ -57,9 +63,6 @@ public class UserBean {
         UtilizadorDTO udto = ItemMapper.INSTANCE.utilizadorToUtilizadorDTO(resultado);
         return udto;
 
-
-
-
     }
 
 
@@ -76,6 +79,8 @@ public class UserBean {
         em.remove(resultado);
         //Query query = em.createQuery("delete from Utilizador u WHERE u.name = :p");
         //int deletedCount = query.setParameter("p", name).executeUpdate();
+
+        logger.info("Utilizador removido");
     }
 
 

@@ -12,7 +12,8 @@ public class Item implements Serializable {
     private String name;
     private String category;
     private String country_of_origin;
-    private int price;
+    private float price;
+    private String img_path;
     @Temporal(TemporalType.DATE)
     private Date published_date;
 
@@ -24,7 +25,6 @@ public class Item implements Serializable {
         this.id = id;
     }
 
-    //Como é que faço quanto à fotografia?
     @ManyToOne
     private Utilizador utilizador;
 
@@ -33,7 +33,7 @@ public class Item implements Serializable {
     }
 
 
-    public Item(String name, String category, String country_of_origin, int price, Date published_date) {
+    public Item(String name, String category, String country_of_origin, float price, Date published_date) {
         this.name = name;
         this.category = category;
         this.country_of_origin = country_of_origin;
@@ -73,11 +73,11 @@ public class Item implements Serializable {
         this.utilizador = utilizador;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -87,5 +87,14 @@ public class Item implements Serializable {
 
     public void setPublished_date(Date published_date) {
         this.published_date = published_date;
+    }
+
+    //Como é que faço quanto à fotografia?
+    public String getImg_path() {
+        return img_path;
+    }
+
+    public void setImg_path(String img_path) {
+        this.img_path = img_path;
     }
 }

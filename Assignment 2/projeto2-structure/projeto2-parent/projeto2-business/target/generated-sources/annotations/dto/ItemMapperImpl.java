@@ -2,11 +2,13 @@ package dto;
 
 import data.Item;
 import data.Utilizador;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2019-11-06T11:53:31+0000",
+    date = "2019-11-07T14:35:23+0000",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_152 (Oracle Corporation)"
 )
 public class ItemMapperImpl implements ItemMapper {
@@ -19,6 +21,7 @@ public class ItemMapperImpl implements ItemMapper {
 
         ItemDTO itemDTO = new ItemDTO();
 
+        itemDTO.setImg_path( item.getImg_path() );
         itemDTO.setId( item.getId() );
         itemDTO.setName( item.getName() );
         itemDTO.setCategory( item.getCategory() );
@@ -44,5 +47,19 @@ public class ItemMapperImpl implements ItemMapper {
         utilizadorDTO.setCountry( utilizador.getCountry() );
 
         return utilizadorDTO;
+    }
+
+    @Override
+    public List<ItemDTO> listItemToListItemDto(List<Item> item) {
+        if ( item == null ) {
+            return null;
+        }
+
+        List<ItemDTO> list = new ArrayList<ItemDTO>( item.size() );
+        for ( Item item1 : item ) {
+            list.add( itemToItemDto( item1 ) );
+        }
+
+        return list;
     }
 }

@@ -30,7 +30,7 @@ public class UserDeleteServlet extends HttpServlet {
             LoginBean bean=(LoginBean) request.getSession(true).getAttribute("currentSessionUser");
             ub.Delete_UserAccount(bean.getEmail());
             request.getSession(true).removeAttribute("currentSessionUser");
-            response.sendRedirect("index.html");
+            response.sendRedirect("index.jsp");
         }
         else {
             response.sendRedirect("menu.jsp");

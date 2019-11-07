@@ -11,6 +11,8 @@
     <title>Procura por price range</title>
 </head>
 <body>
+<div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
+
 <form method="post" action="RangeServ" >
     Preço mínimo <input type="text" name="minimum"/><br/><br/>
     Preço máximo <input type="text" name="maximum"/><br/><br/>

@@ -2,6 +2,8 @@ package servlet;
 
 import ejb.ItemBean;
 import ejb.LoginBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -48,7 +50,7 @@ public class LoginServlet extends HttpServlet {
                 out.println("</script>");
                 break;
             case 3:
-                    response.sendRedirect("index.html");
+                    response.sendRedirect("index.jsp");
                 break;
         }
     }

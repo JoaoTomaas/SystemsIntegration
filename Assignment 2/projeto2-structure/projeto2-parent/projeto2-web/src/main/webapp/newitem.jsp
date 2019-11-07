@@ -11,11 +11,14 @@
     <title>Inserir novo item</title>
 </head>
 <body>
-<form method="post" action="NewItemServ" >
+<div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
+
+<form method="post" action="NewItemServ" enctype="multipart/form-data">
     Name <input type="text" name="nome"/><br/><br/>
     Category <input type="text" name="categoria"/><br/><br/>
     Country of Origin <input type="text" name="country"/><br/><br/>
     Price <input type="text" name="price"/><br/><br/>
+    Imagem <input type="file" name="file"/><br/><br/>
     <input type="submit" value="Insert"/>
 </form>
 </body>

@@ -1,0 +1,9 @@
+ejb\ItemBean.class
+ejb\UserBean.class
+dto\UtilizadorDTO.class
+dto\ItemMapperImpl.class
+ejb\LoginBean.class
+dto\ItemMapper.class
+ejb\RegisterBean.class
+ejb\MailBean.class
+dto\ItemDTO.class

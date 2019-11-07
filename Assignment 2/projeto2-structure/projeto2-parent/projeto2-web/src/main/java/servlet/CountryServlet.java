@@ -1,6 +1,7 @@
 package servlet;
 
 import data.Item;
+import dto.ItemDTO;
 import ejb.ItemBean;
 import ejb.LoginBean;
 
@@ -24,7 +25,7 @@ public class CountryServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LoginBean bean = (LoginBean) request.getSession(true).getAttribute("currentSessionUser");
         String utilizador = bean.getEmail();
-        List<Item> country_items = ib.Procurar_Items_Country(utilizador);
+        List<ItemDTO> country_items = ib.Procurar_Items_Country(utilizador);
         request.setAttribute("lista_country", country_items);
         RequestDispatcher view = request.getRequestDispatcher("result.jsp");
         view.forward(request, response);
