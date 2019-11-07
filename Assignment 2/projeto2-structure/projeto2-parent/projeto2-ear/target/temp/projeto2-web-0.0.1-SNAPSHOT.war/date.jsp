@@ -14,12 +14,13 @@
 <div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
 
 <div style="margin-left: 2%; margin-top: 2%; text-align: right; float: left">
-<form method="post" action="DateServ" >
-    Dia <input type="text" name="dia"/> <br/><br/>
-    Mês <input type="text" name="mes"/><br/><br/>
-    Ano <input type="text" name="ano"/><br/><br/>
-    <input type="submit" value="Search"/>
-</form>
+    <form method="post" action="DateServ" >
+        Nome :<input type="text" name="nome"/><br/><br/>
+        Dia <input type="text" name="dia"/> <br/><br/>
+        Mês <input type="text" name="mes"/><br/><br/>
+        Ano <input type="text" name="ano"/><br/><br/>
+        <input type="submit" value="Search"/>
+    </form>
 </div>
 </body>
 </html>

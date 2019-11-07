@@ -33,9 +33,9 @@
 <!-- SEARCH -->
 <h2>Search Operations</h2>
     <a href="${pageContext.request.contextPath}/pesquisa.jsp">Search for all items</a><br />
-    <a href="${pageContext.request.contextPath}/category.jsp">Search inside a certain category</a><br />
+    <a href="${pageContext.request.contextPath}/DisplayCategoryServ">Search inside a certain category</a><br />
     <a href="${pageContext.request.contextPath}/pricerange.jsp">Search within a price range</a><br/>
-    <a href="${pageContext.request.contextPath}/CountryServ">Search in my country</a><br />
+    <a href="${pageContext.request.contextPath}/country.jsp">Search in my country</a><br />
     <a href="${pageContext.request.contextPath}/date.jsp">Search items published after a given date</a>
 </div>
 

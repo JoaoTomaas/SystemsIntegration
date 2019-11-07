@@ -26,10 +26,23 @@ public class ItemBean {
 
     public ItemBean() {}
 
+    public List<ItemDTO> Procurar_Items_Categoria(String categoria,String nome) {
+        Query q = em.createQuery("from Item i where i.category = :c and name like CONCAT('%',:n,'%')");
+        q.setParameter("c", categoria);
+        q.setParameter("n", nome);
+        @SuppressWarnings("unchecked")
+        List<Item> resultado_intermedio = q.getResultList();
+        //List<ItemDTO> resultado= ItemMapper.INSTANCE.listItemToListItemDto(resultado_intermedio);
+        List<ItemDTO> resultado = new ArrayList<ItemDTO>();
+        for(Item e:resultado_intermedio){
+            resultado.add(ItemMapper.INSTANCE.itemToItemDto(e));
+        }
+        //System.out.println("Lista de items por categoria " + resultado);
+        return resultado;
+    }
 
 
-
-    public List<ItemDTO> Procurar_Items_Categoria(String categoria) {
+    /*public List<ItemDTO> Procurar_Items_Categoria(String categoria) {
         Query q = em.createQuery("from Item i where i.category = :c");
         q.setParameter("c", categoria);
 
@@ -42,10 +55,10 @@ public class ItemBean {
         }
         //System.out.println("Lista de items por categoria " + resultado);
         return resultado;
-    }
+    }*/
 
     //Procurar pelo pais do utilizador
-    public List<ItemDTO> Procurar_Items_Country(String email) {
+    /*public List<ItemDTO> Procurar_Items_Country(String email) {
         Query q = em.createQuery("from Item i where i.country_of_origin = (select country from Utilizador u where u.email = :e)");
         q.setParameter("e", email);
 
@@ -58,9 +71,25 @@ public class ItemBean {
             logger.debug("ESTA A CRIAR O DTO NO COUNTRY");
         }
         return resultado;
+    }*/
+
+    public List<ItemDTO> Procurar_Items_Country(String nome,String email) {
+        Query q = em.createQuery("from Item i where i.country_of_origin = (select country from Utilizador u where u.email = :e) and i.name like CONCAT('%',:n,'%')");
+        q.setParameter("e", email);
+        q.setParameter("n", nome);
+        @SuppressWarnings("unchecked")
+        List<Item> resultado_intermedio = q.getResultList();
+        //List<ItemDTO> resultado= ItemMapper.INSTANCE.listItemToListItemDto(resultado_intermedio);
+        List<ItemDTO> resultado = new ArrayList<ItemDTO>();
+        for(Item e:resultado_intermedio){
+            resultado.add(ItemMapper.INSTANCE.itemToItemDto(e));
+        }
+        return resultado;
     }
 
-    public List<ItemDTO> Procurar_Items_PriceRange(float lower_bound, float upper_bound) {
+
+
+    /*public List<ItemDTO> Procurar_Items_PriceRange(float lower_bound, float upper_bound) {
         Query q = em.createQuery("from Item i where i.price between :lb and  :ub");
         q.setParameter("lb", lower_bound);
         q.setParameter("ub", upper_bound);
@@ -74,9 +103,27 @@ public class ItemBean {
         }
 
         return resultado;
+    }*/
+
+    public List<ItemDTO> Procurar_Items_PriceRange(String nome,float lower_bound, float upper_bound) {
+        Query q = em.createQuery("from Item i where i.name like CONCAT('%',:n,'%') and i.price between :lb and  :ub");
+        q.setParameter("lb", lower_bound);
+        q.setParameter("ub", upper_bound);
+        q.setParameter("n", nome);
+
+        @SuppressWarnings("unchecked")
+        List<Item> resultado_intermedio = q.getResultList();
+        //List<ItemDTO> resultado= ItemMapper.INSTANCE.listItemToListItemDto(resultado_intermedio);
+        List<ItemDTO> resultado = new ArrayList<ItemDTO>();
+        for(Item e:resultado_intermedio){
+            resultado.add(ItemMapper.INSTANCE.itemToItemDto(e));
+        }
+
+        return resultado;
     }
 
-    public List<ItemDTO> Procurar_Items_Data(Date data) {
+
+    /*public List<ItemDTO> Procurar_Items_Data(Date data) {
         Query q = em.createQuery("from Item i where i.published_date > :d");
         q.setParameter("d", data);
 
@@ -87,6 +134,22 @@ public class ItemBean {
         for(Item e:resultado_intermedio){
             resultado.add(ItemMapper.INSTANCE.itemToItemDto(e));
             logger.info("DTO preparado para ser enviado para a servlet");
+        }
+        //System.out.println("Lista de items publicados apos a data " + resultado);
+        return resultado;
+    }*/
+
+    public List<ItemDTO> Procurar_Items_Data(String nome,Date data) {
+        Query q = em.createQuery("from Item i where i.published_date > :d and i.name like CONCAT('%',:n,'%')");
+        q.setParameter("d", data);
+        q.setParameter("n", nome);
+
+        @SuppressWarnings("unchecked")
+        List<Item> resultado_intermedio = q.getResultList();
+        //List<ItemDTO> resultado= ItemMapper.INSTANCE.listItemToListItemDto(resultado_intermedio);
+        List<ItemDTO> resultado = new ArrayList<ItemDTO>();
+        for(Item e:resultado_intermedio){
+            resultado.add(ItemMapper.INSTANCE.itemToItemDto(e));
         }
         //System.out.println("Lista de items publicados apos a data " + resultado);
         return resultado;
@@ -375,7 +438,7 @@ public class ItemBean {
         return resultado;
     }
 
-    public List<ItemDTO> Procurar_Items_PriceRange1(String nome,int lower_bound, int upper_bound,int flag) {
+    public List<ItemDTO> Procurar_Items_PriceRange1(String nome,float lower_bound, float upper_bound,int flag) {
         Query q;
         if(flag==1){
             q = em.createQuery("from Item i where i.name like CONCAT('%',:n,'%') and i.price between :lb and  :ub  order by name asc ");
@@ -397,7 +460,7 @@ public class ItemBean {
 
         return resultado;
     }
-    public List<ItemDTO> Procurar_Items_PriceRange2(String nome,int lower_bound, int upper_bound,int flag) {
+    public List<ItemDTO> Procurar_Items_PriceRange2(String nome,float lower_bound, float upper_bound,int flag) {
         Query q;
         if(flag==1){
             q = em.createQuery("from Item i where i.name like CONCAT('%',:n,'%') and i.price between :lb and  :ub  order by price asc ");
@@ -419,7 +482,7 @@ public class ItemBean {
 
         return resultado;
     }
-    public List<ItemDTO> Procurar_Items_PriceRange3(String nome,int lower_bound, int upper_bound,int flag) {
+    public List<ItemDTO> Procurar_Items_PriceRange3(String nome,float lower_bound, float upper_bound,int flag) {
         Query q;
         if(flag==1){
             q = em.createQuery("from Item i where i.name like CONCAT('%',:n,'%') and i.price between :lb and  :ub  order by published_date asc ");

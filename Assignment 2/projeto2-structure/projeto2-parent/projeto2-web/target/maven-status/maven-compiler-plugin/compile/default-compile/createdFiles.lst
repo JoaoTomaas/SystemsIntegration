@@ -1,5 +1,6 @@
 servlet\ItemServlet.class
 servlet\LogoutServlet.class
+servlet\DisplayCategoryServlet.class
 servlet\ServletTestWeb.class
 servlet\UpdateUserServlet.class
 servlet\DateServlet.class

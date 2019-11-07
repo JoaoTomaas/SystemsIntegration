@@ -39,7 +39,14 @@
 			<groupId>IS</groupId>
 			<artifactId>projeto2-business</artifactId>
 			<version>${project.version}</version>
-		</dependency>		
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

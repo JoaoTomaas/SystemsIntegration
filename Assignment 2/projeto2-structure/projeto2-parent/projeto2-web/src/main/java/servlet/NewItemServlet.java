@@ -44,7 +44,7 @@ public class NewItemServlet extends HttpServlet{
         System.out.println("PATHHHHHHH FINAL ->>>> " + finalPath);
         //System.out.println("PATHHHHH DO MAL ->>>> " + img_part);
 
-        ib.Inserir_Novo_Item(nome, category, country, Float.parseFloat(price), user_mail);
+        ib.Inserir_Novo_Item(nome, category, country, Float.parseFloat(price), user_mail, finalPath);
 
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");

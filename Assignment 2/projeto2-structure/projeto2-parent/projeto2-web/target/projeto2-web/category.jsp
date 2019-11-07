@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: joaom
@@ -13,10 +14,18 @@
 <body>
 <div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
 
-    <form method="post" action="CategoryServ" >
-        Categoria <input type="text" name="categoria"/><br/><br/>
-        <input type="submit" value="Search"/>
-    </form>
+<form action="CategoryServ" method="post">
+
+    Nome :<input type="text" name="nome"/><br/><br/>
+
+    <select name="category">
+        <c:forEach items="${listCategory}" var="category">
+            <option value="${category}">${category}</option>
+        </c:forEach>
+    </select>
+    <br><br>
+    <input type="submit">
+</form>
 
 </body>
 </html>

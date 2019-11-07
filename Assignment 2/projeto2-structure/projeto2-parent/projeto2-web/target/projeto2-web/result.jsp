@@ -17,11 +17,13 @@
 </head>
 <body>
 
+
 <div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
 
 <h1>
     Items Disponíveis no MyBay
 </h1>
+
 <%
     if (request.getAttribute("lista_todos") != null) {
         List resultado = (List) request.getAttribute("lista_todos");
@@ -30,80 +32,162 @@
         //out.println("<br>Escolha o que quer comprar <br><br>");
         while (it.hasNext()) {
             ItemDTO i = (ItemDTO) it.next();
-            %>
-                    <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
-                    <br>
-            <%
+%>
+<a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a><br>
+<%
     }
-    }else if (request.getAttribute("lista_country") != null) {
-        List lista = (List) request.getAttribute("lista_country");
+%>
+<form action="ItemServ" method="post">
 
-        Iterator it = lista.iterator();
-        out.println("<br>Estes sao os items do seu país<br><br>");
+    <select name="sort">
+        <option value="1">nome_A</option>
+        <option value="2">preço_A</option>
+        <option value="3">data_A</option>
+        <option value="4">nome_D</option>
+        <option value="5">preço_D</option>
+        <option value="6">data_D</option>
+    </select>
+
+    <input type="submit" value="ordenar">
+    <input type="hidden" name="nome" value="${param.nome}" >
+</form><%
+
+
+}else if (request.getAttribute("lista_country") != null) {
+    List lista = (List) request.getAttribute("lista_country");
+
+    Iterator it = lista.iterator();
+    out.println("<br>Estes sao os items do seu país<br><br>");
+    while (it.hasNext()) {
+        ItemDTO i = (ItemDTO) it.next();
+        //out.println(i.getId() + ". " + i.getName() + "<br>");
+%>
+<a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+<%
+    }
+%>
+<form action="CountryServ" method="post">
+
+    <select name="sort">
+        <option value="1">nome_A</option>
+        <option value="2">preço_A</option>
+        <option value="3">data_A</option>
+        <option value="4">nome_D</option>
+        <option value="5">preço_D</option>
+        <option value="6">data_D</option>
+    </select>
+
+    <input type="submit" value="ordenar">
+    <input type="hidden" name="nome" value="${param.nome}" >
+</form><%
+}
+else if (request.getAttribute("lista_categoria") != null){
+    List lista = (List) request.getAttribute("lista_categoria");
+
+    Iterator it = lista.iterator();
+    out.println("<br>Estes sao os items da categoria pretendida<br><br>");
+    while (it.hasNext()) {
+        ItemDTO i = (ItemDTO) it.next();
+        //out.println(i.getId() + ". " + i.getName() + "<br>");
+%>
+<a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+<%
+    }
+
+%>
+<form action="CategoryServ" method="post">
+
+    <select name="sort">
+        <option value="1">nome_A</option>
+        <option value="2">preço_A</option>
+        <option value="3">data_A</option>
+        <option value="4">nome_D</option>
+        <option value="5">preço_D</option>
+        <option value="6">data_D</option>
+    </select>
+
+    <input type="submit" value="ordenar">
+    <input type="hidden" name="nome" value="${param.nome}" >
+    <input type="hidden" name="category" value="${param.category}" >
+</form><%
+
+}
+else if (request.getAttribute("lista_range") != null){
+    List lista = (List) request.getAttribute("lista_range");
+
+    Iterator it = lista.iterator();
+    out.println("<br>Estes sao os items dentro do price range<br><br>");
+    while (it.hasNext()) {
+        ItemDTO i = (ItemDTO) it.next();
+        //out.println(i.getId() + ". " + i.getName() + "<br>");
+%>
+<a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+<%
+    }
+%>
+<form action="RangeServ" method="post">
+
+    <select name="sort">
+        <option value="1">nome_A</option>
+        <option value="2">preço_A</option>
+        <option value="3">data_A</option>
+        <option value="4">nome_D</option>
+        <option value="5">preço_D</option>
+        <option value="6">data_D</option>
+    </select>
+
+    <input type="submit" value="ordenar">
+    <input type="hidden" name="nome" value="${param.nome}" >
+    <input type="hidden" name="maximum" value="${param.maximum}" >
+    <input type="hidden" name="minimum" value="${param.minimum}" >
+</form><%
+}
+else if (request.getAttribute("lista_data") != null){
+    List lista = (List) request.getAttribute("lista_data");
+
+    Iterator it = lista.iterator();
+    out.println("<br>Estes sao os items publicados após a data indicada<br><br>");
+    while (it.hasNext()) {
+        ItemDTO i = (ItemDTO) it.next();
+        //out.println(i.getId() + ". " + i.getName() + "<br>");
+%>
+<a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+<%
+    }
+
+%>
+<form action="DateServ" method="post">
+
+    <select name="sort">
+        <option value="1">nome_A</option>
+        <option value="2">preço_A</option>
+        <option value="3">data_A</option>
+        <option value="4">nome_D</option>
+        <option value="5">preço_D</option>
+        <option value="6">data_D</option>
+    </select>
+
+    <input type="submit" value="ordenar">
+    <input type="hidden" name="nome" value="${param.nome}" >
+    <input type="hidden" name="dia" value="${param.dia}" >
+    <input type="hidden" name="mes" value="${param.mes}" >
+    <input type="hidden" name="ano" value="${param.ano}" >
+</form><%
+
+
+}
+else if (request.getAttribute("lista_myitems") != null){
+    List lista = (List) request.getAttribute("lista_myitems");
+
+    Iterator it = lista.iterator();
+    if (it.hasNext()) {
+        out.println("<br>Estes são os items que tem à venda: <br><br>");
         while (it.hasNext()) {
             ItemDTO i = (ItemDTO) it.next();
             //out.println(i.getId() + ". " + i.getName() + "<br>");
-            %>
-                <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
-                <br>
-            <%
-        }
-    }
-    else if (request.getAttribute("lista_categoria") != null){
-        List lista = (List) request.getAttribute("lista_categoria");
-
-        Iterator it = lista.iterator();
-        out.println("<br>Estes sao os items da categoria pretendida<br><br>");
-        while (it.hasNext()) {
-            ItemDTO i = (ItemDTO) it.next();
-            //out.println(i.getId() + ". " + i.getName() + "<br>");
-            %>
-                <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
-                <br>
-            <%
-        }
-    }
-    else if (request.getAttribute("lista_range") != null){
-        List lista = (List) request.getAttribute("lista_range");
-
-        Iterator it = lista.iterator();
-        out.println("<br>Estes sao os items dentro do price range<br><br>");
-        while (it.hasNext()) {
-            ItemDTO i = (ItemDTO) it.next();
-            //out.println(i.getId() + ". " + i.getName() + "<br>");
-            %>
-                <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
-                <br>
-            <%
-        }
-    }
-    else if (request.getAttribute("lista_data") != null){
-        List lista = (List) request.getAttribute("lista_data");
-
-        Iterator it = lista.iterator();
-        out.println("<br>Estes sao os items publicados após a data indicada<br><br>");
-        while (it.hasNext()) {
-            ItemDTO i = (ItemDTO) it.next();
-            //out.println(i.getId() + ". " + i.getName() + "<br>");
-            %>
-                <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
-                <br>
-            <%
-        }
-    }
-    else if (request.getAttribute("lista_myitems") != null){
-        List lista = (List) request.getAttribute("lista_myitems");
-
-        Iterator it = lista.iterator();
-        if (it.hasNext()) {
-            out.println("<br>Estes são os items que tem à venda: <br><br>");
-            while (it.hasNext()) {
-                ItemDTO i = (ItemDTO) it.next();
-                //out.println(i.getId() + ". " + i.getName() + "<br>");
-            %>
-                <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
-                <br>
-            <%
+%>
+<a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+<%
             }
         }
         else{

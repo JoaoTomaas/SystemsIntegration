@@ -31,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -56,7 +56,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -313,7 +313,7 @@
       <workItem from="1573051097341" duration="3659000" />
       <workItem from="1573055557058" duration="5686000" />
       <workItem from="1573070573754" duration="14078000" />
-      <workItem from="1573122241682" duration="13930000" />
+      <workItem from="1573122241682" duration="15896000" />
     </task>
     <servers />
   </component>

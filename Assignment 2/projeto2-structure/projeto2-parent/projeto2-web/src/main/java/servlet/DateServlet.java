@@ -28,12 +28,58 @@ public class DateServlet extends HttpServlet {
         String dia = request.getParameter("dia");
         String mes = request.getParameter("mes");
         String ano = request.getParameter("ano");
+        String nome = request.getParameter("nome");
+        if(request.getParameter("sort")==null){
+            List <ItemDTO> lista = ib.Procurar_Items_Data(nome,convertToDate(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(ano)));
+            request.setAttribute("lista_data", lista);
+            RequestDispatcher view = request.getRequestDispatcher("result.jsp");
+            view.forward(request, response);
+        }
+        else {
 
-        List <ItemDTO> lista = ib.Procurar_Items_Data(convertToDate(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(ano)));
-        request.setAttribute("lista_data", lista);
+            //System.out.println("testeeeeeeee "+request.getParameter("nome_aux"));
+            int metodo=Integer.parseInt(request.getParameter("sort"));
+            switch (metodo){
+                case 1:
+                    List <ItemDTO> lista = ib.Procurar_Items_Data1(nome,convertToDate(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(ano)),1);
+                    request.setAttribute("lista_data", lista);
+                    RequestDispatcher view = request.getRequestDispatcher("result.jsp");
+                    view.forward(request, response);
+                    break;
+                case 2:
+                    lista = ib.Procurar_Items_Data2(nome,convertToDate(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(ano)),1);
+                    request.setAttribute("lista_data", lista);
+                    view = request.getRequestDispatcher("result.jsp");
+                    view.forward(request, response);
+                    break;
+                case 3:
+                    lista = ib.Procurar_Items_Data3(nome,convertToDate(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(ano)),1);
+                    request.setAttribute("lista_data", lista);
+                    view = request.getRequestDispatcher("result.jsp");
+                    view.forward(request, response);
+                    break;
+                case 4:
+                    lista = ib.Procurar_Items_Data1(nome,convertToDate(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(ano)),0);
+                    request.setAttribute("lista_data", lista);
+                    view = request.getRequestDispatcher("result.jsp");
+                    view.forward(request, response);
+                    break;
+                case 5:
+                    lista = ib.Procurar_Items_Data2(nome,convertToDate(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(ano)),0);
+                    request.setAttribute("lista_data", lista);
+                    view = request.getRequestDispatcher("result.jsp");
+                    view.forward(request, response);
+                    break;
+                case 6:
+                    lista = ib.Procurar_Items_Data3(nome,convertToDate(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(ano)),0);
+                    request.setAttribute("lista_data", lista);
+                    view = request.getRequestDispatcher("result.jsp");
+                    view.forward(request, response);
+                    break;
 
-        RequestDispatcher view = request.getRequestDispatcher("result.jsp");
-        view.forward(request, response);
+            }
+
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
