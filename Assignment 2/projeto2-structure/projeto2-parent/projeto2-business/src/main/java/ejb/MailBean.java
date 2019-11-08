@@ -2,6 +2,7 @@ package ejb;
 
 
 import data.Item;
+import data.Utilizador;
 import dto.ItemDTO;
 
 import javax.annotation.Resource;
@@ -36,7 +37,7 @@ public class MailBean {
 
     public MailBean() {}
 
-    //@Schedule(second = "0",minute = "*",hour = "*")
+    @Schedule(second = "0",minute = "*/5",hour = "*")
     public void send() {
 
         try {
@@ -61,10 +62,24 @@ public class MailBean {
             items_email.append("\nBest regards,\n" + "\tMyBay CEO's Joao Tomas and Duarte Guerreiro");
             //System.out.println("ddddd -> " + items_email);
 
+            Query email_q = em.createQuery("from Utilizador u");
+            @SuppressWarnings("unchecked")
+            List<Utilizador> all_users = email_q.getResultList();
+
 
             /*final*/ MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("revealconcepts@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("joao.miguel.tomas@hotmail.com"));
+            message.setFrom(new InternetAddress("mybayteam@gmail.com"));
+
+
+            InternetAddress[] tos = new InternetAddress[all_users.size()];
+
+            for (int j=0; j < all_users.size(); j++){
+                tos[j] = new InternetAddress(all_users.get(j).getEmail());
+            }
+
+            message.setRecipients(Message.RecipientType.TO, tos);
+            //message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(all_user.getEmail()));
+
             message.setSubject("MyBay Items Catalog");
             //message.setContent("Mail sent from JBoss 10","text/plain");
             message.setContent(items_email.toString(), "text/plain");
