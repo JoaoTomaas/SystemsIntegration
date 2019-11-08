@@ -139,6 +139,17 @@ public class ItemBean {
         return resultado;
     }*/
 
+    public List<Item> Newest_Items (){
+        Query q = em.createQuery("from Item i order by published_date desc");
+
+        @SuppressWarnings("unchecked")
+        List<Item> result = q.getResultList();
+
+        return result;
+    }
+
+
+
     public List<ItemDTO> Procurar_Items_Data(String nome,Date data) {
         Query q = em.createQuery("from Item i where i.published_date > :d and i.name like CONCAT('%',:n,'%')");
         q.setParameter("d", data);
@@ -199,7 +210,7 @@ public class ItemBean {
         //Data do sistema
         Date published_date = new Date();
 
-        Item new_item = new Item(name, category, country_of_origin, price, published_date);
+        Item new_item = new Item(name, category, country_of_origin, price, published_date, path);
         Query q = em.createQuery("select id from Utilizador u where u.email = :e");
         q.setParameter("e", email_user);
         new_item.setUtilizador(em.find(Utilizador.class, q.getSingleResult()));
@@ -236,6 +247,7 @@ public class ItemBean {
     public List<ItemDTO> Listar_Detalhes_Item (int id){
         Query q = em.createQuery("from Item i where i.id = :i");
         q.setParameter("i", id);
+        @SuppressWarnings("unchecked")
         List<Item> resultado_intermedio = q.getResultList();
         //List<ItemDTO> resultado= ItemMapper.INSTANCE.listItemToListItemDto(resultado_intermedio);
         List<ItemDTO> resultado = new ArrayList<ItemDTO>();

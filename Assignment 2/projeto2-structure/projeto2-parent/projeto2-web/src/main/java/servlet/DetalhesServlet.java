@@ -2,6 +2,7 @@ package servlet;
 
 
 import data.Item;
+import dto.ItemDTO;
 import ejb.ItemBean;
 import ejb.LoginBean;
 
@@ -27,7 +28,7 @@ public class DetalhesServlet extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("param"));
 
-        List item_details = ib.Listar_Detalhes_Item(id);
+        List <ItemDTO> item_details = ib.Listar_Detalhes_Item(id);
 
 
         request.setAttribute("item_details", item_details);

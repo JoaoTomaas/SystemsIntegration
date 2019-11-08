@@ -8,7 +8,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2019-11-07T18:41:23+0000",
+    date = "2019-11-08T12:29:33+0000",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_152 (Oracle Corporation)"
 )
 public class ItemMapperImpl implements ItemMapper {

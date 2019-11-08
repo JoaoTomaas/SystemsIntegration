@@ -37,14 +37,15 @@ public class NewItemServlet extends HttpServlet{
         //Para guardar a fotografia
         Part img_part = request.getPart("file");
         String img_name = ImgPath(img_part);
-        String finalPath = "C:\\Users\\joaom\\Downloads\\Imagens\\Apresentação\\" + img_name;
+        //String finalPath = "C:\\Users\\joaom\\Downloads\\Imagens\\Apresentação\\" + img_name;
         //File Path = new File(finalPath);
         //img_part.write(Path + File.separator);
 
-        System.out.println("PATHHHHHHH FINAL ->>>> " + finalPath);
+        //System.out.println("PATHHHHHHH FINAL ->>>> " + finalPath);
         //System.out.println("PATHHHHH DO MAL ->>>> " + img_part);
+        System.out.println("Nome da imagem -> " + img_name);
 
-        ib.Inserir_Novo_Item(nome, category, country, Float.parseFloat(price), user_mail, finalPath);
+        ib.Inserir_Novo_Item(nome, category, country, Float.parseFloat(price), user_mail, img_name);
 
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");

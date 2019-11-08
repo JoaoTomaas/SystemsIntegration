@@ -33,12 +33,13 @@ public class Item implements Serializable {
     }
 
 
-    public Item(String name, String category, String country_of_origin, float price, Date published_date) {
+    public Item(String name, String category, String country_of_origin, float price, Date published_date, String img_path) {
         this.name = name;
         this.category = category;
         this.country_of_origin = country_of_origin;
         this.price = price;
         this.published_date = published_date;
+        this.img_path = img_path;
     }
 
     public String getName() {

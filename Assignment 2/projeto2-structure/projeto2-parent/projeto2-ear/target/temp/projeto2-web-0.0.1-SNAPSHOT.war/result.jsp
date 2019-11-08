@@ -187,6 +187,7 @@ else if (request.getAttribute("lista_myitems") != null){
             //out.println(i.getId() + ". " + i.getName() + "<br>");
 %>
 <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+
 <%
             }
         }
@@ -197,10 +198,12 @@ else if (request.getAttribute("lista_myitems") != null){
     else if (request.getAttribute("item_details") != null){
         List lista = (List) request.getAttribute("item_details");
         Iterator it = lista.iterator();
+        %>
+            <div style="margin-left: 2%; float: left">
+        <%
+
         if (it.hasNext()) {
-
-            out.println("<br><h3>Detalhes do item</h3><br>");
-
+                out.println("<br><h3>Detalhes do item</h3><br>");
             ItemDTO i = (ItemDTO) it.next();
             //Item it = (Item) request.getAttribute("items_details");
             out.print("<b>Id:</b> " + i.getId() + "<br>");
@@ -210,6 +213,24 @@ else if (request.getAttribute("lista_myitems") != null){
             out.print("<b>Price:</b> " + i.getPrice() + "<br>");
             out.print("<b>Data de Publicacao:</b> " + i.getPublished_date() + "<br>");
             out.print("<b>Utilizador:</b> " + i.getUtilizador().getName() + "<br>");
+            //out.print("Path do menino -> " + i.getImg_path());
+            //String imagem = i.getImg_path();
+            if (i.getImg_path() != null){
+            %>
+            </div>
+
+            <div style="float: left; margin-left: 10%">
+                <img src="<%request.getContextPath();%>images/<%=i.getImg_path()%>" width="500" height="500" />
+            </div>
+<!--
+        <img src="file:///C:\Users\joaom\Downloads\Imagens\Apresentação\27368609_1861482323893544_8410552302162346894_o.jpg">
+    <img src="images/ceos.JPG"  width="1500" height="1500"/>
+
+<img src="C://Users/joaom/Downloads/Imagens/Apresentação/27368609_1861482323893544_8410552302162346894_o.jpg"  width="650" height="500"/>
+-->
+
+<%
+            }
         }
     }
 
