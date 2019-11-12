@@ -16,15 +16,16 @@
 
 <form action="CategoryServ" method="post">
 
-    Nome :<input type="text" name="nome"/><br/><br/>
+    Nome do item <input type="text" name="nome"/><br/>
 
+    <h3>Categoria</h3>
     <select name="category">
-        <c:forEach items="${listCategory}" var="category">
-            <option value="${category}">${category}</option>
+         <c:forEach items="${listCategory}" var="category">
+             <option value="${category}">${category}</option>
         </c:forEach>
     </select>
     <br><br>
-    <input type="submit">
+    <input type="submit" value="Pesquisar">
 </form>
 
 </body>

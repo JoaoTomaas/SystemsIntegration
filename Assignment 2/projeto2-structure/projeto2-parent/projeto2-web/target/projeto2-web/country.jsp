@@ -11,9 +11,12 @@
     <title>Pesquisa</title>
 </head>
 <body>
+<div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
+
+<h3>Items do seu país</h3>
 <form method="get" action="CountryServ" >
-    Nome :<input type="text" name="nome"/><br/><br/>
-    <input type="submit" value="procura"/>
+    Nome do item <input type="text" name="nome"/><br/><br/>
+    <input type="submit" value="Procurar"/>
 </form>
 
 </body>

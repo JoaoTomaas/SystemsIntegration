@@ -28,10 +28,13 @@ public class EditItemFillServlet extends HttpServlet {
 
         request.setAttribute("id", item.getId());
         request.setAttribute("nome", item.getName());
-        System.out.println("QUE CATEGORIA ->>>>>>>>>>>>>> " + item.getCategory());
+        //System.out.println("QUE CATEGORIA ->>>>>>>>>>>>>> " + item.getCategory());
         request.setAttribute("categoria", item.getCategory());
         request.setAttribute("pais", item.getCountry_of_origin());
         request.setAttribute("preco", item.getPrice());
+        //request.setAttribute("imagem", item.getImg_path());
+
+        //System.out.println(item.getImg_path());
         request.getRequestDispatcher("edititemfill.jsp").forward(request, response);
 
     }

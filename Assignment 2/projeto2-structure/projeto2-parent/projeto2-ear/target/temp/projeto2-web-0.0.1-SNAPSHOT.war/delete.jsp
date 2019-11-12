@@ -11,7 +11,7 @@
 <div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
 
 <%
-
+    out.println("<br>Escolha o item que pretende eliminar: <br><br>");
     if (request.getAttribute("lista_myitems_edit") != null) {
         List resultado = (List) request.getAttribute("lista_myitems_edit");
         Iterator it = resultado.iterator();

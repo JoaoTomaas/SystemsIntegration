@@ -33,7 +33,9 @@
         while (it.hasNext()) {
             ItemDTO i = (ItemDTO) it.next();
 %>
-<a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a><br>
+<a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+<br>
+<br>
 <%
     }
 %>
@@ -63,6 +65,8 @@
         //out.println(i.getId() + ". " + i.getName() + "<br>");
 %>
 <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+<br>
+<br>
 <%
     }
 %>
@@ -91,6 +95,8 @@ else if (request.getAttribute("lista_categoria") != null){
         //out.println(i.getId() + ". " + i.getName() + "<br>");
 %>
 <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+<br>
+<br>
 <%
     }
 
@@ -122,6 +128,8 @@ else if (request.getAttribute("lista_range") != null){
         //out.println(i.getId() + ". " + i.getName() + "<br>");
 %>
 <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+<br>
+<br>
 <%
     }
 %>
@@ -152,6 +160,8 @@ else if (request.getAttribute("lista_data") != null){
         //out.println(i.getId() + ". " + i.getName() + "<br>");
 %>
 <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
+<br>
+<br>
 <%
     }
 
@@ -187,7 +197,7 @@ else if (request.getAttribute("lista_myitems") != null){
             //out.println(i.getId() + ". " + i.getName() + "<br>");
 %>
 <a href="DetalhesServ?param=<%=i.getId()%>"><%=i.getName()%></a>
-
+<br>
 <%
             }
         }

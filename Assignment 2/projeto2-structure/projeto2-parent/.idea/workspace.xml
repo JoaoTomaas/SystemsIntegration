@@ -31,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -61,6 +61,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\webapp" />
+      <recent name="C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\webapp\WEB-INF\teste" />
       <recent name="C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\src\main\webapp\WEB-INF" />
       <recent name="C:\Users\joaom\Desktop\IS\Assignment 2\projeto2-structure\projeto2-parent\projeto2-web\WEB-INF" />
     </key>
@@ -318,6 +319,14 @@
       <workItem from="1573173524506" duration="3824000" />
       <workItem from="1573204723100" duration="8559000" />
       <workItem from="1573221668021" duration="5167000" />
+      <workItem from="1573257398600" duration="1365000" />
+      <workItem from="1573297342497" duration="691000" />
+      <workItem from="1573302922117" duration="1909000" />
+      <workItem from="1573306059110" duration="721000" />
+      <workItem from="1573307898887" duration="10003000" />
+      <workItem from="1573326212480" duration="9378000" />
+      <workItem from="1573336640872" duration="131000" />
+      <workItem from="1573576635515" duration="12000" />
     </task>
     <servers />
   </component>

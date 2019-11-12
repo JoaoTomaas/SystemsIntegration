@@ -4,9 +4,11 @@
     <title>Pesquisa</title>
 </head>
 <body>
+<div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
+
 <form method="get" action="ItemServ" >
-    Nome :<input type="text" name="nome"/><br/><br/>
-    <input type="submit" value="procura"/>
+    Nome do item <input type="text" name="nome"/><br/><br/>
+    <input type="submit" value="Procurar"/>
 </form>
 </body>
 </html>

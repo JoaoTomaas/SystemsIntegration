@@ -17,7 +17,7 @@
 
 
 <%
-
+    out.println("<br>Escolha o item cuja informação quer editar: <br><br>");
     if (request.getAttribute("lista_myitems") != null) {
         List resultado = (List) request.getAttribute("lista_myitems");
         Iterator it = resultado.iterator();

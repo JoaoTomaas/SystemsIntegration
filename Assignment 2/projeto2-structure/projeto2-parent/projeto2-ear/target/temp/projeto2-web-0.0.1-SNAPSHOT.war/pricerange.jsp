@@ -14,7 +14,7 @@
 <div style="position: absolute; top:2%; right: 2%;" ><a href="${pageContext.request.contextPath}/LogoutServ">Logout</a></div>
 
 <form method="post" action="RangeServ" >
-    Nome :<input type="text" name="nome"/><br/><br/>
+    Nome do item <input type="text" name="nome"/><br/><br/>
     Preço mínimo <input type="text" name="minimum"/><br/><br/>
     Preço máximo <input type="text" name="maximum"/><br/><br/>
     <input type="submit" value="Search"/>

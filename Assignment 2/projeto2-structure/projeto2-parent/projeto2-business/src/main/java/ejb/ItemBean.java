@@ -219,7 +219,21 @@ public class ItemBean {
 
     //NOTA: Só o dono do item é que vai poder editar a info do mesmo, logo temos que verificar
     //se o id do user da sessao e igual ao do dono do item
-    public void Editar_Item_Info(int id, String name, String category, String country_of_origin, float price){
+    public void Editar_Item_Info(int id, String name, String category, String country_of_origin, float price, String img_path){
+        Query q = em.createQuery("update Item i set i.name = :n , i.category = :ct,i.country_of_origin = :c, i.price = :p, i.img_path =:ip where i.id = :i");
+        q.setParameter("n", name);
+        q.setParameter("ct", category);
+        q.setParameter("c", country_of_origin);
+        q.setParameter("p", price);
+        q.setParameter("ip", img_path);
+
+        q.setParameter("i", id);
+
+        q.executeUpdate();
+
+    } //TESTAR
+
+    public void Editar_Item_Img(int id, String name, String category, String country_of_origin, float price){
         Query q = em.createQuery("update Item i set i.name = :n , i.category = :ct,i.country_of_origin = :c, i.price = :p where i.id = :i");
         q.setParameter("n", name);
         q.setParameter("ct", category);

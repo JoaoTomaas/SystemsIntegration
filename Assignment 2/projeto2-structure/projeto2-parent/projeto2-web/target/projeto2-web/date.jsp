@@ -15,7 +15,7 @@
 
 <div style="margin-left: 2%; margin-top: 2%; text-align: right; float: left">
     <form method="post" action="DateServ" >
-        Nome :<input type="text" name="nome"/><br/><br/>
+        Nome do item <input type="text" name="nome"/><br/><br/>
         Dia <input type="text" name="dia"/> <br/><br/>
         Mês <input type="text" name="mes"/><br/><br/>
         Ano <input type="text" name="ano"/><br/><br/>

@@ -15,12 +15,12 @@
 
 <form method="post" action="UpdateUserServ" >
 
-    Email:<input type="text" name="email" value=${email}><br/><br/>
-    Password:<input type="password" name="password" /><br/><br/>
-    Nome :<input type="text" name="nome"value="${nome}" ><br/><br/>
-    Pais :<input type="text" name="pais"value="${pais}" ><br/><br/>
-    Idade :<input type="number" name="idade"value=${idade}><br/><br/>
-    <input type="submit" value="update"/>
+    Email    <input type="text" name="email" value=${email}><br/><br/>
+    Password <input type="password" name="password" /><br/><br/>
+    Nome     <input type="text" name="nome"value="${nome}" ><br/><br/>
+    Pais     <input type="text" name="pais"value="${pais}" ><br/><br/>
+    Idade    <input type="number" name="idade"value=${idade}><br/><br/>
+    <input type="submit" value="Update"/>
 </form>
 </body>
 </html>

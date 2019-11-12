@@ -10,6 +10,7 @@ servlet\ApagaItemFServlet.class
 servlet\DisplayUserServlet.class
 servlet\CategoryServlet.class
 servlet\LoginServlet.class
+servlet\LoginFilter.class
 servlet\PriceRangeServlet.class
 servlet\NewItemServlet.class
 servlet\EditItemServlet.class

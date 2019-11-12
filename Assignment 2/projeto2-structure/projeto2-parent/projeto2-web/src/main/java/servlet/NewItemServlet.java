@@ -43,7 +43,7 @@ public class NewItemServlet extends HttpServlet{
 
         //System.out.println("PATHHHHHHH FINAL ->>>> " + finalPath);
         //System.out.println("PATHHHHH DO MAL ->>>> " + img_part);
-        System.out.println("Nome da imagem -> " + img_name);
+        //System.out.println("Nome da imagem -> " + img_name);
 
         ib.Inserir_Novo_Item(nome, category, country, Float.parseFloat(price), user_mail, img_name);
 

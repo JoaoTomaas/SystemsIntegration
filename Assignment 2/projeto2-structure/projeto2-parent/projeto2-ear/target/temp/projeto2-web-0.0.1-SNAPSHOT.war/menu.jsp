@@ -40,6 +40,5 @@
 </div>
 
 </body>
-<!--a href="${pageContext.request.contextPath}/ItemServ">Search for all items</a><br /> -->
-<!--a id="search_category" onclick="location.href='@Url.Action(ItemServ)'">SSearch inside a certain category</a><br /> -->
+
 </html>
