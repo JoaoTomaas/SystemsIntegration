@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="effd75de-93bb-4662-982d-c159511568d5" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - KafkaDB@localhost [2]" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - KafkaDB@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - KafkaDB@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="kafkadb: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UhdzCpahaeiHAnS5LHX8BFdvxN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+  </component>
+  <component name="RunManager" selected="Maven.projeto3 [install,wildfly:deploy]">
+    <configuration name="JBoss 16.0.0.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 16.0.0.Final" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8120/" />
+      <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+      <option name="COMMON_VM_ARGUMENTS" value=" -Djboss.socket.binding.port-offset=20" />
+      <deployment>
+        <artifact name="ejb:ejb exploded">
+          <settings />
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="SERVER" />
+        <option name="BINDING_SET_NAME" value="" />
+        <option name="DOMAIN" value="false" />
+        <option name="SERVER_GROUP" value="main-server-group" />
+        <option name="USERNAME" value="" />
+        <option name="CREDENTIAL_ALIAS" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="JBoss" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="63483" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ejb:ejb exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="projeto3 [install,wildfly:deploy]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="install" />
+                <option value="wildfly:deploy" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JBoss Server.JBoss 16.0.0.Final" />
+      <item itemvalue="Maven.projeto3 [install,wildfly:deploy]" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="effd75de-93bb-4662-982d-c159511568d5" name="Default Changelist" comment="" />
+      <created>1575813020544</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575813020544</updated>
+      <workItem from="1575813021883" duration="1659000" />
+      <workItem from="1575817614926" duration="682000" />
+      <workItem from="1575818378893" duration="4349000" />
+      <workItem from="1575825061347" duration="38000" />
+      <workItem from="1575826676895" duration="5139000" />
+      <workItem from="1575890392007" duration="2991000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="233" y="3" key="#Project_Structure" timestamp="1575817967525">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="233" y="3" key="#Project_Structure/0.0.1280.689@0.0.1280.689" timestamp="1575817967525" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575828646701">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1575828646701" />
+    <state x="446" y="29" key="#com.intellij.ide.util.MemberChooser" timestamp="1575832630159">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="446" y="29" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689@0.0.1280.689" timestamp="1575832630159" />
+    <state x="233" y="3" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1575818709289">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="233" y="3" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1280.689@0.0.1280.689" timestamp="1575818709289" />
+    <state x="421" y="86" key="FileChooserDialogImpl" timestamp="1575813925810">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="421" y="86" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1575813925810" />
+    <state width="1237" height="178" key="GridCell.Tab.0.bottom" timestamp="1575893412289">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="178" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1575893412289" />
+    <state width="1237" height="178" key="GridCell.Tab.0.center" timestamp="1575893412289">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="178" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1575893412289" />
+    <state width="1237" height="178" key="GridCell.Tab.0.left" timestamp="1575893412289">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="178" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1575893412289" />
+    <state width="1237" height="178" key="GridCell.Tab.0.right" timestamp="1575893412289">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="178" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1575893412289" />
+    <state x="91" y="0" key="new project wizard" timestamp="1575822545140">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="91" y="0" key="new project wizard/0.0.1280.689@0.0.1280.689" timestamp="1575822545140" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1575893095573">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1575893095573" />
+  </component>
+</project>

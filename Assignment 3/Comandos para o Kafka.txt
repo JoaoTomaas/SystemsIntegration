@@ -1,0 +1,57 @@
+>>>> Correr o Zookeeper
+zookeeper-server-start.bat C:\Users\joaom\Desktop\kafka_2.11-2.3.1\config\zookeeper.properties
+
+>>>> Correr o Kafka Server
+kafka-server-start.bat C:\Users\joaom\Desktop\kafka_2.11-2.3.1\config\server.properties
+
+>>>> Criar os tópicos
+kafka-topics.bat --create --zookeeper localhost:2181 -replication-factor 1 --partitions 1 --topic kstreamstopic
+
+kafka-topics.bat --create --zookeeper localhost:2181 -replication-factor 1 --partitions 1 --topic resultstopic
+
+Depois é correr no IntelliJ o consumer, o producer e o programa e está a andar de mota
+
+
+
+>>>> Testar os connectors
+-> Source
+connect-standalone.bat C:\Users\joaom\Desktop\kafka_2.11-2.3.1\config\connect-standalone.properties C:\Users\joaom\Desktop\kafka_2.11-2.3.1\config\connect-jdbc-source-joao.properties
+
+
+>>>> Consumer para ver o resultado dos connectors
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic KafkaDB --from-beginning
+
+
+-> Sink
+>>>> Correr source e sink ao mesmo tempo
+connect-standalone.bat C:\Users\joaom\Desktop\kafka_2.11-2.3.1\config\connect-standalone.properties C:\Users\joaom\Desktop\kafka_2.11-2.3.1\config\connect-jdbc-source-joao.properties C:\Users\joaom\Desktop\kafka_2.11-2.3.1\config\connect-jdbc-sink-joao.properties
+
+
+>>>> Producer para produzir algo que será depois enviado para a base de dados
+kafka-console-producer.bat --broker-list localhost:9092 --topic KafkatoDB
+
+>>>> Dados para o producer
+{"schema":{"type":"struct","fields":[{"type":"double","optional":false,"field":"revenue"},{"type":"double","optional":false,"field":"expenses"},{"type":"double","optional":false,"field":"profit"}],"optional":false,"name":"total data"},"payload":{"revenue":988500.0, "expenses":731430.0,"profit":257070.0}}
+
+
+>>>> Ver tópicos existentes
+kafka-topics.bat --describe --zookeeper localhost:2181
+
+
+>>>>Entrar no mysql pela linha de comandos
+Diretoria:
+-> C:\Program Files\MySQL\MySQL Server 8.0\bin>
+Comando:
+-> mysql -u joaot -p
+
+
+Outros comandos importantes:
+use KafkaDB;
+show tables;
+select * from countries;
+
+
+
+
+//EXTRA (NÃO FOI NECESSÁRIO)
+CLASSPATH=C:\Users\joaom\Desktop\kafka_2.11-2.3.1\libs\kafka-connect-jdbc-5.3.1.jar connect-standalone.bat C:\Users\joaom\Desktop\kafka_2.11-2.3.1\config\connect-standalone.properties

@@ -1,0 +1,12 @@
+>>>> Correr o Zookeeper
+zookeeper-server-start.bat C:\Users\joaom\Desktop\kafka_2.11-2.3.1\config\zookeeper.properties
+
+>>>> Correr o Kafka Server
+kafka-server-start.bat C:\Users\joaom\Desktop\kafka_2.11-2.3.1\config\server.properties
+
+>>>> Criar os tópicos
+kafka-topics.bat --create --zookeeper localhost:2181 -replication-factor 1 --partitions 1 --topic kstreamstopic
+
+kafka-topics.bat --create --zookeeper localhost:2181 -replication-factor 1 --partitions 1 --topic resultstopic
+
+Depois é correr no IntelliJ o consumer, o producer e o programa e está a andar de mota

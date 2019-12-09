@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="809766d4-5a2a-4b57-a641-ac9ebbce2939" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1TWYI473x2iLlyq5zCABBU8zVUz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.scopes" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn clean install" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.SimpleStreamsExercises">
+    <configuration name="SimpleConsumer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SimpleConsumer" />
+      <module name="IS-3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SimpleProducer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SimpleProducer" />
+      <module name="IS-3" />
+      <option name="PROGRAM_PARAMETERS" value="kstreamstopic" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SimpleStreamsExercises" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SimpleStreamsExercises" />
+      <module name="IS-3" />
+      <option name="PROGRAM_PARAMETERS" value="kstreamstopic" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WordCountApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WordCountApplication" />
+      <module name="IS-3" />
+      <option name="PROGRAM_PARAMETERS" value="kstreamstopic" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.SimpleProducer" />
+      <item itemvalue="Application.WordCountApplication" />
+      <item itemvalue="Application.SimpleConsumer" />
+      <item itemvalue="Application.SimpleStreamsExercises" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SimpleStreamsExercises" />
+        <item itemvalue="Application.SimpleProducer" />
+        <item itemvalue="Application.SimpleConsumer" />
+        <item itemvalue="Application.WordCountApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="809766d4-5a2a-4b57-a641-ac9ebbce2939" name="Default Changelist" comment="" />
+      <created>1573577235179</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573577235179</updated>
+      <workItem from="1573577236341" duration="1000000" />
+      <workItem from="1574534124299" duration="544000" />
+      <workItem from="1574610309657" duration="3942000" />
+      <workItem from="1574716344201" duration="2492000" />
+      <workItem from="1575228459601" duration="335000" />
+      <workItem from="1575390010902" duration="995000" />
+      <workItem from="1575391451753" duration="1094000" />
+      <workItem from="1575407065007" duration="1214000" />
+      <workItem from="1575626754129" duration="278000" />
+      <workItem from="1575627351119" duration="169000" />
+      <workItem from="1575679114899" duration="599000" />
+      <workItem from="1575809337462" duration="43000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
