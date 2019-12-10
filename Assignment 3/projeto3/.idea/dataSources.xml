@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="MySQL - KafkaDB@localhost [2]" uuid="3cc0fc59-84f8-4640-a06c-bbe734f8e872">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/KafkaDB?useTimezone=true&amp;serverTimezone=UTC</jdbc-url>
+    </data-source>
+  </component>
+</project>

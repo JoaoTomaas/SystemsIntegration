@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="EJB" type="EJB">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../IS/Assignment 3/javax.ejb-api-3.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

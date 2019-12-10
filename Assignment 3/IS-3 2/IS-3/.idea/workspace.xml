@@ -41,7 +41,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.scopes" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -153,6 +153,9 @@
       <workItem from="1575893601723" duration="68000" />
       <workItem from="1575894214364" duration="1458000" />
       <workItem from="1575895796080" duration="309000" />
+      <workItem from="1575907939381" duration="8000" />
+      <workItem from="1575921409552" duration="177000" />
+      <workItem from="1575971284199" duration="4174000" />
     </task>
     <servers />
   </component>
@@ -160,21 +163,33 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="273" key="GridCell.Tab.0.bottom" timestamp="1575895685693">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575971894178">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="273" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1575895685693" />
-    <state width="1237" height="273" key="GridCell.Tab.0.center" timestamp="1575895685693">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1575971894178" />
+    <state width="1237" height="273" key="GridCell.Tab.0.bottom" timestamp="1575921587459">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="273" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1575895685693" />
-    <state width="1237" height="273" key="GridCell.Tab.0.left" timestamp="1575895685693">
+    <state width="1237" height="273" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1575921587459" />
+    <state width="1237" height="273" key="GridCell.Tab.0.center" timestamp="1575921587459">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="273" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1575895685693" />
-    <state width="1237" height="273" key="GridCell.Tab.0.right" timestamp="1575895685693">
+    <state width="1237" height="273" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1575921587459" />
+    <state width="1237" height="273" key="GridCell.Tab.0.left" timestamp="1575921587458">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="273" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1575895685693" />
+    <state width="1237" height="273" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1575921587458" />
+    <state width="1237" height="273" key="GridCell.Tab.0.right" timestamp="1575921587459">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1575921587459" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1575973604320">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1575973604320" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1575973590449">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1575973590449" />
   </component>
 </project>

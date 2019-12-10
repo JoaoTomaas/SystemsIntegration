@@ -27,7 +27,10 @@ public class Main {
         System.out.println("Menu");
         System.out.println("1. Inserir Item");
         System.out.println("2. Inserir Pais");
-        System.out.println("3. Consultar estatísticas");
+        System.out.println("3. Consultar paises");
+        System.out.println("4. Consultar items");
+        System.out.println("5. Consultar estatísticas dos items");
+
 
         while (true) {
             System.out.print("\nOperacao pretendida: ");
@@ -35,16 +38,34 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    GET("gettext");
+                    //GET("gettext");
+                    System.out.print("Nome: ");
+                    Scanner scan = new Scanner(System.in);
+                    String nome="";
+
+                    nome+=scan.nextLine();
+
+                    GET("insertitem?itemname=" + nome);
                     break;
                 case 2:
-                    GET("getmaterials");
+                    System.out.print("Nome: ");
+                    Scanner scania = new Scanner(System.in);
+                    String name="";
+
+                    name+=scania.nextLine();
+                    GET("insertcountry?countryname=" + name);
                     break;
                 case 3:
-                    GET("getstudents?id=1");
+                    GET("getcountries");
                     break;
                 case 4:
-                    GET("getcountries");
+                    GET("getitems");
+                    break;
+
+                    //Estatisticas
+                case 5:
+                    System.out.println("Estatisticas dos Items");
+                    break;
                 case 10:
                     System.exit(0);
                     break;
@@ -83,7 +104,6 @@ public class Main {
         connection.disconnect();
     }
 
-
     private static void POST() throws IOException {
         URL destino = new URL(POST_URL);
         HttpURLConnection connection = (HttpURLConnection) destino.openConnection();
@@ -119,4 +139,29 @@ public class Main {
 
         connection.disconnect(); //Termina a ligacao
     }
+
+    private static void item_stats(){
+        System.out.println("1. Revenue per Item");
+        System.out.println("2. Expenses per Item");
+        System.out.println("3. Profit per Item");
+
+        Scanner input = new Scanner( System.in );
+        System.out.print("\nOpcao pretendida: ");
+        int opcao = input.nextInt();
+
+        switch(opcao){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
+
+
+
+
+    }
+
+
 }
