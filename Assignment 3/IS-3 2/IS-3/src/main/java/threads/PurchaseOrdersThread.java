@@ -1,11 +1,74 @@
 package threads;
 
+import jdk.internal.org.objectweb.asm.tree.IntInsnNode;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.protocol.types.Field;
+import org.json.JSONObject;
+
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Properties;
 import java.util.Random;
 
 public class PurchaseOrdersThread implements Runnable{
-
-
+    public static String json;
+    public static ArrayList<String> Lista_Paises;
+    public static  ArrayList<Integer> Lista_Items;
     public void run() {
+        Lista_Paises= new ArrayList<String>();
+        Lista_Items= new ArrayList<Integer>();
+        Properties props = new Properties();
+        props.setProperty("bootstrap.servers", "localhost:9092");
+        props.setProperty("group.id", "test");
+        //means that offsets are committed automatically with a frequency controlled by the config auto.commit.interval.ms.
+        props.setProperty("enable.auto.commit", "true");
+        props.setProperty("auto.commit.interval.ms", "1000");
+        //The deserializer settings specify how to turn bytes into objects
+        props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
+        consumer.subscribe(Arrays.asList("KafkaDB"));
+
+
+        String topicName = "purchasestopic";
+
+        // create instance for properties to access producer configs
+        Properties props2 = new Properties();
+
+        //Assign localhost id
+        props2.put("bootstrap.servers", "localhost:9092");
+
+        //Set acknowledgements for producer requests.
+        props2.put("acks", "all");
+
+        //If the request fails, the producer can automatically retry,
+        props2.put("retries", 0);
+
+        //Specify buffer size in config
+        props2.put("batch.size", 16384);
+
+        //Reduce the no of requests less than 0
+        props2.put("linger.ms", 1);
+
+        //The buffer.memory controls the total amount of memory available to the producer for buffering.
+        props2.put("buffer.memory", 33554432);
+
+        props2.put("key.serializer",
+                "org.apache.kafka.common.serialization.StringSerializer");
+
+        props2.put("value.serializer",
+                "org.apache.kafka.common.serialization.StringSerializer");
+
+        Producer<String, String> producer = new KafkaProducer<>(props2);
+
+
+
         System.out.println("PurchaseOrdersThread running...");
 
         while (true) {
@@ -16,8 +79,27 @@ public class PurchaseOrdersThread implements Runnable{
             System.out.println("Price generated: " + price);
             System.out.println("Number of units generated: " + n_units);
 
+            JSONObject dados_compra = new JSONObject();
+            dados_compra.put("preco",price);
+            dados_compra.put("unidades",n_units);
+            String jsonresult = dados_compra.toString();
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
+            for (ConsumerRecord<String, String> record : records) {
+                update(record.value());
+            }
+            System.out.println(Arrays.toString(Lista_Items.toArray()));
+            System.out.println(Arrays.toString(Lista_Paises.toArray()));
+            if(Lista_Items.size()>0){
+                String item= Integer.toString(Lista_Items.get(random.nextInt(Lista_Items.size())));
+                System.out.println(item+"--->"+jsonresult);
+                producer.send(new ProducerRecord<String, String>(topicName,item, jsonresult));
+            }
+            //Assign topicName to string variable
+
+
+
             try {
-                Thread.sleep(5000); //Sleep de 5 segundos
+                Thread.sleep(15000); //Sleep de 5 segundos
             } catch (InterruptedException e) {
 
 
@@ -28,6 +110,27 @@ public class PurchaseOrdersThread implements Runnable{
 
     }
 
+
+    public static void update(String s){
+        JSONObject obj = new JSONObject(s);
+        JSONObject payload = obj.getJSONObject("payload");
+        if(payload.has("country_name")){
+            if(!Lista_Paises.contains(payload.getString("country_name"))){
+                Lista_Paises.add(payload.getString("country_name"));
+            }
+        }
+        else {
+            //System.out.println(payload.keySet());
+            if(!Lista_Items.contains(payload.getInt("item_id"))){
+                Lista_Items.add((payload.getInt("item_id")));
+            }
+
+
+        }
+
+
+
+    }
     public static void main(String args[]) {
         (new Thread(new PurchaseOrdersThread())).start();
     }
