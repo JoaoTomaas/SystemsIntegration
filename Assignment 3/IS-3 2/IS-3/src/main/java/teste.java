@@ -72,8 +72,14 @@ public class teste {
         dados_compra.put("preco","3");
         dados_compra.put("unidades","5");
         jsonresult = dados_compra.toString();
-
         producer.send(new ProducerRecord<String, String>(topicName,"1", jsonresult));
+
+        dados_compra = new JSONObject();
+        dados_compra.put("preco","5");
+        dados_compra.put("unidades","2");
+        jsonresult = dados_compra.toString();
+        producer.send(new ProducerRecord<String, String>(topicName,"2", jsonresult));
+
         dados_compra = new JSONObject();
         dados_compra.put("preco","2");
         dados_compra.put("unidades","10");
@@ -85,6 +91,7 @@ public class teste {
         dados_compra.put("unidades","5");
         jsonresult = dados_compra.toString();
         producer.send(new ProducerRecord<String, String>(topicName,"1", jsonresult));
+
         dados_compra = new JSONObject();
         dados_compra.put("preco","3");
         dados_compra.put("unidades","10");

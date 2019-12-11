@@ -37,8 +37,8 @@ public class ManageResultsApplication {
         KStream<String, String> stream_fornece = builder.stream(inputtopic_purchases);
 
         //Aquele join do mal
-        /*KStream<String, String> joined = stream_fornece.join(stream_cliente,
-                (leftValue, rightValue) -> "left=" + leftValue + ", right=" + rightValue, // ValueJoiner
+        KStream<String, String> joined = stream_fornece.join(stream_cliente,
+                (leftValue, rightValue) -> "fornece=" + leftValue + ", compra=" + rightValue, // ValueJoiner
                 JoinWindows.of(TimeUnit.MINUTES.toMillis(5)),
                 Joined.with(
                         Serdes.String(),    //key
@@ -46,51 +46,47 @@ public class ManageResultsApplication {
                         Serdes.String())    //right value
         );
 
-        joined.mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));*/
+        //joined.groupByKey(Grouped.with(Serdes.String(), Serdes.String())).count().toStream().mapValues((k, v) -> "" + k + " ----> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
 
-
-
+        //Double total_rev;
 
         //Expenses por item (Purchasestopic)
-        KTable<String, Double> trata_rev_it = stream_fornece.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
-        trata_rev_it.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
-
-
+        KTable<String, Double> trata_exp_it = stream_fornece.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
+        trata_exp_it.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
 
         //Revenue por item (Salestopic)
         KTable<String, Double> trata = stream_cliente.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         trata.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+
+        //Calcular o total de expenses (despesas)
+        KTable<String, Double> trata_exp_total = stream_fornece.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de gastos", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
+        trata_exp_total.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+
+        //Calcular o total de revenues (receitas)
+        KTable<String, Double> trata_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
+        trata_rev_total.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+
+        //.aggregate(()->0.0,(newvalue, totalval) -> totalval + newvalue);
+        /*.aggregate(
+                total_rev -> 0, / initializer
+                (key, newValue, total_rev) -> total_rev, // adder
+                Materialized.as("aggregated-stream-store") // state store name
+                        .withValueSerde(Serdes.Integer()); // serde for aggregate value
+        */
+
 
         KafkaStreams streams = new KafkaStreams(builder.build(), propd);
         streams.start();
 
 
     }
-
-
-
+    
 
 
     public static Double transformValue(String s){
         JSONObject obj = new JSONObject(s);
         return (obj.getDouble("preco") * obj.getDouble("unidades"));
     }
-
-
-/*
-
-        JSONObject dados_compra = new JSONObject();
-        dados_compra.put("preco", 10);
-        dados_compra.put("unidades",5);
-        String jsonresult = dados_compra.toString();
-        System.out.print(jsonresult);
-
- */
-
-
-
-
-    //Compute expenses
 
     //Compute profit
 

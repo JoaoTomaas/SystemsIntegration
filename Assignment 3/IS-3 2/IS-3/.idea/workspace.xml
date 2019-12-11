@@ -49,7 +49,7 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.teste">
+  <component name="RunManager" selected="Application.ManageResultsApplication">
     <configuration name="CustomersThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="threads.CustomersThread" />
       <module name="IS-3" />
@@ -161,7 +161,8 @@
       <workItem from="1575921409552" duration="177000" />
       <workItem from="1575971284199" duration="18618000" />
       <workItem from="1576015399356" duration="6447000" />
-      <workItem from="1576060232293" duration="5739000" />
+      <workItem from="1576060232293" duration="21105000" />
+      <workItem from="1576100320341" duration="303000" />
     </task>
     <servers />
   </component>
@@ -173,29 +174,29 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1575971894178" />
-    <state width="1237" height="340" key="GridCell.Tab.0.bottom" timestamp="1576070603688">
+    <state width="1236" height="282" key="GridCell.Tab.0.bottom" timestamp="1576089696648">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="340" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1576070603688" />
-    <state width="1237" height="340" key="GridCell.Tab.0.center" timestamp="1576070603687">
+    <state width="1236" height="282" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1576089696648" />
+    <state width="1236" height="282" key="GridCell.Tab.0.center" timestamp="1576089696648">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="340" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1576070603687" />
-    <state width="1237" height="340" key="GridCell.Tab.0.left" timestamp="1576070603687">
+    <state width="1236" height="282" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1576089696648" />
+    <state width="1236" height="282" key="GridCell.Tab.0.left" timestamp="1576089696648">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="340" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1576070603687" />
-    <state width="1237" height="340" key="GridCell.Tab.0.right" timestamp="1576070603688">
+    <state width="1236" height="282" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1576089696648" />
+    <state width="1236" height="282" key="GridCell.Tab.0.right" timestamp="1576089696648">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="340" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576070603688" />
+    <state width="1236" height="282" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576089696648" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1575973604320">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1575973604320" />
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576063480613">
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576075396892">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576063480613" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576075396892" />
   </component>
 </project>
