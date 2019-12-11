@@ -25,7 +25,7 @@ public class PurchaseOrdersThread implements Runnable{
         Lista_Items= new ArrayList<Integer>();
         Properties props = new Properties();
         props.setProperty("bootstrap.servers", "localhost:9092");
-        props.setProperty("group.id", "test");
+        props.setProperty("group.id", "grupo2");
         //means that offsets are committed automatically with a frequency controlled by the config auto.commit.interval.ms.
         props.setProperty("enable.auto.commit", "true");
         props.setProperty("auto.commit.interval.ms", "1000");

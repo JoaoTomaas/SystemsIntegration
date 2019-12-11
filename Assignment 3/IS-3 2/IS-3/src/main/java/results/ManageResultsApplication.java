@@ -7,8 +7,10 @@ import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.*;
 import org.json.JSONObject;
+import sun.security.krb5.internal.tools.Ktab;
 
 import java.io.IOException;
+import java.security.acl.Group;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -35,7 +37,7 @@ public class ManageResultsApplication {
         KStream<String, String> stream_fornece = builder.stream(inputtopic_purchases);
 
         //Aquele join do mal
-        KStream<String, String> joined = stream_cliente.leftJoin(stream_fornece,
+        /*KStream<String, String> joined = stream_fornece.join(stream_cliente,
                 (leftValue, rightValue) -> "left=" + leftValue + ", right=" + rightValue, // ValueJoiner
                 JoinWindows.of(TimeUnit.MINUTES.toMillis(5)),
                 Joined.with(
@@ -44,16 +46,20 @@ public class ManageResultsApplication {
                         Serdes.String())    //right value
         );
 
-        joined.mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+        joined.mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));*/
 
 
 
 
+        //Expenses por item (Purchasestopic)
+        KTable<String, Double> trata_rev_it = stream_fornece.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
+        trata_rev_it.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
 
-        //Preco pago aos fornecedores (Expenses)
-        //KTable<String, Double> trata = stream_cliente.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
 
-        //trata.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+
+        //Revenue por item (Salestopic)
+        KTable<String, Double> trata = stream_cliente.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
+        trata.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
 
         KafkaStreams streams = new KafkaStreams(builder.build(), propd);
         streams.start();
