@@ -33,7 +33,7 @@ public class PurchaseOrdersThread implements Runnable{
         props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
-        consumer.subscribe(Arrays.asList("KafkaDB"));
+        consumer.subscribe(Arrays.asList("dbinfotopic"));
 
 
         String topicName = "purchasestopic";
@@ -73,8 +73,8 @@ public class PurchaseOrdersThread implements Runnable{
 
         while (true) {
             Random random = new Random();
-            int price = random.nextInt(100); // de 0 a 99
-            int n_units = random.nextInt(1000); //de 0 a 999
+            int price = random.nextInt(100) + 1; // de 1 a 100
+            int n_units = random.nextInt(1000) + 1; //de 1 a 1000
 
             System.out.println("Price generated: " + price);
             System.out.println("Number of units generated: " + n_units);
