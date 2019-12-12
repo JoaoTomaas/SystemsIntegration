@@ -52,8 +52,12 @@ public class ManageResultsApplication {
                         Serdes.String())    //right value
         );
 
-        joined.groupByKey(Grouped.with(Serdes.String(), Serdes.String())).reduce((v1, v2) -> v1 + v2).toStream().mapValues((k, v) -> "" + k + " ----> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+        //joined.groupByKey(Grouped.with(Serdes.String(), Serdes.String())).reduce((v1, v2) -> v1 + v2).toStream().mapValues((k, v) -> "" + k + " --join--> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
 
+        //joined.foreach((key, value) -> System.out.println(key + ": " + value));
+        joined.groupByKey(Grouped.with(Serdes.String(), Serdes.String())).reduce((v1, v2) -> v1 + v2).toStream().foreach((key, value) -> System.out.println(key + ": " + value));
+
+        /*
         //Expenses por item (Purchasestopic)
         KTable<String, Double> trata_exp_it = stream_fornece.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         trata_exp_it.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
@@ -77,7 +81,7 @@ public class ManageResultsApplication {
         //Windowed -> Total de revenues na última hora
         KTable<Windowed<String>, Double> window_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
         window_rev_total.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
-
+        */
 
         //Para calcular ambas as avg's, temos que fazer um aggregate do mal
 

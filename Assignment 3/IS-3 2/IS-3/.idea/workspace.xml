@@ -49,7 +49,7 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.ManageResultsApplication">
+  <component name="RunManager" selected="Application.teste">
     <configuration name="CustomersThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="threads.CustomersThread" />
       <module name="IS-3" />
@@ -112,9 +112,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.teste2" />
         <item itemvalue="Application.teste" />
         <item itemvalue="Application.ManageResultsApplication" />
+        <item itemvalue="Application.teste2" />
         <item itemvalue="Application.PurchaseOrdersThread" />
         <item itemvalue="Application.CustomersThread" />
       </list>
@@ -164,6 +164,7 @@
       <workItem from="1576060232293" duration="21105000" />
       <workItem from="1576100320341" duration="1399000" />
       <workItem from="1576105436949" duration="5570000" />
+      <workItem from="1576146831106" duration="8327000" />
     </task>
     <servers />
   </component>
@@ -175,29 +176,29 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1575971894178" />
-    <state width="1236" height="282" key="GridCell.Tab.0.bottom" timestamp="1576089696648">
+    <state width="1280" height="529" key="GridCell.Tab.0.bottom" timestamp="1576159049643">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="282" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1576089696648" />
-    <state width="1236" height="282" key="GridCell.Tab.0.center" timestamp="1576089696648">
+    <state width="1280" height="529" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1576159049643" />
+    <state width="1280" height="529" key="GridCell.Tab.0.center" timestamp="1576159049642">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="282" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1576089696648" />
-    <state width="1236" height="282" key="GridCell.Tab.0.left" timestamp="1576089696648">
+    <state width="1280" height="529" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1576159049642" />
+    <state width="1280" height="529" key="GridCell.Tab.0.left" timestamp="1576159049642">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="282" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1576089696648" />
-    <state width="1236" height="282" key="GridCell.Tab.0.right" timestamp="1576089696648">
+    <state width="1280" height="529" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1576159049642" />
+    <state width="1280" height="529" key="GridCell.Tab.0.right" timestamp="1576159049643">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="282" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576089696648" />
+    <state width="1280" height="529" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576159049643" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1576104935364">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1576104935364" />
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576104915132">
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576150580571">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576104915132" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576150580571" />
   </component>
 </project>

@@ -75,7 +75,7 @@ public class teste2 {
         dados_compra.put("pais", "Singapura");
         jsonresult = dados_compra.toString();
 
-        producer.send(new ProducerRecord<String, String>(topicName,"1", jsonresult));
+        producer.send(new ProducerRecord<String, String>(topicName,"2", jsonresult));
         dados_compra = new JSONObject();
         dados_compra.put("preco","2");
         dados_compra.put("unidades","2");
@@ -95,7 +95,7 @@ public class teste2 {
         dados_compra.put("unidades","5");
         dados_compra.put("pais", "Singapura");
         jsonresult = dados_compra.toString();
-        producer.send(new ProducerRecord<String, String>(topicName,"1", jsonresult));
+        producer.send(new ProducerRecord<String, String>(topicName,"2", jsonresult));
         producer.close();
 
     }
