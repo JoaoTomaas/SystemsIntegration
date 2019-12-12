@@ -1,8 +1,10 @@
 package results;
 
+import jdk.nashorn.internal.runtime.OptimisticReturnFilters;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.*;
@@ -36,9 +38,13 @@ public class ManageResultsApplication {
         //Input topic que recebe as compras feitas aos fornecedores
         KStream<String, String> stream_fornece = builder.stream(inputtopic_purchases);
 
-        //Aquele join do mal
+
+
+        //Compute profit //TESTAR
+
+        //(leftValue, rightValue) -> "fornece=" + leftValue + ", compra=" + rightValue, // ValueJoiner
         KStream<String, String> joined = stream_fornece.join(stream_cliente,
-                (leftValue, rightValue) -> "fornece=" + leftValue + ", compra=" + rightValue, // ValueJoiner
+                (leftValue, rightValue) -> String.valueOf(transformValue(leftValue) - transformValue(rightValue)), // ValueJoiner
                 JoinWindows.of(TimeUnit.MINUTES.toMillis(5)),
                 Joined.with(
                         Serdes.String(),    //key
@@ -46,9 +52,7 @@ public class ManageResultsApplication {
                         Serdes.String())    //right value
         );
 
-        //joined.groupByKey(Grouped.with(Serdes.String(), Serdes.String())).count().toStream().mapValues((k, v) -> "" + k + " ----> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
-
-        //Double total_rev;
+        joined.groupByKey(Grouped.with(Serdes.String(), Serdes.String())).reduce((v1, v2) -> v1 + v2).toStream().mapValues((k, v) -> "" + k + " ----> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
 
         //Expenses por item (Purchasestopic)
         KTable<String, Double> trata_exp_it = stream_fornece.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
@@ -58,13 +62,28 @@ public class ManageResultsApplication {
         KTable<String, Double> trata = stream_cliente.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         trata.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
 
-        //Calcular o total de expenses (despesas)
+        //Total de expenses (despesas)
         KTable<String, Double> trata_exp_total = stream_fornece.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de gastos", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         trata_exp_total.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
 
-        //Calcular o total de revenues (receitas)
+        //Total de revenues (receitas)
         KTable<String, Double> trata_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         trata_rev_total.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+
+        //Windowed -> Total de expenses na última hora
+        KTable<Windowed<String>, Double> window_exp_total = stream_fornece.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de gastos", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
+        window_exp_total.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+
+        //Windowed -> Total de revenues na última hora
+        KTable<Windowed<String>, Double> window_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
+        window_rev_total.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+
+
+        //Para calcular ambas as avg's, temos que fazer um aggregate do mal
+
+        //Get the average amount spent in each purchase (separated by item) -> Vai ser a media da revenue per item, sendo feito um reduce com soma e um count
+        //KTable<String, Double> trata = stream_cliente.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
+
 
         //.aggregate(()->0.0,(newvalue, totalval) -> totalval + newvalue);
         /*.aggregate(
@@ -77,10 +96,8 @@ public class ManageResultsApplication {
 
         KafkaStreams streams = new KafkaStreams(builder.build(), propd);
         streams.start();
-
-
     }
-    
+
 
 
     public static Double transformValue(String s){
@@ -88,11 +105,10 @@ public class ManageResultsApplication {
         return (obj.getDouble("preco") * obj.getDouble("unidades"));
     }
 
-    //Compute profit
 
 
 
-    //Get the average amount spent in each purchase (separated by item)
+
 
     //Get the average amount spent in each purchase (aggregated for all items)
 

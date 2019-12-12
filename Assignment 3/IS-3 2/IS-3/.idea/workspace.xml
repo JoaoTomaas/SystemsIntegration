@@ -41,7 +41,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -162,7 +162,8 @@
       <workItem from="1575971284199" duration="18618000" />
       <workItem from="1576015399356" duration="6447000" />
       <workItem from="1576060232293" duration="21105000" />
-      <workItem from="1576100320341" duration="303000" />
+      <workItem from="1576100320341" duration="1399000" />
+      <workItem from="1576105436949" duration="5570000" />
     </task>
     <servers />
   </component>
@@ -190,13 +191,13 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1236" height="282" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576089696648" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1575973604320">
+    <state x="142" y="0" key="SettingsEditor" timestamp="1576104935364">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1575973604320" />
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576075396892">
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1576104935364" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576104915132">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576075396892" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576104915132" />
   </component>
 </project>
