@@ -49,7 +49,7 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.teste">
+  <component name="RunManager" selected="Application.ManageResultsApplication">
     <configuration name="CustomersThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="threads.CustomersThread" />
       <module name="IS-3" />
@@ -164,7 +164,10 @@
       <workItem from="1576060232293" duration="21105000" />
       <workItem from="1576100320341" duration="1399000" />
       <workItem from="1576105436949" duration="5570000" />
-      <workItem from="1576146831106" duration="8327000" />
+      <workItem from="1576146831106" duration="17290000" />
+      <workItem from="1576169689155" duration="11270000" />
+      <workItem from="1576230055943" duration="2410000" />
+      <workItem from="1576252728168" duration="1026000" />
     </task>
     <servers />
   </component>
@@ -176,29 +179,32 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1575971894178" />
-    <state width="1280" height="529" key="GridCell.Tab.0.bottom" timestamp="1576159049643">
+    <state width="1237" height="430" key="GridCell.Tab.0.bottom" timestamp="1576203459574">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1280" height="529" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1576159049643" />
-    <state width="1280" height="529" key="GridCell.Tab.0.center" timestamp="1576159049642">
+    <state width="1237" height="430" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1576203459574" />
+    <state width="1237" height="430" key="GridCell.Tab.0.center" timestamp="1576203459574">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1280" height="529" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1576159049642" />
-    <state width="1280" height="529" key="GridCell.Tab.0.left" timestamp="1576159049642">
+    <state width="1237" height="430" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1576203459574" />
+    <state width="1237" height="430" key="GridCell.Tab.0.left" timestamp="1576203459574">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1280" height="529" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1576159049642" />
-    <state width="1280" height="529" key="GridCell.Tab.0.right" timestamp="1576159049643">
+    <state width="1237" height="430" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1576203459574" />
+    <state width="1237" height="430" key="GridCell.Tab.0.right" timestamp="1576203459574">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1280" height="529" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576159049643" />
+    <state width="1237" height="430" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576203459574" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1576104935364">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1576104935364" />
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576150580571">
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576230875581">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576150580571" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576230875581" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Kafkatutorial$teste2.ic" NAME="teste2 Coverage Results" MODIFIED="1576169584519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
