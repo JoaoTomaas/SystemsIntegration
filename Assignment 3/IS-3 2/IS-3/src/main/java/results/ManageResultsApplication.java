@@ -4,11 +4,14 @@ import jdk.nashorn.internal.runtime.OptimisticReturnFilters;
 import org.apache.kafka.common.protocol.types.Field;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.*;
+
+import org.apache.kafka.streams.kstream.internals.WindowedSerializer;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import sun.security.krb5.internal.tools.Ktab;
@@ -20,6 +23,8 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ManageResultsApplication {
+
+    private static String st;
 
     public static void main(String[] args) throws InterruptedException, IOException {
 
@@ -42,24 +47,6 @@ public class ManageResultsApplication {
         KStream<String, String> stream_fornece = builder.stream(inputtopic_purchases);
 
 
-        //Compute profit //TESTAR
-
-        //(leftValue, rightValue) -> "fornece=" + leftValue + ", compra=" + rightValue, // ValueJoiner
-        /*KStream<String, String> joined = stream_fornece.join(stream_cliente,
-                (leftValue, rightValue) -> String.valueOf(transformValue(leftValue) - transformValue(rightValue)), // ValueJoiner
-                JoinWindows.of(TimeUnit.MINUTES.toMillis(5)),
-                Joined.with(
-                        Serdes.String(),    //key
-                        Serdes.String(),    //left value
-                        Serdes.String())    //right value
-        );
-
-        //joined.groupByKey(Grouped.with(Serdes.String(), Serdes.String())).reduce((v1, v2) -> v1 + v2).toStream().mapValues((k, v) -> "" + k + " --join--> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
-
-        //joined.foreach((key, value) -> System.out.println(key + ": " + value));
-        joined.groupByKey(Grouped.with(Serdes.String(), Serdes.String())).reduce((v1, v2) -> v1 + v2).toStream().foreach((key, value) -> System.out.println(key + ": " + value));
-        */
-
         //5. Revenue por item (Salestopic)
         KTable<String, Double> trata = stream_cliente.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         //trata.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
@@ -73,20 +60,28 @@ public class ManageResultsApplication {
         KTable<String, Double> joined = trata.join(trata_exp_it,
                 (leftValue, rightValue) -> leftValue-rightValue /* ValueJoiner */
         );
-        joined.toStream().foreach((key, value) -> System.out.println("Profit "+key + ": " + value));
+        //joined.toStream().foreach((key, value) -> System.out.println("Profit "+key + ": " + value));
         //groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double()))
 
         //8. Total de revenues (receitas)
-        //KTable<String, Double> trata_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
+        KTable<String, Double> trata_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         //trata_rev_total.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+        //trata_rev_total.toStream().foreach((key, value) -> System.out.println("Rev tot:" + value));
+
 
         //9. Total de expenses (despesas)
         KTable<String, Double> trata_exp_total = stream_fornece.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de gastos", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         //trata_exp_total.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+        trata_exp_total.toStream().foreach((key, value) -> System.out.println("Exp tot:" + value));
 
-        //10. Total profit (FALTAAAAAAAAAAAA TESTAAAAAAAAAAAAAAAR)
+
+        //10. Total profit
         KTable<String, Double> trata_profit_total = joined.toStream().groupBy((key, value) -> "total profit", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         //trata_profit_total.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+
+        //trata_profit_total.toStream().foreach((key, value) -> System.out.println("Profit total: "  + value));
+
+
 
         //11. Get the average amount spent in each purchase (separated by item) -> Vai ser a media da revenue per item, sendo feito um reduce com soma e um count
         KTable<String, String> avg_per_item = stream_fornece.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).aggregate(
@@ -94,8 +89,8 @@ public class ManageResultsApplication {
                 (Aggregator<String, Double, String>) (key, value, aggregate) -> agrega(aggregate, value), /* adder */
                 Materialized.as("aggregated-avg-item-store")); /* state store name */
         /* serde for aggregate value */
-        avg_per_item.toStream().foreach((key, value) -> System.out.println(key + ": " + value));
-        avg_per_item.mapValues(v -> calcMedia(v)).toStream().foreach((key, value) -> System.out.println(key + " Media: " + value));
+        //avg_per_item.toStream().foreach((key, value) -> System.out.println(key + ": " + value));
+        //avg_per_item.mapValues(v -> calcMedia(v)).toStream().foreach((key, value) -> System.out.println(key + " Media: " + value));
 
 
         //12. Get the average amount spent in each purchase (aggregated for all items)
@@ -105,29 +100,50 @@ public class ManageResultsApplication {
                 Materialized.as("aggregated-avg-all-item-store")); //state store name
         // serde for aggregate value
 
-        avg_all_items.toStream().foreach((key, value) -> System.out.println(key + ": " + value));
-        avg_all_items.mapValues(v -> calcMedia(v)).toStream().foreach((key, value) -> System.out.println(key + " Media total: " + value));
+        //avg_all_items.toStream().foreach((key, value) -> System.out.println(key + ": " + value));
+        //avg_all_items.mapValues(v -> calcMedia(v)).toStream().foreach((key, value) -> System.out.println(key + " Media total: " + value));
 
         //13. Item with the highest profit of all (only one if there is a tie)
         //KTable<String, String> teste=joined.mapValues((key, value)->""+key+"    "+value).toStream().groupBy((key, value) -> "total de profits",Grouped.with(Serdes.String(), Serdes.String())).reduce((v1, v2) -> maximo(v1,v2));
         //teste.toStream().foreach((key, value) -> System.out.println("Maior profit deste mundo em que vivemos "+key + ": " + value));
 
 
-        //14. Windowed -> Total de revenues na última hora
-        //KTable<Windowed<String>, Double> window_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
+        //14. Windowed -> Total de revenues na última hora (Está para 60 segundos)
+        KTable<Windowed<String>, Double> window_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
         //window_rev_total.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+        window_rev_total.toStream().foreach((key, value) -> System.out.println("Window rev:  " + value));
 
         //15. Windowed -> Total de expenses na última hora
-        //KTable<Windowed<String>, Double> window_exp_total = stream_fornece.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de gastos", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
+        KTable<Windowed<String>, Double> window_exp_total = stream_fornece.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de gastos", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
         //window_exp_total.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+        window_exp_total.toStream().foreach((key, value) -> System.out.println("Windows exp : " + value));
+
+        //16. Windowed -> Total profit na última hora (FALTAAAAAAAAAAAA TESTAAAAAAAAAAAAAAAR)
+            //Primeiro tenho que fazer um join com as duas windows do revenue e das expenses
 
 
-        //16. Get the total profits in the last hour (use a tumbling time window) (FALTAAAAAAAAAAAA TESTAAAAAAAAAAAAAAAR)
-        //KTable<Windowed<String>, Double> window_profit_total = joined.toStream().groupBy((key, value) -> "total profit", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
-        //window_profit_total.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+
+
+        /*KTable<Windowed<String>, Double> join_window1 = window_rev_total.join(window_exp_total,
+                (leftValue, rightValue) -> leftValue-rightValue // ValueJoiner
+        );
+        join_window1.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).foreach((key, value) -> System.out.println("Windows prof2:" + value));*/
+
+
+        /*KStream<String, Double> join_window2 = trata_rev_total.toStream().outerJoin(trata_exp_total.toStream(),
+                (leftValue, rightValue) -> leftValue-rightValue,
+                JoinWindows.of(TimeUnit.MINUTES.toMillis(5)),Joined.with(Serdes.String(), Serdes.Double(), Serdes.Double())
+                );*/
+
+
+            //Por fim tenho que utilizar o join e a window
+        //KTable<Windowed<String>, Double> window_profit_total = join_window.toStream().groupBy((key, value) -> "total profit", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
+        //join_window1.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).foreach((key, value) -> System.out.println("Windows prof1:" + value));
+        //join_window2.foreach((key, value) -> System.out.println("Windows prof2:" + value));
+
 
         //17. Get the name of the country with the highest sales per item. Include the value of such sales
-        KGroupedStream<String, String> groupedStream = stream_cliente.mapValues((v)->produto_aux(v)).groupBy(
+        /*KGroupedStream<String, String> groupedStream = stream_cliente.mapValues((v)->produto_aux(v)).groupBy(
                 (key, value) -> pais_aux2(key,value),
                 Serialized.with(
                         Serdes.String(),
@@ -138,7 +154,7 @@ public class ManageResultsApplication {
                 Serialized.with(
                         Serdes.String(),
                         Serdes.String())
-        ).reduce((v1, v2) -> help3(v1,v2)).toStream().foreach(((key, value) -> System.out.println("wtffff "+key + ": " + value)));
+        ).reduce((v1, v2) -> help3(v1,v2)).toStream().foreach(((key, value) -> System.out.println("wtffff "+key + ": " + value)));*/
 
 
 
@@ -418,3 +434,20 @@ KeyValue<K, JV> joinOutputRecord = KeyValue.pair(
 
 /*KTable<String, Double> trata = stream_cliente.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);*/
 
+//Compute profit //TESTAR
+
+//(leftValue, rightValue) -> "fornece=" + leftValue + ", compra=" + rightValue, // ValueJoiner
+        /*KStream<String, String> joined = stream_fornece.join(stream_cliente,
+                (leftValue, rightValue) -> String.valueOf(transformValue(leftValue) - transformValue(rightValue)), // ValueJoiner
+                JoinWindows.of(TimeUnit.MINUTES.toMillis(5)),
+                Joined.with(
+                        Serdes.String(),    //key
+                        Serdes.String(),    //left value
+                        Serdes.String())    //right value
+        );
+
+        //joined.groupByKey(Grouped.with(Serdes.String(), Serdes.String())).reduce((v1, v2) -> v1 + v2).toStream().mapValues((k, v) -> "" + k + " --join--> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+
+        //joined.foreach((key, value) -> System.out.println(key + ": " + value));
+        joined.groupByKey(Grouped.with(Serdes.String(), Serdes.String())).reduce((v1, v2) -> v1 + v2).toStream().foreach((key, value) -> System.out.println(key + ": " + value));
+        */

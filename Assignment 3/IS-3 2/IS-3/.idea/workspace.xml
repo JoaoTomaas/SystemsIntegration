@@ -112,9 +112,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.teste2" />
         <item itemvalue="Application.teste" />
         <item itemvalue="Application.ManageResultsApplication" />
-        <item itemvalue="Application.teste2" />
         <item itemvalue="Application.PurchaseOrdersThread" />
         <item itemvalue="Application.CustomersThread" />
       </list>
@@ -168,6 +168,8 @@
       <workItem from="1576169689155" duration="11270000" />
       <workItem from="1576230055943" duration="2410000" />
       <workItem from="1576252728168" duration="1026000" />
+      <workItem from="1576275311659" duration="4874000" />
+      <workItem from="1576321016472" duration="10911000" />
     </task>
     <servers />
   </component>
@@ -179,30 +181,38 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1575971894178" />
-    <state width="1237" height="430" key="GridCell.Tab.0.bottom" timestamp="1576203459574">
+    <state x="446" y="69" key="#com.intellij.ide.util.MemberChooser" timestamp="1576328268866">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="430" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1576203459574" />
-    <state width="1237" height="430" key="GridCell.Tab.0.center" timestamp="1576203459574">
+    <state x="446" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689@0.0.1280.689" timestamp="1576328268866" />
+    <state width="1236" height="303" key="GridCell.Tab.0.bottom" timestamp="1576337218253">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="430" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1576203459574" />
-    <state width="1237" height="430" key="GridCell.Tab.0.left" timestamp="1576203459574">
+    <state width="1236" height="303" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1576337218253" />
+    <state width="1236" height="303" key="GridCell.Tab.0.center" timestamp="1576337218253">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="430" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1576203459574" />
-    <state width="1237" height="430" key="GridCell.Tab.0.right" timestamp="1576203459574">
+    <state width="1236" height="303" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1576337218253" />
+    <state width="1236" height="303" key="GridCell.Tab.0.left" timestamp="1576337218253">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="430" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576203459574" />
+    <state width="1236" height="303" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1576337218253" />
+    <state width="1236" height="303" key="GridCell.Tab.0.right" timestamp="1576337218253">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1236" height="303" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576337218253" />
+    <state x="171" y="0" key="Maven.ArtifactSearchDialog" timestamp="1576328336847">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.689@0.0.1280.689" timestamp="1576328336847" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1576104935364">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1576104935364" />
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576230875581">
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576336115517">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576230875581" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576336115517" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Kafkatutorial$teste2.ic" NAME="teste2 Coverage Results" MODIFIED="1576169584519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
