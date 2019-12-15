@@ -30,15 +30,6 @@ public class MyBean {
     public MyBean() {
     }
 
-
-    /*public Course getCourse(int id) {
-        return this.lc.get(id);
-    }*/
-
-    /*public ListCountries getListCountries() {
-        return this.lct;
-    }*/
-
     public List<Country> getListCountries(){
         Query q = em.createQuery("from Country");
         @SuppressWarnings("unchecked")
@@ -65,8 +56,86 @@ public class MyBean {
         em.persist(country);
     }
 
-    //ESTATISTICAS
+    public List<ResultsTopic> getItemStats(){
+        Query q = em.createQuery("from ResultsTopic");
+        @SuppressWarnings("unchecked")
+        List <ResultsTopic> lista_stats = q.getResultList();
 
+        return lista_stats;
+    }
 
+    public List<TotalTopic> getTotalStats(){
+        Query q = em.createQuery("from TotalTopic ");
+        @SuppressWarnings("unchecked")
+        List <TotalTopic> lista_stats = q.getResultList();
+
+        return lista_stats;
+    }
+
+    public List<AverageItemTopic> getAvgItem(){
+        Query q = em.createQuery("from AverageItemTopic ");
+        @SuppressWarnings("unchecked")
+        List <AverageItemTopic> lista_stats = q.getResultList();
+
+        return lista_stats;
+    }
+
+    public List<AverageTotalTopic> getAvgTotal(){
+        Query q = em.createQuery("from AverageTotalTopic ");
+        @SuppressWarnings("unchecked")
+        List <AverageTotalTopic> lista_stats = q.getResultList();
+
+        return lista_stats;
+    }
+
+    public List<HighestProfTopic> getItemHighestProfit(){
+        Query q = em.createQuery("from HighestProfTopic ");
+        @SuppressWarnings("unchecked")
+        List <HighestProfTopic> lista_stats = q.getResultList();
+
+        return lista_stats;
+    }
+
+    public List<HourTopic> getWindowedStats(){
+        Query q = em.createQuery("from HourTopic ");
+        @SuppressWarnings("unchecked")
+        List <HourTopic> lista_stats = q.getResultList();
+
+        return lista_stats;
+    }
+
+    public List<CountrySalesTopic> getCountryName(){
+        Query q = em.createQuery("from CountrySalesTopic");
+        @SuppressWarnings("unchecked")
+        List <CountrySalesTopic> lista_stats = q.getResultList();
+
+        return lista_stats;
+    }
 }
 
+
+
+
+
+
+
+
+    /*public Course getCourse(int id) {
+        return this.lc.get(id);
+    }*/
+
+    /*public ListCountries getListCountries() {
+        return this.lct;
+    }*/
+
+
+
+//ESTATISTICAS
+/*      -> ResultsTopic
+        -> TotalTopic
+        -> AverageItemTopic
+        -> AverageTotalTopic
+        -> HighestProfTopic
+        -> HourTopic
+        -> CountrySalesTopic
+ */

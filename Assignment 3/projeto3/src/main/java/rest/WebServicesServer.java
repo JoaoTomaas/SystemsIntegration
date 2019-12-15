@@ -9,12 +9,9 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-import data.Country;
-import data.Item;
-import data.Course;
-import data.ListCountries;
-import data.ListCourses;
+import data.*;
 import ejb.MyBean;
+import jdk.nashorn.internal.objects.annotations.Getter;
 
 @Path("/project3webservices")
 @RequestScoped
@@ -84,6 +81,55 @@ public class WebServicesServer {
     @Produces({MediaType.APPLICATION_JSON})
     public List<Country> getCountries() {
         return db.getListCountries();
+    }
+
+    @GET
+    @Path("getitemstats")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<ResultsTopic> getItStats() {
+        return db.getItemStats();
+    }
+
+    @GET
+    @Path("gettotalstats")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<TotalTopic> getTotStats() {
+        return db.getTotalStats();
+    }
+
+    @GET
+    @Path("getavgitem")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<AverageItemTopic> getAvgIt() {
+        return db.getAvgItem();
+    }
+
+    @GET
+    @Path("getavgtotal")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<AverageTotalTopic> getAvgTot() {
+        return db.getAvgTotal();
+    }
+
+    @GET
+    @Path("gethighestprof")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<HighestProfTopic> getHighestProf() {
+        return db.getItemHighestProfit();
+    }
+
+    @GET
+    @Path("gethourtopic")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<HourTopic> getHourTopic() {
+        return db.getWindowedStats();
+    }
+
+    @GET
+    @Path("getcountrysales")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<CountrySalesTopic> getCountrySales() {
+        return db.getCountryName();
     }
 
 }

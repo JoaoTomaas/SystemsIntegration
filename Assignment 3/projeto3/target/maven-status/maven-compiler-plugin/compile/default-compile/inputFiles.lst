@@ -1,10 +1,12 @@
 C:\Users\joaom\Desktop\projeto3\src\main\java\ejb\MyBean.java
-C:\Users\joaom\Desktop\projeto3\src\main\java\data\Course.java
-C:\Users\joaom\Desktop\projeto3\src\main\java\data\ListItems.java
+C:\Users\joaom\Desktop\projeto3\src\main\java\data\ResultsTopic.java
+C:\Users\joaom\Desktop\projeto3\src\main\java\data\TotalTopic.java
+C:\Users\joaom\Desktop\projeto3\src\main\java\data\CountrySalesTopic.java
+C:\Users\joaom\Desktop\projeto3\src\main\java\data\HourTopic.java
+C:\Users\joaom\Desktop\projeto3\src\main\java\data\AverageItemTopic.java
 C:\Users\joaom\Desktop\projeto3\src\main\java\rest\HelloWorldApplication.java
 C:\Users\joaom\Desktop\projeto3\src\main\java\data\Country.java
 C:\Users\joaom\Desktop\projeto3\src\main\java\data\Item.java
-C:\Users\joaom\Desktop\projeto3\src\main\java\data\Material.java
 C:\Users\joaom\Desktop\projeto3\src\main\java\rest\WebServicesServer.java
-C:\Users\joaom\Desktop\projeto3\src\main\java\data\ListCourses.java
-C:\Users\joaom\Desktop\projeto3\src\main\java\data\ListCountries.java
+C:\Users\joaom\Desktop\projeto3\src\main\java\data\HighestProfTopic.java
+C:\Users\joaom\Desktop\projeto3\src\main\java\data\AverageTotalTopic.java

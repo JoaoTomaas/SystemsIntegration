@@ -1,10 +1,12 @@
 data\Country.class
-data\ListCountries.class
-data\ListCourses.class
+data\HourTopic.class
+data\TotalTopic.class
+data\AverageTotalTopic.class
+data\HighestProfTopic.class
 rest\HelloWorldApplication.class
-data\ListItems.class
 rest\WebServicesServer.class
-data\Course.class
+data\AverageItemTopic.class
+data\ResultsTopic.class
 ejb\MyBean.class
 data\Item.class
-data\Material.class
+data\CountrySalesTopic.class

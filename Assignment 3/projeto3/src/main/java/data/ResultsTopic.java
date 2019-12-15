@@ -1,0 +1,74 @@
+package data;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import java.io.Serializable;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@Entity
+public class ResultsTopic implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @XmlAttribute
+    int id_item;
+
+    int revenue; //Receita
+    int expenses; //Gasto
+    int profit; //Lucro
+
+
+    public ResultsTopic() {}
+
+    public ResultsTopic(int id_item, int revenue, int expenses, int profit){
+        this.id_item = id_item;
+        this.revenue = revenue;
+        this.expenses = expenses;
+        this.profit = profit;
+    }
+
+    public int getId_item() {
+        return id_item;
+    }
+
+    public void setId_item(int id_item) {
+        this.id_item = id_item;
+    }
+
+    public int getExpenses() {
+        return expenses;
+    }
+
+    public void setExpenses(int expenses) {
+        this.expenses = expenses;
+    }
+
+    public int getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(int revenue) {
+        this.revenue = revenue;
+    }
+
+    public int getProfit() {
+        return profit;
+    }
+
+    public void setProfit(int profit) {
+        this.profit = profit;
+    }
+
+
+    /*
+    - id_item
+    - profit
+    - revenue
+    - expenses
+     */
+}

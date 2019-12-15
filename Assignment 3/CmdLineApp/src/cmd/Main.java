@@ -38,13 +38,11 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    //GET("gettext");
                     System.out.print("Nome: ");
                     Scanner scan = new Scanner(System.in);
                     String nome="";
 
                     nome+=scan.nextLine();
-
                     GET("insertitem?itemname=" + nome);
                     break;
                 case 2:
@@ -61,10 +59,9 @@ public class Main {
                 case 4:
                     GET("getitems");
                     break;
-
-                    //Estatisticas
                 case 5:
-                    System.out.println("Estatisticas dos Items");
+                    System.out.println("\nEstatisticas dos Items");
+                    item_stats();
                     break;
                 case 10:
                     System.exit(0);
@@ -140,10 +137,14 @@ public class Main {
         connection.disconnect(); //Termina a ligacao
     }
 
-    private static void item_stats(){
-        System.out.println("1. Revenue per Item");
-        System.out.println("2. Expenses per Item");
-        System.out.println("3. Profit per Item");
+    private static void item_stats() throws IOException {
+        System.out.println("1. Get Item Stats");
+        System.out.println("2. Get Total Stats");
+        System.out.println("3. Get Average Item");
+        System.out.println("4. Get Average Total");
+        System.out.println("5. Get the item with the highest profit of all");
+        System.out.println("6. Get Windowed Stats");
+        System.out.println("7. Get the name of the country with the highest sales per item");
 
         Scanner input = new Scanner( System.in );
         System.out.print("\nOpcao pretendida: ");
@@ -151,15 +152,38 @@ public class Main {
 
         switch(opcao){
             case 1:
+                GET("getitemstats");
                 break;
             case 2:
+                GET("gettotalstats");
                 break;
             case 3:
+                GET("getavgitem");
+                break;
+            case 4:
+                GET("getavgtotal");
+                break;
+            case 5:
+                GET("gethighestprof");
+                break;
+            case 6:
+                GET("gethourtopic");
+                break;
+            case 7:
+                GET("getcountrysales");
+                break;
+            default:
+                System.out.println("Opcao nao existente, tente de novo");
                 break;
         }
 
-
-
+        System.out.println("\n\n");
+        System.out.println("Menu");
+        System.out.println("1. Inserir Item");
+        System.out.println("2. Inserir Pais");
+        System.out.println("3. Consultar paises");
+        System.out.println("4. Consultar items");
+        System.out.println("5. Consultar estatísticas dos items");
 
     }
 
