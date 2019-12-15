@@ -19,7 +19,6 @@ public class Main {
 
     private static final String USER_AGENT = "Mozilla/5.0";
     private final static String GET_URL = "http://localhost:8100/play-REST-server/webapi/project3webservices/";
-    private static final String POST_URL = "http://localhost:8100/play-REST-server/webapi/project3webservices/";
 
     public static void main(String[] args) throws IOException {
 
@@ -82,7 +81,7 @@ public class Main {
         int codigo_resposta = connection.getResponseCode();
         System.out.println("\nCódigo: " + codigo_resposta);
 
-        if (codigo_resposta == HttpURLConnection.HTTP_OK) { // success
+        if (codigo_resposta == HttpURLConnection.HTTP_OK) {
             BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String inputLine;
             StringBuffer response = new StringBuffer();
@@ -92,49 +91,11 @@ public class Main {
             }
             input.close();
 
-            // print result
+            //Resltado
             System.out.println(response.toString());
-        } else {
-            System.out.println("GET nao funfou");
         }
 
         connection.disconnect();
-    }
-
-    private static void POST() throws IOException {
-        URL destino = new URL(POST_URL);
-        HttpURLConnection connection = (HttpURLConnection) destino.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("User-Agent", USER_AGENT);
-
-        // For POST only - START
-        connection.setDoOutput(true);
-        //OutputStream os = con.getOutputStream();
-        //os.write(POST_PARAMS.getBytes());
-        //os.flush();
-        //os.close();
-        // For POST only - END
-
-        int code = connection.getResponseCode();
-        System.out.println("Code -> " + code);
-
-        if (code == HttpURLConnection.HTTP_OK) { //success
-            BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String inputLine;
-            StringBuffer resposta = new StringBuffer();
-
-            while ((inputLine = input.readLine()) != null) {
-                resposta.append(inputLine);
-            }
-            input.close();
-
-            // print result
-            System.out.println(resposta.toString());
-        } else {
-            System.out.println("POST nao funfou");
-        }
-
-        connection.disconnect(); //Termina a ligacao
     }
 
     private static void item_stats() throws IOException {
