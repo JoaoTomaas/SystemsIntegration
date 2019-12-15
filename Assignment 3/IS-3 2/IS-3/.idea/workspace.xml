@@ -43,13 +43,18 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\joaom\Desktop\IS-3 2\IS-3\src\main\java\results" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean" />
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.ManageResultsApplication">
+  <component name="RunManager" selected="Application.PurchaseOrdersThread">
     <configuration name="CustomersThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="threads.CustomersThread" />
       <module name="IS-3" />
@@ -112,11 +117,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.teste2" />
-        <item itemvalue="Application.teste" />
-        <item itemvalue="Application.ManageResultsApplication" />
         <item itemvalue="Application.PurchaseOrdersThread" />
         <item itemvalue="Application.CustomersThread" />
+        <item itemvalue="Application.ManageResultsApplication" />
+        <item itemvalue="Application.teste2" />
+        <item itemvalue="Application.teste" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +174,9 @@
       <workItem from="1576230055943" duration="2410000" />
       <workItem from="1576252728168" duration="1026000" />
       <workItem from="1576275311659" duration="4874000" />
-      <workItem from="1576321016472" duration="10911000" />
+      <workItem from="1576321016472" duration="26721000" />
+      <workItem from="1576363798544" duration="73000" />
+      <workItem from="1576371188069" duration="4567000" />
     </task>
     <servers />
   </component>
@@ -185,22 +192,22 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="446" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689@0.0.1280.689" timestamp="1576328268866" />
-    <state width="1236" height="303" key="GridCell.Tab.0.bottom" timestamp="1576337218253">
+    <state width="1237" height="360" key="GridCell.Tab.0.bottom" timestamp="1576379021809">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="303" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1576337218253" />
-    <state width="1236" height="303" key="GridCell.Tab.0.center" timestamp="1576337218253">
+    <state width="1237" height="360" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1576379021809" />
+    <state width="1237" height="360" key="GridCell.Tab.0.center" timestamp="1576379021809">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="303" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1576337218253" />
-    <state width="1236" height="303" key="GridCell.Tab.0.left" timestamp="1576337218253">
+    <state width="1237" height="360" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1576379021809" />
+    <state width="1237" height="360" key="GridCell.Tab.0.left" timestamp="1576379021809">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="303" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1576337218253" />
-    <state width="1236" height="303" key="GridCell.Tab.0.right" timestamp="1576337218253">
+    <state width="1237" height="360" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1576379021809" />
+    <state width="1237" height="360" key="GridCell.Tab.0.right" timestamp="1576379021809">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="303" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576337218253" />
+    <state width="1237" height="360" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576379021809" />
     <state x="171" y="0" key="Maven.ArtifactSearchDialog" timestamp="1576328336847">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -209,10 +216,14 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1576104935364" />
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576336115517">
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1576352829745">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576336115517" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1576352829745" />
+    <state x="363" y="257" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1576371469788">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="363" y="257" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1280.689@0.0.1280.689" timestamp="1576371469788" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Kafkatutorial$teste2.ic" NAME="teste2 Coverage Results" MODIFIED="1576169584519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -17,13 +17,13 @@ public class AverageTotalTopic implements Serializable {
     @XmlAttribute
     int id_item;
 
-    int average_mount;
+    int average_amount;
 
     public AverageTotalTopic() {}
 
-    public AverageTotalTopic(int id_item, int average_mount) {
+    public AverageTotalTopic(int id_item, int average_amount) {
         this.id_item = id_item;
-        this.average_mount = average_mount;
+        this.average_amount = average_amount;
     }
 
     public int getId_item() {
@@ -34,11 +34,11 @@ public class AverageTotalTopic implements Serializable {
         this.id_item = id_item;
     }
 
-    public int getAverage_mount() {
-        return average_mount;
+    public int getAverage_amount() {
+        return average_amount;
     }
 
-    public void setAverage_mount(int average_mount) {
-        this.average_mount = average_mount;
+    public void setAverage_amount(int average_amount) {
+        this.average_amount = average_amount;
     }
 }

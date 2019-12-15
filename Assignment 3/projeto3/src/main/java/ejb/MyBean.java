@@ -9,14 +9,7 @@ import javax.persistence.Query;
 import data.*;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 @Stateless
@@ -96,10 +89,10 @@ public class MyBean {
         return lista_stats;
     }
 
-    public List<HourTopic> getWindowedStats(){
-        Query q = em.createQuery("from HourTopic ");
+    public List<WindowTopic> getWindowedStats(){
+        Query q = em.createQuery("from WindowTopic ");
         @SuppressWarnings("unchecked")
-        List <HourTopic> lista_stats = q.getResultList();
+        List <WindowTopic> lista_stats = q.getResultList();
 
         return lista_stats;
     }

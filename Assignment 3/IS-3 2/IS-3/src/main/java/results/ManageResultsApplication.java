@@ -14,7 +14,6 @@ import org.apache.kafka.streams.kstream.*;
 import org.apache.kafka.streams.kstream.internals.WindowedSerializer;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import sun.security.krb5.internal.tools.Ktab;
 
 import java.io.IOException;
 import java.security.acl.Group;
@@ -24,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ManageResultsApplication {
 
-    private static String st;
+    private static JsonConverter2 aux=new JsonConverter2();
 
     public static void main(String[] args) throws InterruptedException, IOException {
 
@@ -33,8 +32,20 @@ public class ManageResultsApplication {
 
         String output_topic = "resultstopic";
 
+        String output_topic_total = "totaltopic";
+
+        String output_topic_avg = "averageitemtopic";
+
+        String output_topic_avg_total = "averagetotaltopic";
+
+        String output_topic_highestprof = "highestproftopic";
+        String output_topic_windoh = "windowtopic";
+
+        String output_topic_country = "countrysalestopic";
+
+
         java.util.Properties propd = new Properties();
-        propd.put(StreamsConfig.APPLICATION_ID_CONFIG, "our-application");
+        propd.put(StreamsConfig.APPLICATION_ID_CONFIG, "our-application_FML3332222");
         propd.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
         propd.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         propd.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
@@ -50,36 +61,66 @@ public class ManageResultsApplication {
         //5. Revenue por item (Salestopic)
         KTable<String, Double> trata = stream_cliente.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         //trata.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
-
+        //trata.toStream().foreach((key, value) -> System.out.println("Revenue "+key + ": " + value));
         //6. Expenses por item (Purchasestopic)
         KTable<String, Double> trata_exp_it = stream_fornece.mapValues(v -> transformValue(v)).groupByKey(Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         //trata_exp_it.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
-
+        //trata_exp_it.toStream().foreach((key, value) -> System.out.println("Expenses "+key + ": " + value));
         //7. Profit por item (Join com os dois tópicos, sales e purchases)
         //esta a ter varios profits iguais i dont know whyyy
         KTable<String, Double> joined = trata.join(trata_exp_it,
                 (leftValue, rightValue) -> leftValue-rightValue /* ValueJoiner */
         );
         //joined.toStream().foreach((key, value) -> System.out.println("Profit "+key + ": " + value));
+        //juntar o 5 6 7
+
+        KTable<String, String> expenses_revenue = trata.join(trata_exp_it,
+                (leftValue, rightValue) -> ""+leftValue+"\t"+rightValue
+        );
+
+
+        KTable<String, String> expenses_revenue_profit = expenses_revenue.join(joined,
+                (leftValue, rightValue) ->  ""+leftValue+"\t"+rightValue
+        );
+
+        expenses_revenue_profit.toStream().mapValues((k, v) -> aux.converte(v,k)).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
+
+
+
+        //joined.toStream().foreach((key, value) -> System.out.println("Profit "+key + ": " + value));
         //groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double()))
 
         //8. Total de revenues (receitas)
-        KTable<String, Double> trata_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
+        KTable<String, Double> trata_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         //trata_rev_total.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
         //trata_rev_total.toStream().foreach((key, value) -> System.out.println("Rev tot:" + value));
 
 
         //9. Total de expenses (despesas)
-        KTable<String, Double> trata_exp_total = stream_fornece.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de gastos", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
+        KTable<String, Double> trata_exp_total = stream_fornece.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         //trata_exp_total.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
-        trata_exp_total.toStream().foreach((key, value) -> System.out.println("Exp tot:" + value));
+        //trata_exp_total.toStream().foreach((key, value) -> System.out.println("Exp tot:" + value));
 
 
         //10. Total profit
-        KTable<String, Double> trata_profit_total = joined.toStream().groupBy((key, value) -> "total profit", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
+        //to stream ta a complicar as coisas
+        KTable<String, Double> trata_profit_total = joined.toStream().groupBy((key, value) -> "total", Grouped.with(Serdes.String(), Serdes.Double())).reduce((v1, v2) -> v1 + v2);
         //trata_profit_total.toStream().mapValues((k, v) -> "" + k + " -> " + v).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
 
         //trata_profit_total.toStream().foreach((key, value) -> System.out.println("Profit total: "  + value));
+        //juntar o 8 9 10
+        KTable<String, String> expenses_revenue_total = trata_rev_total.join(trata_exp_total,
+                (leftValue, rightValue) -> ""+leftValue+"\t"+rightValue
+        );
+
+
+        KTable<String, String> expenses_revenue_profit_total = expenses_revenue_total.join(trata_profit_total,
+                (leftValue, rightValue) ->  ""+leftValue+"\t"+rightValue
+        );
+
+        expenses_revenue_profit_total.toStream().mapValues((k, v) -> aux.converte_total(v,k)).to(output_topic_total, Produced.with(Serdes.String(), Serdes.String()));
+
+
 
 
 
@@ -88,9 +129,13 @@ public class ManageResultsApplication {
                 (Initializer<String>) () -> "0,0", /* initializer */
                 (Aggregator<String, Double, String>) (key, value, aggregate) -> agrega(aggregate, value), /* adder */
                 Materialized.as("aggregated-avg-item-store")); /* state store name */
+
+
         /* serde for aggregate value */
         //avg_per_item.toStream().foreach((key, value) -> System.out.println(key + ": " + value));
         //avg_per_item.mapValues(v -> calcMedia(v)).toStream().foreach((key, value) -> System.out.println(key + " Media: " + value));
+        avg_per_item.toStream().mapValues((k, v) -> aux.converte_avg(v,k)).to(output_topic_avg, Produced.with(Serdes.String(), Serdes.String()));
+
 
 
         //12. Get the average amount spent in each purchase (aggregated for all items)
@@ -98,28 +143,58 @@ public class ManageResultsApplication {
                 (Initializer<String>) () -> "0,0", // initializer
                 (Aggregator<String, Double, String>) (key, value, aggregate) -> agrega(aggregate, value), //adder
                 Materialized.as("aggregated-avg-all-item-store")); //state store name
+
+        avg_all_items.toStream().mapValues((k, v) -> aux.converte_avg_total(v,k)).to(output_topic_avg_total, Produced.with(Serdes.String(), Serdes.String()));
+
         // serde for aggregate value
 
         //avg_all_items.toStream().foreach((key, value) -> System.out.println(key + ": " + value));
         //avg_all_items.mapValues(v -> calcMedia(v)).toStream().foreach((key, value) -> System.out.println(key + " Media total: " + value));
 
         //13. Item with the highest profit of all (only one if there is a tie)
-        //KTable<String, String> teste=joined.mapValues((key, value)->""+key+"    "+value).toStream().groupBy((key, value) -> "total de profits",Grouped.with(Serdes.String(), Serdes.String())).reduce((v1, v2) -> maximo(v1,v2));
+        KTable<String, String> teste=joined.mapValues((key, value)->key+"\t"+value).toStream().groupBy((key, value) -> "total de profits",Grouped.with(Serdes.String(), Serdes.String())).reduce((v1, v2) -> maximo(v1,v2));
+        teste.toStream().mapValues((k, v) -> aux.converte_highestprof(v,k)).to(output_topic_highestprof, Produced.with(Serdes.String(), Serdes.String()));
         //teste.toStream().foreach((key, value) -> System.out.println("Maior profit deste mundo em que vivemos "+key + ": " + value));
 
 
-        //14. Windowed -> Total de revenues na última hora (Está para 60 segundos)
-        KTable<Windowed<String>, Double> window_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de receitas", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
+        //14. Windowed -> Total de revenues na última hora (Está para 60 segundos) receitas
+        KTable<Windowed<String>, Double> window_rev_total = stream_cliente.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
         //window_rev_total.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
-        window_rev_total.toStream().foreach((key, value) -> System.out.println("Window rev:  " + value));
+        //window_rev_total.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).foreach((key, value) -> System.out.println("Window rev:" + key + "  " + value));
 
-        //15. Windowed -> Total de expenses na última hora
-        KTable<Windowed<String>, Double> window_exp_total = stream_fornece.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total de gastos", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
+        //15. Windowed -> Total de expenses na última hora (gasros)
+        KTable<Windowed<String>, Double> window_exp_total = stream_fornece.mapValues(v -> transformValue(v)).groupBy((key, value) -> "total", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
         //window_exp_total.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).to(output_topic, Produced.with(Serdes.String(), Serdes.String()));
-        window_exp_total.toStream().foreach((key, value) -> System.out.println("Windows exp : " + value));
+        // window_exp_total.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).foreach((key, value) -> System.out.println("Windows exp : " + key + "  " + value));
 
         //16. Windowed -> Total profit na última hora (FALTAAAAAAAAAAAA TESTAAAAAAAAAAAAAAAR)
-            //Primeiro tenho que fazer um join com as duas windows do revenue e das expenses
+        //Primeiro tenho que fazer um join com as duas windows do revenue e das expenses
+
+
+
+
+        KTable<Windowed<String>, Double> join_window1 = window_rev_total.join(window_exp_total,
+                (leftValue, rightValue) -> leftValue-rightValue // ValueJoiner
+        );
+        //join_window1.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + v)).foreach((key, value) -> System.out.println("Windows prof: " + value));
+
+        //juntar o 15 16 14
+
+        KTable<Windowed<String>, String> windoh_expenses_revenue = window_rev_total.join(window_exp_total,
+                (leftValue, rightValue) -> ""+leftValue+"\t"+rightValue
+        );
+
+
+        KTable<Windowed<String>, String> windoh_expenses_revenue_profit = windoh_expenses_revenue.join(join_window1,
+                (leftValue, rightValue) ->  ""+leftValue+"\t"+rightValue
+        );
+        windoh_expenses_revenue_profit.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + v)).mapValues((k, v) -> aux.converte_windoh(v,k)).to(output_topic_windoh, Produced.with(Serdes.String(), Serdes.String()));
+
+
+
+
+        //16. Windowed -> Total profit na última hora (FALTAAAAAAAAAAAA TESTAAAAAAAAAAAAAAAR)
+        //Primeiro tenho que fazer um join com as duas windows do revenue e das expenses
 
 
 
@@ -136,14 +211,14 @@ public class ManageResultsApplication {
                 );*/
 
 
-            //Por fim tenho que utilizar o join e a window
+        //Por fim tenho que utilizar o join e a window
         //KTable<Windowed<String>, Double> window_profit_total = join_window.toStream().groupBy((key, value) -> "total profit", Grouped.with(Serdes.String(), Serdes.Double())).windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1))).reduce((v1, v2) -> v1 + v2);
         //join_window1.toStream((wk, v) -> wk.key()).map((k, v) -> new KeyValue<>(k, "" + k + "-->" + v)).foreach((key, value) -> System.out.println("Windows prof1:" + value));
         //join_window2.foreach((key, value) -> System.out.println("Windows prof2:" + value));
 
 
         //17. Get the name of the country with the highest sales per item. Include the value of such sales
-        /*KGroupedStream<String, String> groupedStream = stream_cliente.mapValues((v)->produto_aux(v)).groupBy(
+        KGroupedStream<String, String> groupedStream = stream_cliente.mapValues((v)->produto_aux(v)).groupBy(
                 (key, value) -> pais_aux2(key,value),
                 Serialized.with(
                         Serdes.String(),
@@ -154,8 +229,7 @@ public class ManageResultsApplication {
                 Serialized.with(
                         Serdes.String(),
                         Serdes.String())
-        ).reduce((v1, v2) -> help3(v1,v2)).toStream().foreach(((key, value) -> System.out.println("wtffff "+key + ": " + value)));*/
-
+        ).reduce((v1, v2) -> help3(v1,v2)).toStream().mapValues((k, v) -> aux.converte_pais(v,k)).to(output_topic_country, Produced.with(Serdes.String(), Serdes.String()));
 
 
         KafkaStreams streams = new KafkaStreams(builder.build(), propd);
@@ -186,9 +260,9 @@ public class ManageResultsApplication {
     }
 
     public static String maximo(String n1,String n2){
-        System.out.println("DEBUG "+n1+"    "+n2);
-        String[] parts1 = n1.split("    ");
-        String[] parts2 = n2.split("    ");
+        // System.out.println("DEBUG "+n1+"    "+n2);
+        String[] parts1 = n1.split("\t");
+        String[] parts2 = n2.split("\t");
         //System.out.println(Arrays.toString(parts1));
         //System.out.println(Arrays.toString(parts2));
         if(Double.parseDouble(parts1[1])>Double.parseDouble(parts2[1])){
@@ -198,167 +272,10 @@ public class ManageResultsApplication {
 
     }
 
-    public static String converte_revenue(double s,String id){
-        //ver os opcional
-        JSONObject result = new JSONObject();
-        JSONObject schema_child = new JSONObject();
-        JSONObject payload_child = new JSONObject();
-        JSONObject campo1 = new JSONObject();
-        JSONObject campo4 = new JSONObject();
-        JSONObject campo2 = new JSONObject();
-        JSONObject campo3 = new JSONObject();
-
-        JSONArray array_do_mal = new JSONArray();
-
-        campo1.put("type","double");
-        campo1.put("optional",true);
-        campo1.put("field","revenue");
-
-        campo2.put("type","double");
-        campo2.put("optional",true);
-        campo2.put("field","expenses");
-
-        campo3.put("type","double");
-        campo3.put("optional",true);
-        campo3.put("field","profit");
-
-        campo4.put("type","double");
-        campo4.put("optional",false);
-        campo4.put("field","id_item");
 
 
-        array_do_mal.put(campo1);
-        //array_do_mal.put(campo2);
-        //array_do_mal.put(campo3);
-        array_do_mal.put(campo4);
 
 
-        schema_child.put("name","total data");
-        schema_child.put("optional",false);
-        schema_child.put("type","struct");
-        schema_child.put("fields",array_do_mal);
-        result.put("schema",schema_child);
-
-
-        payload_child.put("revenue",s);
-        //payload_child.put("expenses",JSONObject.NULL);
-        //payload_child.put("profit",JSONObject.NULL);
-        payload_child.put("id_item",Integer.parseInt(id));
-
-        result.put("payload",payload_child);
-
-        String jsonresult = result.toString();
-        return jsonresult;
-
-    }
-
-    public static String converte_expenses(double s,String id){
-        //ver os opcional
-        JSONObject result = new JSONObject();
-        JSONObject schema_child = new JSONObject();
-        JSONObject payload_child = new JSONObject();
-        JSONObject campo1 = new JSONObject();
-        JSONObject campo4 = new JSONObject();
-        JSONObject campo2 = new JSONObject();
-        JSONObject campo3 = new JSONObject();
-
-        JSONArray array_do_mal = new JSONArray();
-
-        campo1.put("type","double");
-        campo1.put("optional",true);
-        campo1.put("field","revenue");
-
-        campo2.put("type","double");
-        campo2.put("optional",true);
-        campo2.put("field","expenses");
-
-        campo3.put("type","double");
-        campo3.put("optional",true);
-        campo3.put("field","profit");
-
-        campo4.put("type","double");
-        campo4.put("optional",false);
-        campo4.put("field","id_item");
-
-
-        //array_do_mal.put(campo1);
-        array_do_mal.put(campo2);
-        //array_do_mal.put(campo3);
-        array_do_mal.put(campo4);
-
-
-        schema_child.put("name","total data");
-        schema_child.put("optional",false);
-        schema_child.put("type","struct");
-        schema_child.put("fields",array_do_mal);
-        result.put("schema",schema_child);
-
-
-        //payload_child.put("revenue",JSONObject.NULL);
-        payload_child.put("expenses",s);
-        //payload_child.put("profit",JSONObject.NULL);
-        payload_child.put("id_item",Integer.parseInt(id));
-
-        result.put("payload",payload_child);
-
-        String jsonresult = result.toString();
-        return jsonresult;
-
-    }
-
-    public static String converte_profit(double s,String id){
-        //ver os opcional
-        JSONObject result = new JSONObject();
-        JSONObject schema_child = new JSONObject();
-        JSONObject payload_child = new JSONObject();
-        JSONObject campo1 = new JSONObject();
-        JSONObject campo4 = new JSONObject();
-        JSONObject campo2 = new JSONObject();
-        JSONObject campo3 = new JSONObject();
-
-        JSONArray array_do_mal = new JSONArray();
-
-        campo1.put("type","double");
-        campo1.put("optional",true);
-        campo1.put("field","revenue");
-
-        campo2.put("type","double");
-        campo2.put("optional",true);
-        campo2.put("field","expenses");
-
-        campo3.put("type","double");
-        campo3.put("optional",true);
-        campo3.put("field","profit");
-
-        campo4.put("type","double");
-        campo4.put("optional",false);
-        campo4.put("field","id_item");
-
-
-        //array_do_mal.put(campo1);
-        array_do_mal.put(campo2);
-        //array_do_mal.put(campo3);
-        array_do_mal.put(campo4);
-
-
-        schema_child.put("name","total data");
-        schema_child.put("optional",false);
-        schema_child.put("type","struct");
-        schema_child.put("fields",array_do_mal);
-        result.put("schema",schema_child);
-
-
-        //payload_child.put("revenue",JSONObject.NULL);
-        payload_child.put("expenses",s);
-        //payload_child.put("profit",JSONObject.NULL);
-        payload_child.put("id_item",Integer.parseInt(id));
-
-        result.put("payload",payload_child);
-
-        String jsonresult = result.toString();
-        return jsonresult;
-
-    }
 
     public static String help(String n1,String n2){
         JSONObject result2 = new JSONObject(n2);

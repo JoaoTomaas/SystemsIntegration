@@ -17,15 +17,15 @@ public class CountrySalesTopic implements Serializable {
     @XmlAttribute
     int id_item;
     String country_name;
-    int value;
+    int produto;
 
 
     public CountrySalesTopic() {}
 
-    public CountrySalesTopic(String country_name, int id_item,int value) {
+    public CountrySalesTopic(String country_name, int id_item,int produto) {
         this.country_name = country_name;
         this.id_item = id_item;
-        this.value = value;
+        this.produto = produto;
     }
 
     public String getCountry_name() {
@@ -44,11 +44,11 @@ public class CountrySalesTopic implements Serializable {
         this.id_item = id_item;
     }
 
-    public int getValue() {
-        return value;
+    public int getProduto() {
+        return produto;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setProduto(int produto) {
+        this.produto = produto;
     }
 }

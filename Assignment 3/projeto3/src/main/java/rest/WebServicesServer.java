@@ -11,7 +11,6 @@ import javax.ws.rs.core.MediaType;
 
 import data.*;
 import ejb.MyBean;
-import jdk.nashorn.internal.objects.annotations.Getter;
 
 @Path("/project3webservices")
 @RequestScoped
@@ -121,7 +120,7 @@ public class WebServicesServer {
     @GET
     @Path("gethourtopic")
     @Produces({MediaType.APPLICATION_JSON})
-    public List<HourTopic> getHourTopic() {
+    public List<WindowTopic> getHourTopic() {
         return db.getWindowedStats();
     }
 
