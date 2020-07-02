@@ -1,6 +1,6 @@
 # SystemsIntegration
 
-#Repositório destinado a integrar sistemas NESTE
+#Repositório destinado a integrar sistemas
 
 
 #Distribuição do trabalho para a terceira meta:
